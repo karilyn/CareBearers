@@ -1,4 +1,4 @@
-class KidsController < ApplicationController
+class Api::KidsController < ApplicationController
   before_action :set_kid, only: %i[ show edit update destroy ]
 
   # GET /kids or /kids.json
