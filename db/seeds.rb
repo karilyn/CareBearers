@@ -26,7 +26,6 @@ admin = User.create!(
   last_name: "User",
   email: "admin@admin.com",
   password_digest: BCrypt::Password.create('Your_Password')
-  password_confirmation: "password",
 )
 
 puts "Admin user created: #{admin.inspect}"
@@ -37,7 +36,7 @@ parent1 = User.create!(
   last_name: "Kempton",
   email: "parent1@parent.com",
   postal_code: "V0E2S0",
-  password_digest: BCrypt::Password.create('Your_Password')
+  password_digest: BCrypt::Password.create('Your_Password'),
   description: "I am a parent looking for a babysitter to occasionally watch my two children.",
   gender: "female"
 )
@@ -47,7 +46,7 @@ parent2 = User.create!(
   last_name: "Schulz",
   email: "test@test.com",
   postal_code: "V0E2S0",
-  password_digest: BCrypt::Password.create('Your_Password')
+  password_digest: BCrypt::Password.create('Your_Password'),
   description: "Working professional looking for regular evening childcare.",
   gender: "female"
 
@@ -58,7 +57,7 @@ parent3 = User.create!(
   last_name: "Doe",
   email: "john@johndoe.com",
   postal_code: "V0E2S0",
-  password_digest: BCrypt::Password.create('Your_Password')
+  password_digest: BCrypt::Password.create('Your_Password'),
   description: "Father of three looking for some extra help!",
   gender: "male"
 )
