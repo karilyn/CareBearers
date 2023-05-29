@@ -4,6 +4,7 @@ class Api::KidsController < ApplicationController
   # GET /kids or /kids.json
   def index
     @kids = Kid.all
+    render json: @kids
   end
 
   # GET /kids/1 or /kids/1.json
