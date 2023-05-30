@@ -144,7 +144,7 @@ reservation1 = Reservation.create!(
 
 # puts "Reservation created: #{reservation1.inspect}"
 
-reservation1 = Reservation.create!(
+reservation2 = Reservation.create!(
   start_time: "2023-06-22 13:00:00",
   end_time: "2023-06-22 14:00:00",
   num_of_children: 2,
@@ -157,7 +157,7 @@ reservation1 = Reservation.create!(
   caregiver_id: babysitter2.id,
   parent_id: parent1.id
 )
-reservation1 = Reservation.create!(
+reservation3 = Reservation.create!(
   start_time: "2023-07-14 08:00:00",
   end_time: "2023-07-14 11:00:00",
   num_of_children: 1,
@@ -170,7 +170,7 @@ reservation1 = Reservation.create!(
   caregiver_id: babysitter3.id,
   parent_id: parent3.id
 )
-reservation1 = Reservation.create!(
+reservation4 = Reservation.create!(
   start_time: "2023-08-01 19:00:00",
   end_time: "2023-08-01 23:00:00",
   num_of_children: 2,
@@ -185,3 +185,35 @@ reservation1 = Reservation.create!(
 )
 
 puts "Created #{Reservation.count} reservations."
+
+# Create reviews
+
+review1 = Review.create!(
+  message: "Amy was great with our kids! She was on time and very friendly. We will definitely be booking her again.",
+  rating: 5.0,
+  reviewer_id: parent2.id,
+  reservation_id: reservation1.id
+)
+
+review2 = Review.create!(
+  message: "Sally was great with our kids. She ran late though and didn't seem prepared.",
+  rating: 3.0,
+  reviewer_id: parent1.id,
+  reservation_id: reservation2.id
+)
+
+review3 = Review.create!(
+  message: "Karilyn and her kids were a pleasure to work with.  Will work with them in the future for sure!",
+  rating: 5.0,
+  reviewer_id: babysitter2.id,
+  reservation_id: reservation2.id
+)
+
+review4 = Review.create!(
+  message: "Michele had a lot of last minute requests which was stressful. Would communicate this before watching her kids again.",
+  rating: 3.5,
+  reviewer_id: babysitter1.id,
+  reservation_id: reservation1.id
+)
+
+puts "Created #{Review.count} reviews."
