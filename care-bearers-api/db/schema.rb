@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_30_151256) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_30_191904) do
   create_table "kids", force: :cascade do |t|
     t.string "name"
     t.integer "age"
@@ -60,6 +60,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_151256) do
     t.string "gender"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_caregiver"
   end
 
   add_foreign_key "reservations", "users", column: "caregiver_id"

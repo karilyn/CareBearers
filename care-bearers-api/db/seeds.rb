@@ -38,7 +38,8 @@ parent1 = User.create!(
   postal_code: "V0E2S0",
   password_digest: BCrypt::Password.create('Your_Password'),
   description: "I am a parent looking for a babysitter to occasionally watch my two children.",
-  gender: "female"
+  gender: "female",
+  is_caregiver: false
 )
 
 parent2 = User.create!(
@@ -48,8 +49,8 @@ parent2 = User.create!(
   postal_code: "V0E2S0",
   password_digest: BCrypt::Password.create('Your_Password'),
   description: "Working professional looking for regular evening childcare.",
-  gender: "female"
-
+  gender: "female",
+  is_caregiver: false
 )
 
 parent3 = User.create!(
@@ -59,7 +60,8 @@ parent3 = User.create!(
   postal_code: "V0E2S0",
   password_digest: BCrypt::Password.create('Your_Password'),
   description: "Father of three looking for some extra help!",
-  gender: "male"
+  gender: "male",
+  is_caregiver: false
 )
 
 # Create babysitter users
@@ -70,7 +72,8 @@ babysitter1 = User.create!(
   postal_code: "V0E2S0",
   password_digest: BCrypt::Password.create('Your_Password'),
   description: "I am a babysitter looking for a family to work with.",
-  gender: "female"
+  gender: "female",
+  is_caregiver: true
 )
 
 babysitter2 = User.create!(
@@ -80,7 +83,8 @@ babysitter2 = User.create!(
   postal_code: "V0E2S0",
   password_digest: BCrypt::Password.create('Your_Password'),
   description: "I'm a barista and I love kids! Looking to make some extra money by helping families who need care.",
-  gender: "female"
+  gender: "female",
+  is_caregiver: true
 )
 
 babysitter3 = User.create!(
@@ -90,7 +94,8 @@ babysitter3 = User.create!(
   postal_code: "V0E2S0",
   password_digest: BCrypt::Password.create('Your_Password'),
   description: "I am a stay-at-home mom looking to care for some extra kids",
-  gender: "female"
+  gender: "female",
+  is_caregiver: true
 )
 
 puts "Created #{User.count} users."
