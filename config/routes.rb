@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   namespace :api do
     resources :kids
     resources :users
+    resources :reservations
+    resources :reviews
   end
 
   get 'match/MatchController'
