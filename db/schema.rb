@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_29_223044) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_30_005948) do
   create_table "kids", force: :cascade do |t|
     t.string "name"
     t.integer "age"
@@ -18,6 +18,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_29_223044) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "parent_id"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer "num_of_children"
+    t.string "city"
+    t.string "street"
+    t.string "post_code"
+    t.integer "status"
+    t.float "cost"
+    t.string "stripe_charge_id"
+    t.integer "caregiver_id", null: false
+    t.integer "parent_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["caregiver_id"], name: "index_reservations_on_caregiver_id"
+    t.index ["parent_id"], name: "index_reservations_on_parent_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -33,4 +51,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_29_223044) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "reservations", "users", column: "caregiver_id"
+  add_foreign_key "reservations", "users", column: "parent_id"
 end

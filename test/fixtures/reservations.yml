@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_time: 2023-05-30 00:59:48
+  end_time: 2023-05-30 00:59:48
+  num_of_children: 1
+  city: MyString
+  street: MyString
+  post_code: MyString
+  status: 1
+  cost: 1.5
+  stripe_charge_id: MyString
+  caregiver: one
+  parent: one
+
+two:
+  start_time: 2023-05-30 00:59:48
+  end_time: 2023-05-30 00:59:48
+  num_of_children: 1
+  city: MyString
+  street: MyString
+  post_code: MyString
+  status: 1
+  cost: 1.5
+  stripe_charge_id: MyString
+  caregiver: two
+  parent: two

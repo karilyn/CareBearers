@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reservations
 
   namespace :api do
     resources :kids
