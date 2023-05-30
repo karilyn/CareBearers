@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_30_005948) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_30_151256) do
   create_table "kids", force: :cascade do |t|
     t.string "name"
     t.integer "age"
@@ -38,6 +38,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_005948) do
     t.index ["parent_id"], name: "index_reservations_on_parent_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.float "rating"
+    t.text "message"
+    t.integer "reservation_id", null: false
+    t.integer "reviewer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reservation_id"], name: "index_reviews_on_reservation_id"
+    t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -53,4 +64,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_005948) do
 
   add_foreign_key "reservations", "users", column: "caregiver_id"
   add_foreign_key "reservations", "users", column: "parent_id"
+  add_foreign_key "reviews", "reservations"
+  add_foreign_key "reviews", "users", column: "reviewer_id"
 end
