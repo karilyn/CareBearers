@@ -125,3 +125,63 @@ kid4 = Kid.create!(
 )
 
 puts "Created #{Kid.count} kids."
+
+# Create Reservations
+
+reservation1 = Reservation.create!(
+  start_time: "2021-08-01 18:00:00",
+  end_time: "2021-08-01 22:00:00",
+  num_of_children: 2,
+  city: "Vancouver",
+  street: "123 Main Street",
+  post_code: "V0E2S0",
+  status: 4,
+  cost: 80.00,
+  stripe_charge_id: "ch_1J5JZn2eZvKYlo2C0QYQ0Q0Q",
+  caregiver_id: babysitter1.id,
+  parent_id: parent2.id
+)
+
+# puts "Reservation created: #{reservation1.inspect}"
+
+reservation1 = Reservation.create!(
+  start_time: "2023-06-22 13:00:00",
+  end_time: "2023-06-22 14:00:00",
+  num_of_children: 2,
+  city: "Revelstoke",
+  street: "456 Main Street",
+  post_code: "T0E2S0",
+  status: 1,
+  cost: 20.00,
+  stripe_charge_id: "ch_1J5REn2eZvKYlo2C0QYQ0Q0Q",
+  caregiver_id: babysitter2.id,
+  parent_id: parent1.id
+)
+reservation1 = Reservation.create!(
+  start_time: "2023-07-14 08:00:00",
+  end_time: "2023-07-14 11:00:00",
+  num_of_children: 1,
+  city: "Banff",
+  street: "789 Main Street",
+  post_code: "W0E2S0",
+  status: 0,
+  cost: 60.00,
+  stripe_charge_id: "ch_1J3JZn2eZvKYlo2C0QYQ0Q0Q",
+  caregiver_id: babysitter3.id,
+  parent_id: parent3.id
+)
+reservation1 = Reservation.create!(
+  start_time: "2023-08-01 19:00:00",
+  end_time: "2023-08-01 23:00:00",
+  num_of_children: 2,
+  city: "Vancouver",
+  street: "321 Main Street",
+  post_code: "S0E2S0",
+  status: 2,
+  cost: 80.00,
+  stripe_charge_id: "ch_1J5JZn2eZvKYlo2C0WNQ0Q0Q",
+  caregiver_id: babysitter1.id,
+  parent_id: parent2.id
+)
+
+puts "Created #{Reservation.count} reservations."
