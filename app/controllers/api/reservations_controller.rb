@@ -1,9 +1,10 @@
-class ReservationsController < ApplicationController
+class Api::ReservationsController < ApplicationController
   before_action :set_reservation, only: %i[ show edit update destroy ]
 
   # GET /reservations or /reservations.json
   def index
     @reservations = Reservation.all
+    render json: @reservations
   end
 
   # GET /reservations/1 or /reservations/1.json
