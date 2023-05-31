@@ -1,5 +1,5 @@
 import React from 'react';
-import "./NavigationBar.css";
+import "./NavigationBar.scss";
 
 const NavigationBar = () => {
   return (
@@ -10,7 +10,7 @@ const NavigationBar = () => {
         <p>
           Welcome, <span>Guest</span>
         </p>
-        <i className='fa fa-user'></i>
+        <i class="fa-solid fa-user"></i>
       </div>
     </nav>
   )
