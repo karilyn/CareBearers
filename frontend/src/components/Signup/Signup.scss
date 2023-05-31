@@ -5,7 +5,7 @@
   background: white;
   display: flex;
   flex-direction: column;
-  padding-top: 20px;
+  padding-top: 40px;
 
   h1 {
     font-size: 2rem;
@@ -23,7 +23,7 @@
     gap: 10px;
 
     input:not([type="submit"]) {
-      width: 50%;
+      width: 70%;
       padding: 10px;
       border: 1px solid black;
       border-radius: 5px;
@@ -48,6 +48,28 @@
         color: white;
       }
     }
+
+    .role {
+      padding: 0px;
+      margin: 0px;
+      
+    }
+    .radio {
+      width: 100%;
+      font-size: 0.99rem;
+      color: black;
+      display: flex;
+      justify-content: space-evenly;
+  
+      label {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        
+      }
+      
+    }
+
   }
 
 }
