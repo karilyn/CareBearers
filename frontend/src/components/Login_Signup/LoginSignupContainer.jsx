@@ -1,5 +1,5 @@
 import Login from "./Login";
-import Signup from "../Signup/Signup";
+import Signup from "./Signup";
 import "./LoginSignupContainer.scss"
 import React, { useState, useRef } from "react";
 
