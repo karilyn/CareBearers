@@ -9,8 +9,9 @@ const Description = (props) => {
      <form>
         <textarea rows='3' name='text' placeholder="Working professional looking for regular evening childcare..."></textarea>
         <Dropdown onChange={props.onChange} kids={props.kids}/>
-        <button type="submit">Save</button>
+        {props.kids === 0 && <button type="submit">Save</button>}
       </form>
+      {props.kids > 0 && <h1>My Kids</h1>}
     </div>
 
   )
