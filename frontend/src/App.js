@@ -1,5 +1,5 @@
 import './App.css';
-import LoginSignupContainer from './components/LoginSignUpContainer/LoginSignupContainer';
+import LoginSignupContainer from './components/Login_Signup/LoginSignupContainer';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 
 function App() {
