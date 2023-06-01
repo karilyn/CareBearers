@@ -1,0 +1,45 @@
+.login-signup-container {
+  display: grid;
+  grid-template-columns: 70% 30% 70%;
+  width: 60%;
+  height: 500px;
+  background-color: white;
+  border: 1px solid black;
+  margin: auto;
+  margin-top: 100px;
+  overflow: hidden;
+  transition: 0.3s linear;
+
+  &.active {
+    grid-template-columns: 0% 30% 70%;
+    transition: 0.3s linear;
+  }
+  .side-div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://fastly.picsum.photos/id/20/3670/2462.jpg?hmac=CmQ0ln-k5ZqkdtLvVO23LjVAEabZQx2wOaT4pyeG10I');
+    background-size: cover;
+    background-position: center;
+
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.99rem;
+    transition: 0.2s linear;
+    &:hover {
+      background-color: rgba(53, 51, 51, 0.946);
+      border: 1px solid rgba(53, 51, 51, 0.946);
+    }
+  }
+
+
+}
