@@ -1,0 +1,46 @@
+.kids-form {
+  display: flex;
+  flex-direction: column;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    gap: 10px;
+
+    input, textarea {
+      width: 50%;
+      padding: 10px;
+      border: 1px solid black;
+      border-radius: 5px;
+      font-size: 0.99rem;
+      font-weight: bold;
+      color: black;
+      margin: auto;
+    }
+  }
+
+  button {
+    width: 100px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 0.99rem;
+    color: black;
+    background: white;
+    cursor: pointer;
+    transition: 0.3x linear;
+    &:hover {
+      background: black;
+      color: white;
+    }
+    margin: auto;
+  }
+}
+
+.age {
+  display: flex;
+
+}
