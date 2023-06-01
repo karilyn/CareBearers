@@ -9,12 +9,12 @@ const DropDownAge = () => {
   }
 
   return (
-    <div>
+
         <select className='dropdown-age' value={value} onChange={handleChange}>
           <option value="years">years</option>
           <option value="months">months</option>
         </select>
-    </div>
+
   );
 };
 
