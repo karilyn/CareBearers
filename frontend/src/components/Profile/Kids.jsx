@@ -2,10 +2,10 @@ import React from 'react';
 import './Kids.scss';
 import DropDownAge from './DropDownAge';
 
-const Kids = () => {
+const Kids = (props) => {
   return (
     <div className='kids-form'>
-      <h1>My Kids</h1>
+
       <form>
         <input type="text" placeholder="Name"/>
         <div className='age'>
@@ -13,7 +13,7 @@ const Kids = () => {
           <DropDownAge />
         </div>
         <textarea rows='3' cols='60' name='text' placeholder="Description..."></textarea>
-        <button type="submit">Save</button>
+        
       </form>
     </div>
   );
