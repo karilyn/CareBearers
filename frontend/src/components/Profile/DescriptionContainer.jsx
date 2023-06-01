@@ -15,7 +15,7 @@ const DescriptionContainer = () => {
     <div className='description-container'>
       <Description onChange={handleChange} kids={numOfKids}/>
       {numOfKids !== 0 && [...Array(numOfKids)].map((e, i) => <Kids key={i}/>)}
-
+      {numOfKids !== 0 && <button type="submit">Save</button>}
     </div>
   )
 }
