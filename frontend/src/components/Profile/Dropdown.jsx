@@ -20,7 +20,6 @@ const Dropdown = (props) => {
           <option value={4}>4+</option>
         </select>
       </label>
-      <p>You have {props.kids} children</p>
     </div>
   )
 }
