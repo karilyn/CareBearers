@@ -1,8 +1,10 @@
+@import "styles/variables.scss";
+
 nav {
   position: relative;
   height: 50px;
   width: 100%;
-  background-color: black;
+  background-color: $dark-green-color;
   color: white;
   display: flex;
   align-items: center;
