@@ -10,7 +10,7 @@ const NavigationBar = () => {
         <p>
           Welcome, <span>Guest</span>
         </p>
-        <i class="fa-solid fa-user"></i>
+        <i className="fa-solid fa-user"></i>
       </div>
     </nav>
   )
