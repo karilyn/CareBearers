@@ -1,6 +1,6 @@
 nav {
   position: relative;
-  height: 50px;
+  height: 100px;
   width: 100%;
   background-color: black;
   color: white;
@@ -9,6 +9,11 @@ nav {
   justify-content: space-between;
   padding: 10px;
 
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
   a {
     color: white;
     text-decoration: none;
