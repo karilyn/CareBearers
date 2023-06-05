@@ -1,0 +1,45 @@
+.description-form {
+
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
+
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+
+  textarea {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 0.99rem;
+    font-weight: bold;
+    color: black;
+  }
+  
+  button {
+    width: 100px;
+    margin: auto;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.99rem;
+    transition: 0.2s linear;
+    &:hover {
+      background-color: rgba(53, 51, 51, 0.946);
+      border: 1px solid rgba(53, 51, 51, 0.946);
+    }
+  }
+}
+}
