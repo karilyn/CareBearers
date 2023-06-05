@@ -1,0 +1,32 @@
+.description-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  width: 75%;
+  height: 600px;
+  background-color: white;
+  border: 1px solid black;
+  margin-top: 100px;
+
+
+  button {
+    width: 100px;
+    margin: auto;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.99rem;
+    transition: 0.2s linear;
+    &:hover {
+      background-color: rgba(53, 51, 51, 0.946);
+      border: 1px solid rgba(53, 51, 51, 0.946);
+    }
+  }
+
+
+}
