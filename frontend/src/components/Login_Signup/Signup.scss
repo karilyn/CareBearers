@@ -1,3 +1,5 @@
+@import "styles/variables.scss";
+
 .signup {
   height: 100%;
   width: 100%;
@@ -52,7 +54,7 @@
     .role {
       padding: 0px;
       margin: 0px;
-      
+
     }
     .radio {
       width: 100%;
@@ -60,14 +62,14 @@
       color: black;
       display: flex;
       justify-content: space-evenly;
-  
+
       label {
         display: flex;
         align-items: center;
         gap: 5px;
-        
+
       }
-      
+
     }
 
   }
