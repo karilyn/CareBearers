@@ -1,1 +1,57 @@
-@import "styles/variables.scss";
+@import "../../styles/variables.scss";
+
+
+.px-4.py-5.my-5.text-center.bg-image {
+  position: relative;
+  height: 500px;
+  width: 80%;
+  margin: auto;
+  background-color: $background-color;
+  display: flex;
+  flex-direction: column;
+
+
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3em;
+}
+
+.display-5.fw-bold {
+  font-family: $font-h1;
+  color: $font-color-light;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-size: 38px;
+}
+
+.lead.mb-4 {
+  font-family: $font-p;
+  color: $font-color-light;
+}
+
+.btn {
+  text-align: center;
+  padding: .875em 1.25em;
+  border: 1px solid transparent;
+  border-radius: 80em;
+  position: relative;
+  display: inline-block;
+
+}
+
+.btn.sign-up {
+  background-color: $light-aqua-color;
+  color: $dark-green-color;
+  font-weight: 600;
+}
+
+.btn.sign-up:hover {
+  background-color: #F5F5DC;
+  color: $dark-green-color;
+  border: 1px solid $dark-green-color;
+}
+
