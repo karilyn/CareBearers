@@ -4,7 +4,7 @@ import "./NavigationBar.scss";
 const NavigationBar = () => {
   return (
     <nav>
-      <a href='/'>CareBearers</a>
+      <a href='/'>Care Bearers</a>
 
       <div>
         <p>
