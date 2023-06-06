@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :kids
-    resources :users
+    resources :users, only: [:create, :show, :index]
     resources :reservations
     resources :reviews
   end
