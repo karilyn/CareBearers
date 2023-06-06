@@ -2,12 +2,15 @@ Rails.application.routes.draw do
   resources :reviews
   resources :reservations
 
-  namespace :api do
-    resources :kids
-    resources :users, only: [:create, :show, :index]
-    resources :reservations
-    resources :reviews
+
+  resources :kids
+  
+  resources :users, only: [:create, :show, :index] do
+    resources :items, only: [:create, :show, :index, :destroy]
   end
+  resources :reservations
+  resources :reviews
+
 
   get 'match/MatchController'
   get 'match/index'
