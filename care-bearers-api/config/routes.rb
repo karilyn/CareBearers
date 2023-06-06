@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :reviews
   resources :reservations
 
-  resources :users, only: [:create]
+  resources :users, only: [:create, :index, :show, :update, :destroy]
   post '/login', to: 'users#login'
   get '/auto_login', to: 'users#auto_login'
 
