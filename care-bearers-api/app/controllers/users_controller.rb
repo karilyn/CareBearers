@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
   before_action :authorized, only: [:auto_login]
+  
   # GET /users or /users.json
   def index
     @users = User.all
@@ -53,7 +54,7 @@ class UsersController < ApplicationController
   def auto_login
     render json: @user
   end
-  
+
   # PATCH/PUT /users/1 or /users/1.json
   def update
     respond_to do |format|
