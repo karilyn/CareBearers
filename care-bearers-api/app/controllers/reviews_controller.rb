@@ -1,9 +1,11 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: %i[ show edit update destroy ]
-
+  before_action :authorized
   # GET /reviews or /reviews.json
   def index
-    @reviews = Review.all
+    # @reviews = Review.all
+    # find only reviews by that user logged in 
+    @reviews = Review.where(user_id: @user.id)
     render json: @reviews
   end
 
@@ -23,6 +25,7 @@ class ReviewsController < ApplicationController
   # POST /reviews or /reviews.json
   def create
     @review = Review.new(review_params)
+    @review.user = @user
 
     respond_to do |format|
       if @review.save

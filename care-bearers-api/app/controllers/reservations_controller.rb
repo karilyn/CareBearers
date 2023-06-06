@@ -1,9 +1,11 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: %i[ show edit update destroy ]
-
+  before_action :authorized
   # GET /reservations or /reservations.json
   def index
-    @reservations = Reservation.all
+    # @reservations = Reservation.all
+    # find only reservations by that user logged in 
+    @reservations = Reservation.where(user_id: @user.id)
     render json: @reservations
   end
 
@@ -23,6 +25,7 @@ class ReservationsController < ApplicationController
   # POST /reservations or /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
+    @reservation.user = @user
 
     respond_to do |format|
       if @reservation.save
