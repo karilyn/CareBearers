@@ -1,17 +1,15 @@
 import React from 'react';
 import "./NavigationBar.scss";
+import { Link } from 'react-router-dom';
 
 const NavigationBar = () => {
   return (
     <nav>
-      <a href='/'>Care Bearers</a>
-
-      <div>
-        <p>
-          Welcome, <span>Guest</span>
-        </p>
-        <i className="fa-solid fa-user"></i>
-      </div>
+      <ul>
+        <li><Link to='/'>Home</Link> </li>
+        <li> <Link to='/login'>Login</Link></li>
+        <li> <Link to='/about'>ProfileTest</Link></li>
+      </ul> 
     </nav>
   )
 }
