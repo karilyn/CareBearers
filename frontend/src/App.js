@@ -6,6 +6,8 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import Auth from './pages/Auth.jsx'
 import Dashboard from './pages/Dashboard.jsx';
 import { useAppState } from './AppState';
+import { Inject, ScheduleComponent, Day, Week, WorkWeek, Month, Agenda } from '@syncfusion/ej2-react-schedule';
+import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
 
 function App(props) {
 
@@ -32,6 +34,11 @@ function App(props) {
             <Route exact path='/auth/:form' element={<Auth />} />
             <Route path = '/dashboard' element={<Dashboard />} />
           </Routes>
+        </div>
+        <div className='schedule-container'>
+          <ScheduleComponent currentView='Month'>
+            <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
+          </ScheduleComponent>
         </div>
       </div>
 
