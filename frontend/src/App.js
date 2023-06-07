@@ -12,7 +12,25 @@ import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
 
 function App() {
   // const [date, setDate] = useState(new Date());
-
+  const data = [
+    {
+        Id: 1,
+        Subject: 'Date Night',
+        StartTime: new Date(2023, 6, 5, 19, 0),
+        EndTime: new Date(2023, 6, 5, 23, 0),
+        IsAllDay: false,
+        Status: 'Completed',
+        Priority: 'High'
+    },
+];
+const fieldsData = {
+    id: 'Id',
+    subject: { name: 'Subject' },
+    isAllDay: { name: 'IsAllDay' },
+    startTime: { name: 'StartTime' },
+    endTime: { name: 'EndTime' }
+}
+const eventSettings = { dataSource: data, fields: fieldsData }
 
 
   return (
@@ -23,7 +41,7 @@ function App() {
       </div>
       {/* <LoginSignupContainer /> */}
       <div className='schedule-container'>
-        <ScheduleComponent currentView='Month'>
+        <ScheduleComponent currentView='Month' eventSettings={eventSettings}>
           <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
         </ScheduleComponent>
       </div>
