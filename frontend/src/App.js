@@ -1,5 +1,5 @@
+
 import React from 'react';
-import './App.css';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import Hero from './components/Hero_Section/Hero';
 import { Route, Routes, useNavigate } from 'react-router-dom';
@@ -26,7 +26,7 @@ function App(props) {
   
       <div className="App">
         <NavigationBar />
-        <div className="content">
+        <div className='content'>
           <Routes>
             <Route exact path='/' element={<Hero />} />
             <Route exact path='/auth/:form' element={<Auth />} />
