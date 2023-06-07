@@ -1,23 +1,65 @@
-import './App.css';
+
+import React, { useState } from 'react';
 import LoginSignupContainer from './components/Login_Signup/LoginSignupContainer';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import Hero from './components/Hero_Section/Hero';
 import DescriptionContainer from './components/Profile/DescriptionContainer';
+<<<<<<< HEAD
 import Calendar from 'react-calendar';
+=======
+// import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import './App.css';
+import { Inject, ScheduleComponent, Day, Week, WorkWeek, Month, Agenda } from '@syncfusion/ej2-react-schedule';
+import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
+>>>>>>> feature/calendar
 
 function App() {
+  // const [date, setDate] = useState(new Date());
+  const data = [
+    {
+        Id: 1,
+        Subject: 'Date Night',
+        StartTime: new Date(2023, 6, 5, 19, 0),
+        EndTime: new Date(2023, 6, 5, 23, 0),
+        IsAllDay: false,
+        Status: 'Completed',
+        Priority: 'High'
+    },
+];
+const fieldsData = {
+    id: 'Id',
+    subject: { name: 'Subject' },
+    isAllDay: { name: 'IsAllDay' },
+    startTime: { name: 'StartTime' },
+    endTime: { name: 'EndTime' }
+}
+const eventSettings = { dataSource: data, fields: fieldsData }
+
 
   return (
-    <div className="App">
+    <div className='App'>
       <NavigationBar />
-      <div className="hero">
+
+      <div className='hero'>
         <Hero />
       </div>
-      <LoginSignupContainer />
-
+      {/* <LoginSignupContainer /> */}
+      <div className='schedule-container'>
+        <ScheduleComponent currentView='Month' eventSettings={eventSettings}>
+          <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
+        </ScheduleComponent>
+      </div>
+      {/* <h1 className='text-center'>Your Calendar</h1>
+      <div className='calendar-container'>
+        <Calendar onChange={setDate} value={date} />
+      </div>
+      <p className='text-center'>
+        <span className='bold'>Selected Date:</span>{' '}
+        {date.toDateString()}
+      </p> */}
 
       {/* <DescriptionContainer />  */}
-
     </div>
   );
 }
