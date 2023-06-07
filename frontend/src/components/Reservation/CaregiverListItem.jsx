@@ -4,6 +4,8 @@ import './CaregiverListItem.css'
 
 // represents one caregiver and has two states: selected and not selected
 // caregiver object props: id, first_name, last_name, description, photo_url, gender
+//TODO: figure out if it needs all the table props?
+
 export default function CaregiverListItem(props) {
   // conditionally render class if selected
   let caregiversClass = classNames('caregivers__item', {
