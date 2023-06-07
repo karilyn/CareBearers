@@ -13,36 +13,30 @@ class UsersController < ApplicationController
   end
 
   # GET /users/new
-  def new
-    @user = User.new
-  end
+  # def new
+  #   @user = User.new
+  # end
 
-  # GET /users/1/edit
-  def edit
-  end
+  # # GET /users/1/edit
+  # def edit
+  # end
 
   # POST /users or /users.json
   def create
-    @user = User.new(user_params)
+    @user = User.create(user_params)
     if @user.valid?
       token = encode_token({user_id: @user.id})
       render json: {user: @user, token: token}
     else
       render json: {error: "Invalid username or password"}
     end
-    # respond_to do |format|
-    #   if @user.save
-    #     format.html { redirect_to user_url(@user), notice: "User was successfully created." }
-    #     format.json { render :show, status: :created, location: @user }
-    #   else
-    #     format.html { render :new, status: :unprocessable_entity }
-    #     format.json { render json: @user.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    # puts "params"
+    # puts params
   end
 
   def login
     @user = User.find_by(email: params[:email])
+    puts @user.inspect
     if @user && @user.authenticate(params[:password])
       token = encode_token({user_id: @user.id})
       render json: {user: @user, token: token}
@@ -86,6 +80,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :postal_code, :password_digest, :recovery_password_digest, :is_parent, :is_caregiver, :description, :photo_url, :gender)
+      params.require(:user).permit(:email, :postal_code, :password)
     end
 end
