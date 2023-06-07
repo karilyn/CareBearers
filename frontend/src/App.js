@@ -5,12 +5,9 @@ import NavigationBar from './components/NavigationBar/NavigationBar';
 import Hero from './components/Hero_Section/Hero';
 import DescriptionContainer from './components/Profile/DescriptionContainer';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-// import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
 import './App.css';
 import { Inject, ScheduleComponent, Day, Week, WorkWeek, Month, Agenda } from '@syncfusion/ej2-react-schedule';
 import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
-
 
 function App() {
   // const [date, setDate] = useState(new Date());
