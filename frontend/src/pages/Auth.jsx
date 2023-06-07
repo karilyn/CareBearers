@@ -9,7 +9,8 @@ const Auth = (props) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    postal_code: ""
+    postal_code: "",
+    is_caregiver: false
   });
 
   const [userData, setUserData] = useState(null);
@@ -81,15 +82,13 @@ const Auth = (props) => {
           <input type="text" name='postal_code' placeholder="Postal Code" value={formData.postal_code} onChange={handleChange}/>
           <p className='role'>I am a...</p>
           <div className="radio">
-            <div className="radio-block">
-              <label for="careseeker"><input type="radio" id="careseeker" value="careseeker"/>caregiver</label>
-            </div>
-              <div className="radio-block">
-            <label for="caregiver"><input type="radio" id="caregiver" value="caregiver"/>careseeker</label>
-            </div>
+              <label for="role">
+                <input type="radio" name='is_caregiver' id="caregiver" value={true} onClick={handleChange}/>caregiver</label>
+              <label for="caregiver">
+                <input type="radio" name='is_caregiver' id="careseeker" value={false} onClick={handleChange}/>careseeker</label>
           </div>
           
-          <button type="submit">Sign Up!</button>
+          <button type="submit">Continue</button>
         </form>
       </>
       }
