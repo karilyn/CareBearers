@@ -27,9 +27,9 @@ export default function CaregiverList(props) {
   }
 
   return (
-    <ul className="caregivers">
-      <h4 className="caregivers__title">Caregivers</h4>
-      {caregivers}
-    </ul>
+    <section className="caregivers">
+      <h4 className="caregivers__header">Caregivers</h4>
+      <ul className='caregivers__list'>{caregivers}</ul>
+    </section>
   )
 }
