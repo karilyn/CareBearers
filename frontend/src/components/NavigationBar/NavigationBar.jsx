@@ -2,11 +2,12 @@ import React from 'react';
 import "./NavigationBar.scss";
 import { Link } from 'react-router-dom';
 import { useAppState } from '../../AppState.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const NavigationBar = (props) => {
 
   const { state, dispatch } = useAppState();
-
+  const navigate = useNavigate();
   return (
     <nav>
       <ul>
@@ -19,7 +20,7 @@ const NavigationBar = (props) => {
       </ul> 
       {state.token && <div onClick={() => {
         dispatch({type: 'logout'});
-        props.history.push('/');
+        navigate('/');
       }}>Logout</div>}
     </nav>
   )
