@@ -4,7 +4,8 @@ import React, { useReducer } from 'react';
 const initialState = {
   url: 'http://localhost:3000',
   token: null,
-  email: null
+  email: null,
+  user_id: null,
 }
 
 // REDUCER
