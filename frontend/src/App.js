@@ -25,7 +25,7 @@ function App(props) {
   }, []);
 
   return (
-  
+
       <div className="App">
         <NavigationBar />
         <div className='content'>
