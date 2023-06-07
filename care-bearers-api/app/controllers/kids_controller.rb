@@ -1,9 +1,11 @@
-class Api::KidsController < ApplicationController
+class KidsController < ApplicationController
   before_action :set_kid, only: %i[ show edit update destroy ]
-
+  before_action :authorized
   # GET /kids or /kids.json
   def index
-    @kids = Kid.all
+    # @kids = Kid.all
+    # get only kids associated with user logged in 
+    @kids = Kid.where(user_id: @user.id)
     render json: @kids
   end
 
@@ -23,6 +25,7 @@ class Api::KidsController < ApplicationController
   # POST /kids or /kids.json
   def create
     @kid = Kid.new(kid_params)
+    @kid.user = @user
 
     respond_to do |format|
       if @kid.save

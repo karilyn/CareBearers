@@ -1,13 +1,4 @@
-@import "../../styles/variables.scss";
-
-.login {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  padding-top: 40px;
+@import '../styles/variables.scss';
 
   h1 {
     font-size: 2rem;
@@ -23,6 +14,9 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    height: 100%;
+  
+    padding-top: 40px;
 
     input:not([type="submit"]) {
       width: 50%;
@@ -52,4 +46,3 @@
     }
   }
 
-}

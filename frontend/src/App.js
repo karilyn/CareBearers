@@ -1,57 +1,46 @@
 
-import React, { useState } from 'react';
-import LoginSignupContainer from './components/Login_Signup/LoginSignupContainer';
+import React from 'react';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import Hero from './components/Hero_Section/Hero';
-import DescriptionContainer from './components/Profile/DescriptionContainer';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './App.css';
-import { Inject, ScheduleComponent, Day, Week, WorkWeek, Month, Agenda } from '@syncfusion/ej2-react-schedule';
-import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import Auth from './pages/Auth.jsx'
+import Dashboard from './pages/Dashboard.jsx';
+import { useAppState } from './AppState';
+// import { Inject, ScheduleComponent, Day, Week, WorkWeek, Month, Agenda } from '@syncfusion/ej2-react-schedule';
+// import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
 
-function App() {
-  // const [date, setDate] = useState(new Date());
-  const data = [
-    {
-        Id: 1,
-        Subject: 'Date Night',
-        StartTime: new Date(2023, 6, 5, 19, 0),
-        EndTime: new Date(2023, 6, 5, 23, 0),
-        IsAllDay: false,
-        Status: 'Completed',
-        Priority: 'High'
-    },
-];
-const fieldsData = {
-    id: 'Id',
-    subject: { name: 'Subject' },
-    isAllDay: { name: 'IsAllDay' },
-    startTime: { name: 'StartTime' },
-    endTime: { name: 'EndTime' }
-}
-const eventSettings = { dataSource: data, fields: fieldsData }
+function App(props) {
 
+  const { state, dispatch } = useAppState();
+  const navigate = useNavigate();
+
+  React.useState(() => {
+    const auth = JSON.parse(window.localStorage.getItem('auth'));
+    if (auth) {
+      dispatch({ type: 'auth', payload: auth })
+      navigate('/dashboard');
+    } else {
+      navigate('/');
+    }
+  }, []);
 
   return (
-    <Router>
-      <div className='App'>
+  
+      <div className="App">
         <NavigationBar />
-
         <div className='content'>
           <Routes>
             <Route exact path='/' element={<Hero />} />
-            <Route exact path='/login' element={<LoginSignupContainer />} />
-            <Route exact path='/about' element={<DescriptionContainer />} />
-          </Routes>   
+            <Route exact path='/auth/:form' element={<Auth />} />
+            <Route path = '/dashboard' element={<Dashboard />} />
+          </Routes>
         </div>
-        <div className='schedule-container'>
-          <ScheduleComponent currentView='Month' eventSettings={eventSettings}>
+        {/* <div className='schedule-container'>
+          <ScheduleComponent currentView='Month'>
             <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
           </ScheduleComponent>
-        </div>
+        </div> */}
       </div>
-    </Router>
-
 
   );
 }
