@@ -14,9 +14,6 @@ const NavigationBar = (props) => {
         <li><Link to='/'>Home</Link> </li>
         <li><Link to='/auth/signup'>Sign Up</Link> </li>
         <li><Link to='/auth/login'>Login</Link> </li>
-      
-        <li> <Link to='/login'>Login</Link></li>
-        <li> <Link to='/about'>ProfileTest</Link></li>
       </ul> 
       {state.token && <div onClick={() => {
         dispatch({type: 'logout'});
