@@ -42,7 +42,7 @@ const eventSettings = { dataSource: data, fields: fieldsData }
             <Route exact path='/' element={<Hero />} />
             <Route exact path='/login' element={<LoginSignupContainer />} />
             <Route exact path='/about' element={<DescriptionContainer />} />
-          </Routes>
+          </Routes>   
         </div>
         <div className='schedule-container'>
           <ScheduleComponent currentView='Month' eventSettings={eventSettings}>
