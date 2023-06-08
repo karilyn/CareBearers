@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import Hero from './components/Hero_Section/Hero';
 import CaregiverList from './components/Reservation/CaregiverList';
@@ -8,13 +8,16 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import Auth from './pages/Auth.jsx'
 import Dashboard from './pages/Dashboard.jsx';
 import { useAppState } from './AppState';
-import { Inject, ScheduleComponent, Day, Week, WorkWeek, Month, Agenda } from '@syncfusion/ej2-react-schedule';
-// import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
+import DescriptionContainer from './components/Profile/DescriptionContainer';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
 
 function App(props) {
 
   const { state, dispatch } = useAppState();
   const navigate = useNavigate();
+  const[startDate, setStartDate] = useState(null);
 
   React.useState(() => {
     const auth = JSON.parse(window.localStorage.getItem('auth'));
@@ -26,6 +29,7 @@ function App(props) {
     }
   }, []);
 
+
   return (
 
       <div className="App">
@@ -34,15 +38,22 @@ function App(props) {
           <Routes>
             <Route exact path='/' element={<Hero />} />
             <Route exact path='/auth/:form' element={<Auth />} />
-            <Route path = '/dashboard' element={<Dashboard />} />
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/profile' element={<DescriptionContainer />} />
           </Routes>
         </div>
-        <div className='schedule-container'>
-          <ScheduleComponent currentView='Month'>
-            <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
-          </ScheduleComponent>
-          <CaregiverList />
-        </div>
+        <div className='calendar-container'>
+          <DatePicker
+            showIcon
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+            dateFormat="MMMM d, yyyy h:mm aa"
+            minDate={new Date()}
+            isClearable
+            showTimeSelect
+            timeIntervals={15}
+          />
+          </div>
       </div>
 
   );

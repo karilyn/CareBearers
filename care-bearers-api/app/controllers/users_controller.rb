@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+
   end
 
   # GET /users/new
@@ -23,6 +24,7 @@ class UsersController < ApplicationController
 
   # POST /users or /users.json
   def create
+
     @user = User.create(user_params)
     if @user.valid?
       token = encode_token({user_id: @user.id})
@@ -51,15 +53,20 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.update(user_params)
+      render json: @user
+    else
+      render json: {error: "update didn't work"}
     end
+    # respond_to do |format|
+    #   if @user.update(user_params)
+    #     format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
+    #     format.json { render :show, status: :ok, location: @user }
+    #   else
+    #     format.html { render :edit, status: :unprocessable_entity }
+    #     format.json { render json: @user.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /users/1 or /users/1.json
@@ -80,6 +87,7 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:email, :postal_code, :password)
+      params.require(:user).permit(:email, :postal_code, :password, :first_name, :last_name, :description, :photo_url, :gender, :is_caregiver)
+ 
     end
 end
