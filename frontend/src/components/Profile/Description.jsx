@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import './Description.scss';
 import Dropdown from './Dropdown';
 import { useAppState } from '../../AppState.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const Description = (props) => {
   const { state } = useAppState();
+  const navigate = useNavigate();;
 
   const [formData, setFormData] = useState({
     description: "",
@@ -27,6 +29,7 @@ const Description = (props) => {
     }).then((response) => response.json())
     .then((data) => {
       console.log(data);
+      navigate('/dashboard');
     });
   }
 
