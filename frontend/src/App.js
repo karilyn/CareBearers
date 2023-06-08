@@ -16,7 +16,7 @@ function App(props) {
 
   const { state, dispatch } = useAppState();
   const navigate = useNavigate();
-  const[selectedDate, setSelectedDate] = useState(null);
+  const[startDate, setStartDate] = useState(null);
 
   React.useState(() => {
     const auth = JSON.parse(window.localStorage.getItem('auth'));
@@ -27,6 +27,8 @@ function App(props) {
       navigate('/');
     }
   }, []);
+
+
 
   return (
 
@@ -42,11 +44,14 @@ function App(props) {
         </div>
         <div className='calendar-container'>
           <DatePicker
-            selected={selectedDate}
-            onChange={(date) => setSelectedDate(date)}
-            dateFormat='yyyy/MM/dd'
+            showIcon
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+            dateFormat="MMMM d, yyyy h:mm aa"
             minDate={new Date()}
             isClearable
+            showTimeSelect
+            timeIntervals={15}
           />
           </div>
 
