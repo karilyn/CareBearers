@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import './CaregiverListItem.css'
+import './CaregiverListItem.scss'
 
 // represents one caregiver and has two states: selected and not selected
 // caregiver object props: id, first_name, last_name, description, photo_url, gender

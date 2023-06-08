@@ -1,4 +1,4 @@
-@import 'variables.scss';
+@import "../../styles/variables.scss";
 
 .caregivers {
   display: flex;
@@ -13,20 +13,11 @@
     margin-bottom: 1rem;
     padding: 0 1rem;
 
-    @media (min-width: $breakpoint-medium) {
-      width: calc(50% - 2rem);
-      margin-bottom: 2rem;
-    }
-
-    @media (min-width: $breakpoint-large) {
-      width: calc(33.333% - 2rem);
-    }
-
-    &__photo {
+  &__photo {
       width: 100%;
       height: 200px;
       margin-bottom: 1rem;
-      background-color: $color-gray-light;
+      background-color: $dark-green-color;
       background-size: cover;
       background-position: center;
       border-radius: 0.5rem;
@@ -49,7 +40,7 @@
     &--selected,
     &:hover {
       cursor: pointer;
-      @include button-active--opacity;
+      background-color: $light-aqua-color;
     }
   }
 }

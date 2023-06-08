@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CaregiverListItem from './CaregiverListItem'
-import './CaregiverList.css'
+import './CaregiverList.scss'
 
 // holds all caregiverListItem components
 // pass it to CaregiverListItem while iterating over the array
