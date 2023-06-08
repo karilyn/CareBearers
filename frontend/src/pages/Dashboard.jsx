@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAppState } from '../AppState.jsx';
 import MyKids from '../components/Dashboard/MyKids.jsx';
+import Navbar from '../components/Dashboard/Navbar.jsx';
 
 const Dashboard = (props) => {
   const [kids, setKids] = useState([]);
@@ -27,6 +28,7 @@ const Dashboard = (props) => {
   <div>
     <h1>Dashboard</h1>
      <MyKids kids={kids}/>
+     <Navbar />
   </div>
   )
 }
