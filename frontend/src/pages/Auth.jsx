@@ -17,15 +17,19 @@ const Auth = (props) => {
   const navigate = useNavigate();
 
   const { state, dispatch } = useAppState();
-  console.log(state);
+
 
   useEffect(() => {
     if (userData) {
       console.log(userData);
       const { token, user } = userData;
-      dispatch({ type: 'auth', payload: { token, email: user.email } });
+      dispatch({ type: 'auth', payload: { token, email: user.email, user_id: user.id } });
       window.localStorage.setItem("auth", JSON.stringify({ token, email: user.email }))
-      navigate('/dashboard');
+      if (userData.user.description === null) {
+        navigate('/profile');
+      } else {
+        navigate('/dashboard');
+      }
     }
   }, [userData, dispatch, navigate]);
 
@@ -57,6 +61,7 @@ const Auth = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     actions[type]().then((data) => {
+      console.log("User data:", data);
       setUserData(data);
     });
   }
