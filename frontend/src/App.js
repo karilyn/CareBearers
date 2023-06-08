@@ -28,7 +28,7 @@ function App(props) {
   return (
 
       <div className="App">
-        <NavigationBar />
+        
         <div className='content'>
           <Routes>
             <Route exact path='/' element={<Hero />} />
