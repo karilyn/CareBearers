@@ -5,7 +5,7 @@ class KidsController < ApplicationController
   def index
     # @kids = Kid.all
     # get only kids associated with user logged in 
-    @kids = Kid.where(user_id: @user.id)
+    @kids = Kid.where(parent_id: @user.id)
     render json: @kids
   end
 
@@ -24,7 +24,7 @@ class KidsController < ApplicationController
 
   # POST /kids or /kids.json
   def create
-    @kid = Kid.new(kid_params)
+    @kid = Kid.create(kid_params)
     @kid.user = @user
 
     respond_to do |format|
@@ -69,6 +69,6 @@ class KidsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def kid_params
-      params.require(:kid).permit(:family_id, :first_name, :last_name, :age, :description)
+      params.require(:kid).permit(:parent_id, :first_name, :last_name, :age, :description)
     end
 end
