@@ -13,7 +13,7 @@ export default function Hero() {
           <button type="button" className="btn sign-up">Sign up</button>
         </div>
       </div>
-  </div>
+    </div>
 
   )
 }
