@@ -134,8 +134,8 @@ puts "Created #{Kid.count} kids."
 # Create Reservations
 
 reservation1 = Reservation.create!(
-  start_time: "2021-08-01 18:00:00",
-  end_time: "2021-08-01 22:00:00",
+  start_time: "2023-08-01 18:00:00",
+  end_time: "2023-08-01 22:00:00",
   num_of_children: 2,
   city: "Vancouver",
   street: "123 Main Street",
@@ -144,7 +144,7 @@ reservation1 = Reservation.create!(
   cost: 80.00,
   stripe_charge_id: "ch_1J5JZn2eZvKYlo2C0QYQ0Q0Q",
   caregiver_id: babysitter1.id,
-  parent_id: parent2.id
+  parent_id: parent1.id
 )
 
 # puts "Reservation created: #{reservation1.inspect}"
@@ -173,11 +173,11 @@ reservation3 = Reservation.create!(
   cost: 60.00,
   stripe_charge_id: "ch_1J3JZn2eZvKYlo2C0QYQ0Q0Q",
   caregiver_id: babysitter3.id,
-  parent_id: parent3.id
+  parent_id: parent1.id
 )
 reservation4 = Reservation.create!(
-  start_time: "2023-08-01 19:00:00",
-  end_time: "2023-08-01 23:00:00",
+  start_time: "2023-06-24 19:00:00",
+  end_time: "2023-06-24 23:00:00",
   num_of_children: 2,
   city: "Vancouver",
   street: "321 Main Street",

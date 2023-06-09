@@ -16,7 +16,7 @@ export const mainNavBarItems = [
     id: 1,
     icon: <EventNoteIcon />,
     label: 'Reservations',
-    route: '/reservations',
+    route: '/calendar',
 
   },
   {

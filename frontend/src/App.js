@@ -12,7 +12,9 @@ import DescriptionContainer from './components/Profile/DescriptionContainer';
 import MyKids from './components/Dashboard/MyKids.jsx';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-
+import MyCalendar from './components/Dashboard/Calendar/MyCalendar.jsx';
+// import { Inject, ScheduleComponent, Day, Week, WorkWeek, Month, Agenda } from '@syncfusion/ej2-react-schedule';
+// import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
 
 function App(props) {
 
@@ -42,6 +44,7 @@ function App(props) {
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/profile' element={<DescriptionContainer />} />
             <Route path='/kids' element={<MyKids />} />
+            <Route path='/calendar' element={<MyCalendar />} />
           </Routes>
         </div>
         <div className='reservation'>
