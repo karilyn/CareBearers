@@ -1,32 +1,22 @@
-@import 'variables.scss';
+@import "../../styles/variables.scss";
 
 .caregivers {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 0 -1rem;
-  padding: 0 1rem;
+  margin: 1rem;
+  padding: 1rem;
   list-style: none;
 
   &__item {
-    width: 100%;
-    margin-bottom: 1rem;
+    margin-right: 1rem;
     padding: 0 1rem;
 
-    @media (min-width: $breakpoint-medium) {
-      width: calc(50% - 2rem);
-      margin-bottom: 2rem;
-    }
-
-    @media (min-width: $breakpoint-large) {
-      width: calc(33.333% - 2rem);
-    }
-
-    &__photo {
-      width: 100%;
-      height: 200px;
+    &-image {
+      width: 100px;
+      height: 100px;
       margin-bottom: 1rem;
-      background-color: $color-gray-light;
+      background-color: $dark-green-color;
       background-size: cover;
       background-position: center;
       border-radius: 0.5rem;
@@ -49,7 +39,7 @@
     &--selected,
     &:hover {
       cursor: pointer;
-      @include button-active--opacity;
+      background-color: $light-aqua-color;
     }
   }
 }
