@@ -23,7 +23,7 @@ export const mainNavBarItems = [
     id: 2,
     icon: <AccountCircleIcon />,
     label: 'Profile',
-    route: '/profile',
+    route: '/dashboard/profile',
   },
   {
     id: 3,
