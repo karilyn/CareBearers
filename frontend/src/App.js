@@ -42,7 +42,7 @@ function App(props) {
             <Route path='/profile' element={<DescriptionContainer />} />
           </Routes>
         </div>
-        <div className='calendar-container'>
+        <div className='datepicker-container'>
           <DatePicker
             showIcon
             selected={startDate}
@@ -54,6 +54,14 @@ function App(props) {
             timeIntervals={15}
           />
           </div>
+          <div className='caregiversList'>
+            <li>
+              <ul className='caregivers__item'>
+              <CaregiverListItem />
+              </ul>
+            </li>
+          </div>
+
       </div>
 
   );
