@@ -39,7 +39,8 @@ parent1 = User.create!(
   password_digest: BCrypt::Password.create('Your_Password'),
   description: "I am a parent looking for a babysitter to occasionally watch my two children.",
   gender: "female",
-  is_caregiver: false
+  is_caregiver: false,
+  photo_url: "https://picsum.photos/100/100"
 )
 
 parent2 = User.create!(
@@ -50,7 +51,8 @@ parent2 = User.create!(
   password_digest: BCrypt::Password.create('Your_Password'),
   description: "Working professional looking for regular evening childcare.",
   gender: "female",
-  is_caregiver: false
+  is_caregiver: false,
+  photo_url: "https://picsum.photos/100/100"
 )
 
 parent3 = User.create!(
@@ -61,7 +63,8 @@ parent3 = User.create!(
   password_digest: BCrypt::Password.create('Your_Password'),
   description: "Father of three looking for some extra help!",
   gender: "male",
-  is_caregiver: false
+  is_caregiver: false,
+  photo_url: "https://picsum.photos/100/100"
 )
 
 # Create babysitter users
@@ -73,7 +76,8 @@ babysitter1 = User.create!(
   password_digest: BCrypt::Password.create('Your_Password'),
   description: "I am a babysitter looking for a family to work with.",
   gender: "female",
-  is_caregiver: true
+  is_caregiver: true,
+  photo_url: "https://picsum.photos/100/100"
 )
 
 babysitter2 = User.create!(
@@ -84,7 +88,8 @@ babysitter2 = User.create!(
   password_digest: BCrypt::Password.create('Your_Password'),
   description: "I'm a barista and I love kids! Looking to make some extra money by helping families who need care.",
   gender: "female",
-  is_caregiver: true
+  is_caregiver: true,
+  photo_url: "https://picsum.photos/100/100"
 )
 
 babysitter3 = User.create!(
@@ -95,7 +100,8 @@ babysitter3 = User.create!(
   password_digest: BCrypt::Password.create('Your_Password'),
   description: "I am a stay-at-home mom looking to care for some extra kids",
   gender: "female",
-  is_caregiver: true
+  is_caregiver: true,
+  photo_url: "https://picsum.photos/100/100"
 )
 
 puts "Created #{User.count} users."
