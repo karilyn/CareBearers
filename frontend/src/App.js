@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard.jsx';
 import { useAppState } from './AppState';
 import DescriptionContainer from './components/Profile/DescriptionContainer';
 import BookingContainer from './components/Book/BookingContainer';
+import MyKids from './components/Dashboard/MyKids.jsx';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -32,7 +33,7 @@ function App(props) {
   return (
 
       <div className="App">
-        <NavigationBar />
+
         <div className='content'>
           <Routes>
             <Route exact path='/' element={<Hero />} />
@@ -40,6 +41,7 @@ function App(props) {
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/profile' element={<DescriptionContainer />} />
             <Route path='/book' element={<BookingContainer />} />
+            <Route path='/kids' element={<MyKids />} />
           </Routes>
         </div>
 

@@ -1,9 +1,12 @@
 import React from 'react'
 import hero from "../../assets/hero.jpg";
 import "./Hero.scss";
+import NavigationBar from '../NavigationBar/NavigationBar';
 
 export default function Hero() {
   return (
+    <>
+     <NavigationBar />
     <div className="px-4 py-5 my-5 text-center bg-image"
       style={{ backgroundImage: `url(${hero})` }}>
       <h1 className="display-5 fw-bold">Reliable childcare <br/>on demand</h1>
@@ -14,7 +17,7 @@ export default function Hero() {
         </div>
       </div>
     </div>
-
+    </>
   )
 }
 
