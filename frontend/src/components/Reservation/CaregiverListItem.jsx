@@ -11,7 +11,7 @@ const caregiver = {
   first_name: "Sarah",
   last_name: "Peter",
   description: "Give me your children",
-  photo_url: "https://picsum.photos/100/200"
+  photo_url: "https://picsum.photos/100/100"
 };
 
 export default function CaregiverListItem(props) {
@@ -27,7 +27,7 @@ export default function CaregiverListItem(props) {
       <img
         className='caregivers__item-image'
         src={caregiver.photo_url} alt="caregiver" />
-      {caregiver.first_name} {caregiver.last_name} 
+      {caregiver.first_name} {caregiver.last_name}
       {caregiver.description}
     </li>
   )
