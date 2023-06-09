@@ -7,6 +7,7 @@ import Auth from './pages/Auth.jsx'
 import Dashboard from './pages/Dashboard.jsx';
 import { useAppState } from './AppState';
 import DescriptionContainer from './components/Profile/DescriptionContainer';
+import MyKids from './components/Dashboard/MyKids.jsx';
 // import { Inject, ScheduleComponent, Day, Week, WorkWeek, Month, Agenda } from '@syncfusion/ej2-react-schedule';
 // import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
 
@@ -35,6 +36,7 @@ function App(props) {
             <Route exact path='/auth/:form' element={<Auth />} />
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/profile' element={<DescriptionContainer />} />
+            <Route path='/kids' element={<MyKids />} />
           </Routes>
         </div>
         {/* <div className='schedule-container'>
