@@ -8,16 +8,16 @@ import LogoutIcon from '@mui/icons-material/Logout';
 export const mainNavBarItems = [
   {
     id: 0,
+    icon: <MoreTimeIcon />,
+    label: 'Book Care',
+    route: '/book',
+  },
+  {
+    id: 1,
     icon: <EventNoteIcon />,
     label: 'Reservations',
     route: '/reservations',
 
-  },
-  {
-    id: 1,
-    icon: <PaidIcon />,
-    label: 'Payments',
-    route: '/payments',
   },
   {
     id: 2,
@@ -31,14 +31,9 @@ export const mainNavBarItems = [
     label: 'My Kids',
     route: '/kids',
   },
+  
   {
     id: 4,
-    icon: <MoreTimeIcon />,
-    label: 'Book Care',
-    route: '/book',
-  },
-  {
-    id: 5,
     icon: <LogoutIcon />,
     label: 'Logout',
     route: '/logout',
