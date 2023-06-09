@@ -1,20 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types';
 import CaregiverListItem from './CaregiverListItem'
 import './CaregiverList.scss'
+import axios from 'axios';
+import { useAppState } from '../../AppState';
 
-const caregivers = [
-  { id: 1, first_name: "Sarah", last_name: "Peter", description: "Give me your children", photo_url: "https://picsum.photos/100/200" },
-  { id: 2, first_name: "Mike", last_name: "Brown", description: "I love kids!", photo_url: "https://picsum.photos/100/200" },
-  { id: 3, first_name: "John", last_name: "Smith", description: "I'm a good caregiver", photo_url: "https://picsum.photos/100/200" },
-]
+
 
 // holds all caregiverListItem components
 // three props: caregivers, setCaregiver, caregiverId
 // pass it to CaregiverListItem while iterating over the array
 export default function CaregiverList(props) {
-  const caregivers = props.caregivers.map((caregiver) => {
+  const [caregivers, setCaregivers] = useState([]);
 
+  const { state, dispatch } = useAppState();
+  const token = state.token;
+
+  const instance = axios.create({
+    baseURL: 'http://localhost:3000',
+    headers: {'Authorization': 'Bearer '+ token}
+  });
+
+  useEffect(() => {
+    let mounted = true;
+    instance.get('/users')
+    .then((items) => {
+      console.log(items.data);
+      setCaregivers(items.data);
+    })
+    return () => mounted = false;
+  },[])
+
+
+  // map the caregivers array to caregiverListItem components
+  const mappedCaregivers = caregivers.map((caregiver) => {
+    console.log(caregiver);
     return (
       <CaregiverListItem
         key={caregiver.id}
@@ -30,13 +50,18 @@ export default function CaregiverList(props) {
   })
 
   CaregiverList.propTypes = {
-    caregivers: PropTypes.array.isRequired
+    caregivers: PropTypes.array
   }
 
+  // render the array of CaregiverListItem components
   return (
     <section className="caregivers">
-      <h4 className="caregivers__header">Caregivers</h4>
-      <ul className='caregivers__list'>{caregivers}</ul>
+      <h4 className="caregivers__header">Available Caregivers</h4>
+      <ul className='caregivers__list'>{mappedCaregivers}</ul>
     </section>
   )
 }
+
+
+
+
