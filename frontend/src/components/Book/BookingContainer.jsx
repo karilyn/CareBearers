@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import CaregiverListItem from '../Book/CaregiverListItem'
+import './BookingContainer.scss'
 
 function BookingContainer() {
   const[startDate, setStartDate] = useState(null);
 
   return (
     <div>
-      <h2>Make a Booking</h2>
+      <h1>Book Childcare</h1>
       <div id='booking' className='booking-container'>
           <div className='datepicker-container'>
             <DatePicker
@@ -22,7 +23,7 @@ function BookingContainer() {
               timeIntervals={15}
             />
             </div>
-            <div className='caregiversList'>
+            <div className='caregivers'>
               <li>
                 <ul className='caregivers__item'>
                 <CaregiverListItem />
