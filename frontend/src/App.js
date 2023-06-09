@@ -9,6 +9,7 @@ import Auth from './pages/Auth.jsx'
 import Dashboard from './pages/Dashboard.jsx';
 import { useAppState } from './AppState';
 import DescriptionContainer from './components/Profile/DescriptionContainer';
+import MyKids from './components/Dashboard/MyKids.jsx';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -33,13 +34,14 @@ function App(props) {
   return (
 
       <div className="App">
-        <NavigationBar />
+        
         <div className='content'>
           <Routes>
             <Route exact path='/' element={<Hero />} />
             <Route exact path='/auth/:form' element={<Auth />} />
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/profile' element={<DescriptionContainer />} />
+            <Route path='/kids' element={<MyKids />} />
           </Routes>
         </div>
         <div className='reservation'>
