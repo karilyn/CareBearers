@@ -2,13 +2,12 @@
 import React, { useState } from 'react';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import Hero from './components/Hero_Section/Hero';
-import CaregiverList from './components/BookingContainer/CaregiverList';
-import CaregiverListItem from './components/BookingContainer/CaregiverListItem';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Auth from './pages/Auth.jsx'
 import Dashboard from './pages/Dashboard.jsx';
 import { useAppState } from './AppState';
 import DescriptionContainer from './components/Profile/DescriptionContainer';
+import BookingContainer from './components/Book/BookingContainer';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -17,7 +16,7 @@ function App(props) {
 
   const { state, dispatch } = useAppState();
   const navigate = useNavigate();
-  const[startDate, setStartDate] = useState(null);
+
 
   React.useState(() => {
     const auth = JSON.parse(window.localStorage.getItem('auth'));
