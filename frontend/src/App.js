@@ -42,26 +42,27 @@ function App(props) {
             <Route path='/profile' element={<DescriptionContainer />} />
           </Routes>
         </div>
-        <div className='datepicker-container'>
-          <DatePicker
-            showIcon
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            dateFormat="MMMM d, yyyy h:mm aa"
-            minDate={new Date()}
-            isClearable
-            showTimeSelect
-            timeIntervals={15}
-          />
-          </div>
-          <div className='caregiversList'>
-            <li>
-              <ul className='caregivers__item'>
-              <CaregiverListItem />
-              </ul>
-            </li>
-          </div>
-
+        <div className='reservation'>
+          <div className='datepicker-container'>
+            <DatePicker
+              showIcon
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              dateFormat="MMMM d, yyyy h:mm aa"
+              minDate={new Date()}
+              isClearable
+              showTimeSelect
+              timeIntervals={15}
+            />
+            </div>
+            <div className='caregiversList'>
+              <li>
+                <ul className='caregivers__item'>
+                <CaregiverListItem />
+                </ul>
+              </li>
+            </div>
+        </div>
       </div>
 
   );
