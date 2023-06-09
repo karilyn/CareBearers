@@ -6,39 +6,45 @@ const caregiver = {
   first_name: "Sarah",
   last_name: "Peter",
   description: "Give me your children",
+  photo_url: "https://picsum.photos/100/100"
 };
 
 export default {
+  title: "Book/CaregiverListItem",
   component: CaregiverListItem,
 }
 
-export const Unselected = {
-  render: () =>
-    <CaregiverListItem
-      id={caregiver.id}
-      first_name={caregiver.first_name}
-      last_name={caregiver.last_name}
-      description={caregiver.description}
-    />,
-};
 
-export const Selected = {
-  render: () =>
-    <CaregiverListItem
-      id={caregiver.id}
-      first_name={caregiver.first_name}
-      last_name={caregiver.last_name}
-      description={caregiver.description}
-      selected
-    />,
+export function Unselected(args) {
+  return <CaregiverListItem {...args} />
 }
 
-export const Clickable = {
-  render: () =>
-    <CaregiverListItem
-      first_name={caregiver.first_name}
-      last_name={caregiver.last_name}
-      setCaregiver={() => action("setCaregiver")(caregiver.id)}
-    />
+Unselected.args = {
+  id: caregiver.id,
+  first_name: caregiver.first_name,
+  last_name: caregiver.last_name,
+  description: caregiver.description,
 }
 
+export function Selected(args) {
+  return <CaregiverListItem {...args} />
+}
+
+Selected.args = {
+    id: caregiver.id,
+    first_name: caregiver.first_name,
+    last_name: caregiver.last_name,
+    description: caregiver.description,
+    selected: true,
+}
+
+export function Clickable(args) {
+  return <CaregiverListItem {...args} />
+}
+Clickable.args = {
+  id: caregiver.id,
+  first_name: caregiver.first_name,
+  last_name: caregiver.last_name,
+  description: caregiver.description,
+  onClick: action("setCaregiver")(caregiver.id)
+}
