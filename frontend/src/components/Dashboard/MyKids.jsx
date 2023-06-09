@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import './MyKids.scss';
 import { useAppState } from "../../AppState";
 import axios from "axios";
+import Card from '@mui/material/Card';
+import CardActionArea from '@mui/material/CardActionArea';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Navbar from "./Navbar";
 
 function Kids(props) {
   const [kids, setKids] = useState([]);
@@ -24,17 +29,26 @@ function Kids(props) {
   },[])
 
   return (
-    <div>
+<>
+    <Navbar />
       <h2>My Kids</h2>
       {kids.map((kid) => {
         return (
-          <div className='kids' key={kid.id}>
-            <h3>{kid.name} is {kid.age} years old</h3>
-            <p>{kid.description}</p>
-          </div>
+          <Card key={kid.id} sx={{ width: 320, marginTop: 5, marginLeft: 50 }}>
+            <CardActionArea>
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h3">
+                  {kid.name}, {kid.age}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                {kid.description}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
         );
       })}
-    </div>
+</>
   );
 }
 
