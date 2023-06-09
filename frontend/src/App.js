@@ -47,27 +47,6 @@ function App(props) {
             <Route path='/calendar' element={<MyCalendar />} />
           </Routes>
         </div>
-        <div className='reservation'>
-          <div className='datepicker-container'>
-            <DatePicker
-              showIcon
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-              dateFormat="MMMM d, yyyy h:mm aa"
-              minDate={new Date()}
-              isClearable
-              showTimeSelect
-              timeIntervals={15}
-            />
-            </div>
-            <div className='caregiversList'>
-              <li>
-                <ul className='caregivers__item'>
-                <CaregiverListItem />
-                </ul>
-              </li>
-            </div>
-        </div>
       </div>
 
   );
