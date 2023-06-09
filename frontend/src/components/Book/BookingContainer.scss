@@ -1,6 +1,45 @@
 @import "../../styles/variables.scss";
 
-.h1 {
+h1 {
   font-family: $font-h1;
+  color: $dark-green-color;
+}
 
+// Center the container
+.booking-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 50%;
+  margin: auto;
+}
+
+// Center the form and give it dark green background
+.booking-container__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: $dark-green-color;
+  padding: 2em;
+  border-radius: 1em;
+  width: 100%;
+}
+
+.btn {
+  text-align: center;
+  padding: .875em 1.25em;
+  border: 1px solid transparent;
+  border-radius: 80em;
+  position: relative;
+  display: inline-block;
+
+}
+
+.btn.find-caregiver {
+  background-color: $light-aqua-color;
+  color: $dark-green-color;
+  font-weight: 600;
 }
