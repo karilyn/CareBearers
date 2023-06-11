@@ -6,6 +6,7 @@ import { useAppState } from '../../../AppState';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+
 const MyCalendar = (props) => {
   const localizer = momentLocalizer(moment);
 
@@ -34,7 +35,7 @@ const MyCalendar = (props) => {
     return {
       start: moment(event.start_time).toDate(),
       end: moment(event.end_time).toDate(),
-      title: "Childcare: " + event.city + ', ' + event.street
+      title: event.status.charAt(0).toUpperCase() + event.status.slice(1) + ": " + event.city + ', ' + event.street
     }
   })
   // const myEventsList = [
