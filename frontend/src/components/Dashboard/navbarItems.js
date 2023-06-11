@@ -4,6 +4,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import EscalatorWarningIcon from '@mui/icons-material/EscalatorWarning';
 import MoreTimeIcon from '@mui/icons-material/MoreTime';
 import LogoutIcon from '@mui/icons-material/Logout';
+import ReviewsIcon from '@mui/icons-material/Reviews';
 
 export const mainNavBarItems = [
   {
@@ -21,19 +22,25 @@ export const mainNavBarItems = [
   },
   {
     id: 2,
+    icon: <ReviewsIcon />,
+    label: 'Leave a Review',
+    route: '/review'
+  },
+  {
+    id: 3,
     icon: <AccountCircleIcon />,
     label: 'Profile',
     route: '/dashboard/profile',
   },
   {
-    id: 3,
+    id: 4,
     icon: <EscalatorWarningIcon />,
     label: 'My Kids',
     route: '/kids',
   },
   
   {
-    id: 4,
+    id: 5,
     icon: <LogoutIcon />,
     label: 'Logout',
     route: '/logout',
