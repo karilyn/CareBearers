@@ -79,7 +79,7 @@ const Auth = (props) => {
           <form className="auth" onSubmit={handleSubmit}>
             <input type="email" name='email' placeholder="Email" value={formData.email} onChange={handleChange}/>
             <input type="password" name='password' placeholder="Password" value={formData.password} onChange={handleChange}/>
-            <button className='btn auth' type="submit">Login</button>
+            <Button className='btn auth' type="submit" text="Login"/>
           </form>
         </>
       :
@@ -98,7 +98,7 @@ const Auth = (props) => {
                 <input type="radio" name='is_caregiver' id="careseeker" value={false} onClick={handleChange}/>careseeker</label>
           </div>
 
-          <button type="submit" className='btn auth'>Continue</button>
+          <Button type="submit" className='btn auth' text="Continue"/>
         </form>
       </>
       }
