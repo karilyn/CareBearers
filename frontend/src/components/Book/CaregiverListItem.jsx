@@ -3,7 +3,6 @@ import classNames from 'classnames'
 import './CaregiverListItem.scss'
 import PropTypes from 'prop-types'
 
-
 // represents one caregiver and has two states: selected and not selected
 // caregiver object props: id, first_name, last_name, description, photo_url, gender
 
