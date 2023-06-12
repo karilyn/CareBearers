@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAppState } from '../AppState.jsx';
-import './Auth.scss';
+
 import NavigationBar from '../components/NavigationBar/NavigationBar.jsx';
 
 const Auth = (props) => {
@@ -76,9 +76,13 @@ const Auth = (props) => {
       <>
         <h1>Login</h1>
           <form onSubmit={handleSubmit}>
-            <input type="email" name='email' placeholder="Email" value={formData.email} onChange={handleChange}/>
-            <input type="password" name='password' placeholder="Password" value={formData.password} onChange={handleChange}/>
-            <button type="submit">Login</button>
+            <div className='form-group'>
+              <input className='form-control' type="email" name='email' placeholder="Email" value={formData.email} onChange={handleChange}/>
+            </div>
+            <div className='form-group'>
+              <input className='form-control' type="password" name='password' placeholder="Password" value={formData.password} onChange={handleChange}/>
+          </div>
+            <button className='btn btn-primary' type="submit">Login</button>
           </form>
         </>
       : 
@@ -86,9 +90,15 @@ const Auth = (props) => {
       <h1>Create An Account</h1>
   
         <form onSubmit={handleSubmit}>
-          <input type="email" name='email' placeholder="Email" value={formData.email} onChange={handleChange}/>
-          <input type="password" name='password' placeholder="Password" value={formData.password} onChange={handleChange}/>
-          <input type="text" name='postal_code' placeholder="Postal Code" value={formData.postal_code} onChange={handleChange}/>
+          <div className='form-group'>
+            <input className='form-control' type="email" name='email' placeholder="Email" value={formData.email} onChange={handleChange}/>
+          </div>
+          <div className='form-group'>
+            <input className='form-control' type="password" name='password' placeholder="Password" value={formData.password} onChange={handleChange}/>
+          </div>
+          <div className='form-group'>
+            <input className='form-control' type="text" name='postal_code' placeholder="Postal Code" value={formData.postal_code} onChange={handleChange}/>
+          </div>
           <p className='role'>I am a...</p>
           <div className="radio">
               <label for="role">
