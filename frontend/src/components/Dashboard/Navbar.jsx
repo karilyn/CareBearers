@@ -10,14 +10,19 @@ import ListItemText from '@mui/material/ListItemText';
 import { mainNavBarItems } from './navbarItems';
 import { navbarStyles } from './styles';
 import { useNavigate } from 'react-router-dom';
+import { useAppState } from '../../AppState.jsx';
 
 const Navbar = () => {
   const navigate = useNavigate();
 
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
   };
+
+  const { state, dispatch } = useAppState();
+
 
   return (
     <Drawer
@@ -33,7 +38,14 @@ const Navbar = () => {
             <ListItem
                 button
                 key={item.id}
-                onClick={() => navigate(item.route)}>
+                onClick={() => {
+                  if (item.route === '/logout'){
+                    dispatch({type: 'logout'});
+                    navigate('/');
+                  } else {
+                      navigate(item.route)
+                    }
+                }}>
               <ListItemButton selected={selectedIndex === item.id} 
                 onClick={(event) => handleListItemClick(event, item.id)}>
                 <ListItemIcon sx={navbarStyles.icons}>
