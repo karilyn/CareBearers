@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
   before_action :authorized, only: [:auto_login]
-  
+
   # GET /users or /users.json
   def index
     # @users = User.all
     # render json: @users
+
     @caregivers = User.where(is_caregiver: true)
     render json: @caregivers
+
   end
 
   # GET /users/1 or /users/1.json
@@ -90,6 +92,6 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:email, :postal_code, :password, :first_name, :last_name, :description, :photo_url, :gender, :is_caregiver)
- 
+
     end
 end

@@ -1,0 +1,7 @@
+@import "../../styles/variables.scss";
+
+.caregivers {
+  &__header {
+    color: $font-color-dark;
+    background-color: $background-color;
+}

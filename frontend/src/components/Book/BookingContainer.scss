@@ -1,0 +1,108 @@
+@import "../../styles/variables.scss";
+
+h1.booking-container__title {
+  font-family: $font-h1;
+  color: $dark-green-color;
+  padding-left: none;
+
+}
+
+// Center the container and give it a white background
+.booking-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 40%;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+// Make the image  80% of the container
+.booking-container__img {
+  width: 80%;
+  border-radius: 1em;
+}
+
+// make h4 text white
+h4 {
+  color: #ffffff;
+  margin-top: 1em;
+  margin-bottom: .5em;
+}
+
+// Center the form and give it dark green background
+#booking-container__form {
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  background-color: $dark-green-color;
+  padding: 2em;
+  border-radius: 1em;
+}
+
+// Make the form inputs 80% of the container
+.react-datepicker-wrapper, .react-datepicker__input-container {
+  display: block !important;
+}
+
+input.select-hours {
+  width: 94%;
+  padding: 6px 10px 5px 10px;
+}
+
+input.select-children {
+  width: 94%;
+  padding: 6px 10px 5px 10px;
+}
+
+input.address-input__input
+{
+  width: 94%;
+  padding: 6px 10px 5px 10px;
+  margin-top: .5em;
+}
+
+.btn.find-caregiver {
+  width: 100%;
+}
+
+
+.btn.book {
+  text-align: center;
+  padding: .875em 1.25em;
+  border: 1px solid transparent;
+  border-radius: 80em;
+  position: relative;
+  display: inline-block;
+  background-color: $light-aqua-color;
+  color: $dark-green-color;
+  font-weight: 600;
+  width: 100%;
+}
+
+.btn.book:hover {
+  background-color: #F5F5DC;
+  color: $dark-green-color;
+  border: 1px solid $dark-green-color;
+}
+
+.caregivers {
+  margin-top: 1em;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: $background-color;
+  padding: 2em;
+  border-radius: 1em;
+  list-style-type: none;
+}
+
+.caregivers__list {
+  list-style-type: none;
+}

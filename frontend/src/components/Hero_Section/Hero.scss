@@ -33,21 +33,14 @@
   color: $font-color-light;
   font-size: 1.5rem;
 }
-
-.btn {
+// align button in centre
+.d-grid.gap-2.d-sm-flex.justify-content-sm-center {
   text-align: center;
-  padding: .875em 1.25em;
-  border: 1px solid transparent;
-  border-radius: 80em;
-  position: relative;
-  display: inline-block;
-
 }
 
+// centre button
 .btn.sign-up {
-  background-color: $light-aqua-color;
-  color: $dark-green-color;
-  font-weight: 600;
+  justify-content: center;
 }
 
 .btn.sign-up:hover {

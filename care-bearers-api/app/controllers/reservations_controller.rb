@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
   # GET /reservations or /reservations.json
   def index
     # @reservations = Reservation.all
-    # find only reservations by that user logged in 
+    # find only reservations by that user logged in
     @reservations = Reservation.where(parent_id: @user.id)
     render json: @reservations
   end
@@ -28,15 +28,17 @@ class ReservationsController < ApplicationController
     @reservation.parent_id = @user.id
     @reservation.save
 
+
     if @reservation.valid?
-      render json: { reservation: @reservation} 
-    else 
-      render json: {error: "Could not create reservation"}
-    end
+      render json: { reservation: @reservation }
+    else
+      render json: { error: 'Failed to create reservation' }
+
     # respond_to do |format|
     #   if @reservation.save
-    #     format.html { redirect_to reservation_url(@reservation), notice: "Reservation was successfully created." }
-    #     format.json { render :show, status: :created, location: @reservation }
+    #     render json: @reservation, status: :created, location: @reservation
+    #   # format.html { redirect_to reservation_url(@reservation), notice: "Booking was successfully created." }
+    #     # format.json { render :show, status: :created, location: @reservation }        #
     #   else
     #     format.html { render :new, status: :unprocessable_entity }
     #     format.json { render json: @reservation.errors, status: :unprocessable_entity }
@@ -48,7 +50,7 @@ class ReservationsController < ApplicationController
   def update
     respond_to do |format|
       if @reservation.update(reservation_params)
-        format.html { redirect_to reservation_url(@reservation), notice: "Reservation was successfully updated." }
+        format.html { redirect_to reservation_url(@reservation), notice: "Booking was successfully updated." }
         format.json { render :show, status: :ok, location: @reservation }
       else
         format.html { render :edit, status: :unprocessable_entity }

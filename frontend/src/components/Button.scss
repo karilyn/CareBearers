@@ -1,4 +1,4 @@
-@import "styles/variables.scss";
+@import "../styles/variables.scss";
 
 .btn {
   text-align: center;
@@ -7,17 +7,17 @@
   border-radius: 99em;
   position: relative;
   display: inline-block;
-
-}
-
-.btn.sign-up {
   background-color: $light-aqua-color;
   color: $dark-green-color;
   font-weight: 600;
+  font-size: 1rem;
+  margin-top: 1em;
+  cursor: pointer;
+  transition: 0.3x linear;
 }
 
-.btn.sign-up:hover {
+.btn:hover {
   background-color: #F5F5DC;
   color: $dark-green-color;
-  border: 1px solid $dark-green-color;
+  border: 0.5px solid $dark-green-color;
 }

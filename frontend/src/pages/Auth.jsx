@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useAppState } from '../AppState.jsx';
 
 import NavigationBar from '../components/NavigationBar/NavigationBar.jsx';
+import Button from '../components/Button.jsx';
 
 const Auth = (props) => {
   const { form } = useParams();
@@ -70,35 +71,25 @@ const Auth = (props) => {
   return (
     <>
     <NavigationBar />
-   
+
     <div className={type}>
-      {type === 'login' ? 
+      {type === 'login' ?
       <>
         <h1>Login</h1>
-          <form onSubmit={handleSubmit}>
-            <div className='form-group'>
-              <input className='form-control' type="email" name='email' placeholder="Email" value={formData.email} onChange={handleChange}/>
-            </div>
-            <div className='form-group'>
-              <input className='form-control' type="password" name='password' placeholder="Password" value={formData.password} onChange={handleChange}/>
-          </div>
-            <button className='btn btn-primary' type="submit">Login</button>
+          <form className="auth" onSubmit={handleSubmit}>
+            <input type="email" name='email' placeholder="Email" value={formData.email} onChange={handleChange}/>
+            <input type="password" name='password' placeholder="Password" value={formData.password} onChange={handleChange}/>
+            <Button className='btn auth' type="submit" text="Login"/>
           </form>
         </>
-      : 
+      :
       <>
       <h1>Create An Account</h1>
-  
-        <form onSubmit={handleSubmit}>
-          <div className='form-group'>
-            <input className='form-control' type="email" name='email' placeholder="Email" value={formData.email} onChange={handleChange}/>
-          </div>
-          <div className='form-group'>
-            <input className='form-control' type="password" name='password' placeholder="Password" value={formData.password} onChange={handleChange}/>
-          </div>
-          <div className='form-group'>
-            <input className='form-control' type="text" name='postal_code' placeholder="Postal Code" value={formData.postal_code} onChange={handleChange}/>
-          </div>
+
+        <form className='auth' onSubmit={handleSubmit}>
+          <input type="email" name='email' placeholder="Email" value={formData.email} onChange={handleChange}/>
+          <input type="password" name='password' placeholder="Password" value={formData.password} onChange={handleChange}/>
+          <input type="text" name='postal_code' placeholder="Postal Code" value={formData.postal_code} onChange={handleChange}/>
           <p className='role'>I am a...</p>
           <div className="radio">
               <label for="role">
@@ -106,8 +97,8 @@ const Auth = (props) => {
               <label for="caregiver">
                 <input type="radio" name='is_caregiver' id="careseeker" value={false} onClick={handleChange}/>careseeker</label>
           </div>
-          
-          <button type="submit">Continue</button>
+
+          <Button type="submit" className='btn auth' text="Continue"/>
         </form>
       </>
       }
