@@ -11,7 +11,8 @@ import BookingContainer from './components/Book/BookingContainer';
 import MyKids from './components/Dashboard/MyKids.jsx';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-
+import MyCalendar from './components/Dashboard/Calendar/MyCalendar.jsx';
+import ReviewItems from './components/Dashboard/Reviews/ReviewItems';
 
 function App(props) {
 
@@ -42,9 +43,10 @@ function App(props) {
             <Route path='/profile' element={<DescriptionContainer />} />
             <Route path='/book' element={<BookingContainer />} />
             <Route path='/kids' element={<MyKids />} />
+            <Route path='/calendar' element={<MyCalendar />} />
+            <Route path='/review' element={<ReviewItems />} />
           </Routes>
         </div>
-
       </div>
 
   );

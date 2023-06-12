@@ -9,7 +9,8 @@ export const navbarStyles = {
             color: '#ffffff'
           },
           '& .Mui-selected': {
-            color: '#94954c',
+            color: '#ffffff',
+            backgroundColor: '#94954c',
           },
 
   },
