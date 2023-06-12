@@ -29,6 +29,7 @@ class ReservationsController < ApplicationController
     @reservation.parent_id = @user.id
     @reservation.save
 
+
     if @reservation.valid?
       render json: { reservation: @reservation }
     else
