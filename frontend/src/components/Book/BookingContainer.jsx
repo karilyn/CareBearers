@@ -3,9 +3,20 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './BookingContainer.scss'
 import CaregiverList from "../Book/CaregiverList";
+import Button from "../Button";
 
 function BookingContainer() {
   const[startDate, setStartDate] = useState(null);
+  const [components, setComponents] = useState([]);
+
+  // render CaregiverList component when button is clicked
+  function addComponent(component) {
+    setComponents([...components, component]);
+  }
+
+
+
+
 
   return (
 
@@ -38,7 +49,11 @@ function BookingContainer() {
           </div>
 
           <div className="caregiver-container">
-            <button type="button" className='btn book'>Find a Caregiver</button>
+            <Button onClick={addComponent} text="Find a Caregiver"/>
+            {/* render CaregiverList when Button is clicked */}
+            {components.map((component, index) => (
+              <CaregiverList text={component}/>
+            ))}
             <div className='available-caregivers'>
               <li className='caregivers__item'>
                 <ul>
