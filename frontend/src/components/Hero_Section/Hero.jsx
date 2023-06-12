@@ -2,8 +2,12 @@ import React from 'react'
 import hero from "../../assets/hero.jpg";
 import "./Hero.scss";
 import NavigationBar from '../NavigationBar/NavigationBar';
+import Button from '../Button';
+import { useNavigate } from "react-router-dom"
 
 export default function Hero() {
+  const navigate = useNavigate();
+
   return (
     <>
      <NavigationBar />
@@ -13,7 +17,7 @@ export default function Hero() {
       <div className="col-lg-6 mx-auto">
         <p className="lead mb-4">Find a trusted caregiver for your child in minutes</p>
         <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
-          <button type="button" className="btn sign-up">Sign up</button>
+          <Button className="btn sign-up" text="Sign up" onClick={() => navigate("/auth/signup")}/>
         </div>
       </div>
     </div>
