@@ -5,7 +5,7 @@ class ReservationsController < ApplicationController
   def index
     # @reservations = Reservation.all
     # find only reservations by that user logged in 
-    @reservations = Reservation.where(user_id: @user.id)
+    @reservations = Reservation.where(parent_id: @user.id)
     render json: @reservations
   end
 

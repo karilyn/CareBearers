@@ -28,24 +28,24 @@ function Kids(props) {
     return () => mounted = false;
   },[])
 
+  const handleClickEdit = () => {
+    //does nothing for now
+  }
+
   return (
 <>
     <Navbar />
       <h2>My Kids</h2>
       {kids.map((kid) => {
         return (
-          <Card key={kid.id} sx={{ width: 320, marginTop: 5, marginLeft: 50 }}>
-            <CardActionArea>
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h3">
-                  {kid.name}, {kid.age}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                {kid.description}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
+          <div className="card">
+          <img src="..." className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h5 className="card-title">{kid.name}, {kid.age}</h5>
+              <p className="card-text">{kid.description}</p>
+              <button className="btn btn-primary" onClick={handleClickEdit}>Edit</button>
+            </div>
+          </div>
         );
       })}
 </>
@@ -53,3 +53,5 @@ function Kids(props) {
 }
 
 export default Kids;
+
+        

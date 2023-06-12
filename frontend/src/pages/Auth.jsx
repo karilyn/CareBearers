@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAppState } from '../AppState.jsx';
-import './Auth.scss';
+
 import NavigationBar from '../components/NavigationBar/NavigationBar.jsx';
 import Button from '../components/Button.jsx';
 

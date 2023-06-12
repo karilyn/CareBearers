@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
@@ -13,6 +13,11 @@ import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const navigate = useNavigate();
+
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const handleListItemClick = (event, index) => {
+    setSelectedIndex(index);
+  };
 
   return (
     <Drawer
@@ -29,7 +34,8 @@ const Navbar = () => {
                 button
                 key={item.id}
                 onClick={() => navigate(item.route)}>
-              <ListItemButton>
+              <ListItemButton selected={selectedIndex === item.id} 
+                onClick={(event) => handleListItemClick(event, item.id)}>
                 <ListItemIcon sx={navbarStyles.icons}>
                   {item.icon}
                 </ListItemIcon>
