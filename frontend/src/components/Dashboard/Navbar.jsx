@@ -24,12 +24,13 @@ const Navbar = () => {
         sx={navbarStyles.drawer}
         variant="permanent"
         anchor="left"
+        style={{ width: '20%' }}
       >
         <Toolbar />
         <Divider />
         <List>
           {mainNavBarItems.map((item, index) => (
-            <ListItem 
+            <ListItem
                 button
                 key={item.id}
                 onClick={() => navigate(item.route)}>
@@ -38,7 +39,7 @@ const Navbar = () => {
                 <ListItemIcon sx={navbarStyles.icons}>
                   {item.icon}
                 </ListItemIcon>
-                <ListItemText 
+                <ListItemText
                   sx={navbarStyles.text}
                   primary={item.label} />
               </ListItemButton>

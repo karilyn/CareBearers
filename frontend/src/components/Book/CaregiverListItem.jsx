@@ -1,37 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import classNames from 'classnames'
 import './CaregiverListItem.scss'
 import PropTypes from 'prop-types'
 
 // represents one caregiver and has two states: selected and not selected
 // caregiver object props: id, first_name, last_name, description, photo_url, gender
-//TODO: figure out if it needs all the table props?
-
-const caregiver = {
-  id: 1,
-  first_name: "Sarah",
-  last_name: "Peter",
-  description: "Give me your children",
-  photo_url: "https://picsum.photos/100/100"
-};
 
 export default function CaregiverListItem(props) {
+
+
   // conditionally render class if selected
-  let caregiversClass = classNames('caregivers__item', {
-    'caregivers__item--selected': props.selected,
-  })
+  // let caregiversClass = classNames('caregivers__item', {
+  //   'caregivers__item--selected': props.selected,
+  // })
+
 
   return (
-    <li className={caregiversClass} onClick={props.setCaregiver}>
-    
-      {/* {props.selected && props.first_name} */}
-      <img
-        className='caregivers__item-image'
-        src={caregiver.photo_url} alt="caregiver" />
-      {caregiver.first_name} {caregiver.last_name}
-      <br />
-      {caregiver.description}
-    </li>
+      // onClick, set the caregiver to the selected caregiver
+      <li className="caregiver__item" onClick={props.setCaregiver}>
+        <img
+          className='interviewers__item-image'
+          src={props.photoUrl}
+          alt={props.firstName}
+        />
+        <br/>
+        <strong>{props.firstName} {props.lastName}</strong>
+        <br/>{props.description}
+        <hr/>
+      </li>
+
   )
 }
 

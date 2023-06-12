@@ -3,11 +3,11 @@ import Navbar from '../components/Dashboard/Navbar.jsx';
 import './Dashboard.scss';
 
 const Dashboard = (props) => {
-  
+
 
   return (
   <div>
-    <h1>Dashboard</h1>
+    <h1 className="dashboard">Dashboard</h1>
      <Navbar />
   </div>
   )
