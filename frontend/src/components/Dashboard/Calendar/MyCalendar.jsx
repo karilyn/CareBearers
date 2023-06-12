@@ -32,9 +32,10 @@ const MyCalendar = (props) => {
   },[])
 
   const myEventsList = events.map((event) => {
+   
     return {
       start: moment(event.start_time).toDate(),
-      end: moment(event.end_time).toDate(),
+      end: moment(event.start_time).add(event.duration_in_minutes, 'm').toDate(),
       title: event.status.charAt(0).toUpperCase() + event.status.slice(1) + ": " + event.city + ', ' + event.street
     }
   })
