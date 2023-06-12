@@ -19,22 +19,22 @@ function BookingContainer(props) {
   const [province, setProvince] = useState(null);
   const [postalCode, setPostalCode] = useState(null);
   const [error, setError] = useState("");
+  const { state, dispatch } = useAppState();
 
-  // render CaregiverList component when button is clicked
-   function addComponent(component) {
-    setComponents([...components, component]);
-  }
+  const token = state.token;
 
-  // remove CaregiverList component when button is clicked
-  function removeComponent(component) {
-    setComponents(components.filter((c) => c !== component));
-  }
+  const instance = axios.create({
+    baseURL: 'http://localhost:3000',
+    headers: {'Authorization': 'Bearer '+ token}
+  });
 
 
   function handleSubmit(event) {
     // Prevent the browser from reloading the page
     event.preventDefault();
-
+    const data = new FormData(form);
+    data.append("caregiver_id", currentCaregiver);
+    console.log(data);
     console.log(startDate);
     console.log(endDate);
     console.log(children);
@@ -44,29 +44,35 @@ function BookingContainer(props) {
     console.log(province);
     console.log(postalCode);
 
-    axios.post(`/reservations/`, {
-      reservation: {
-        start_date: startDate,
-        end_date: endDate,
-        num_children: children,
-        caregiver_id: currentCaregiver,
-        street_address: streetAddress,
-        city: city,
-        province: province,
-        postal_code: postalCode
-      }
-    })
-    .then(response => {
-      console.log(response);
-    })
     // Read the form data
     // const form = event.target;
-    // const formData = new FormData(form);
+    //
 
     // const formJson = Object.fromEntries(formData.entries());
     // console.log(formJson);
+    // axios.post(`/reservations/`, JSON.stringify({ reservation: {message: "some data"} })
+    fetch("http://localhost:3000/reservations/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer '+ token
+      },
+      body: JSON.stringify({reservation: {
+        start_time: startDate,
+        end_time: endDate,
+        num_of_children: children,
+        caregiver_id: currentCaregiver,
+        street: streetAddress,
+        city: city,
+        province: province,
+        postal_code: postalCode,
+      }})
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("logging data: ", data);
+    })
   }
-
 
   // reset the form
   function reset() {
@@ -100,6 +106,16 @@ function BookingContainer(props) {
     props.onSave(currentCaregiver)
   }
 
+    // render CaregiverList component when button is clicked
+    function addComponent(component) {
+      setComponents([...components, component]);
+    }
+
+    // remove CaregiverList component when button is clicked
+    // function removeComponent(component) {
+    //   setComponents(components.filter((c) => c !== component));
+    // }
+
   return (
     <>
     <Navbar />
@@ -130,7 +146,7 @@ function BookingContainer(props) {
                     <h4>For how many hours do you need childcare?</h4>
                     <input
                       className="select-hours"
-                      name='num_hours'
+                      name='duration'
                       type='number'
                       min='1'
                       max='10'
@@ -144,7 +160,7 @@ function BookingContainer(props) {
                       <div className='children-container__item'>
                         <input
                           className="select-children"
-                          name="num_children"
+                          name="num_of_children"
                           type='number'
                           min='1'
                           max='10'
@@ -183,7 +199,7 @@ function BookingContainer(props) {
                     <h4>Where do you need childcare?</h4>
                       <input
                         className="address-input__input"
-                        name="street_address"
+                        name="street"
                         type='text'
                         placeholder='Street address'
                         onChange={(event) => {setStreetAddress(event.target.value)}}
