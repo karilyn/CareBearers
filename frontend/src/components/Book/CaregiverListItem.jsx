@@ -9,21 +9,25 @@ import PropTypes from 'prop-types'
 
 export default function CaregiverListItem(props) {
 
+
   // conditionally render class if selected
-  let caregiversClass = classNames('caregivers__item', {
-    'caregivers__item--selected': props.selected,
-  })
+  // let caregiversClass = classNames('caregivers__item', {
+  //   'caregivers__item--selected': props.selected,
+  // })
 
 
   return (
       // onClick, set the caregiver to the selected caregiver
-      <li className={caregiversClass} onClick={props.setCaregiver}>
+      <li className="caregiver__item" onClick={props.setCaregiver}>
         <img
           className='interviewers__item-image'
           src={props.photoUrl}
           alt={props.firstName}
         />
-        {props.firstName}{props.lastName}{props.description}
+        <br/>
+        <strong>{props.firstName} {props.lastName}</strong>
+        <br/>{props.description}
+        <hr/>
       </li>
 
   )
