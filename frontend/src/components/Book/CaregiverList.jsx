@@ -5,12 +5,11 @@ import './CaregiverList.scss'
 import axios from 'axios';
 import { useAppState } from '../../AppState';
 
-
-
 // holds all caregiverListItem components
 // three props: caregivers, setCaregiver, caregiverId
 // pass it to CaregiverListItem while iterating over the array
 export default function CaregiverList(props) {
+
   const [caregivers, setCaregivers] = useState([]);
 
   const { state, dispatch } = useAppState();
