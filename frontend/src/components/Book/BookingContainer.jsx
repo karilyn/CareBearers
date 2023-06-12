@@ -151,6 +151,7 @@ function BookingContainer(props) {
                       min='1'
                       max='10'
                       placeholder='One hour'
+                      value={duration}
                       onChange={(event) => {setEndDate(event.target.value)}}
                     />
                   </div>
@@ -202,6 +203,7 @@ function BookingContainer(props) {
                         name="street"
                         type='text'
                         placeholder='Street address'
+                        value={streetAddress}
                         onChange={(event) => {setStreetAddress(event.target.value)}}
                       />
                       <input
