@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useAppState } from '../AppState.jsx';
 import './Auth.scss';
 import NavigationBar from '../components/NavigationBar/NavigationBar.jsx';
+import Button from '../components/Button.jsx';
 
 const Auth = (props) => {
   const { form } = useParams();
@@ -70,21 +71,21 @@ const Auth = (props) => {
   return (
     <>
     <NavigationBar />
-   
+
     <div className={type}>
-      {type === 'login' ? 
+      {type === 'login' ?
       <>
         <h1>Login</h1>
           <form onSubmit={handleSubmit}>
             <input type="email" name='email' placeholder="Email" value={formData.email} onChange={handleChange}/>
             <input type="password" name='password' placeholder="Password" value={formData.password} onChange={handleChange}/>
-            <button type="submit">Login</button>
+            <button className='btn auth' type="submit">Login</button>
           </form>
         </>
-      : 
+      :
       <>
       <h1>Create An Account</h1>
-  
+
         <form onSubmit={handleSubmit}>
           <input type="email" name='email' placeholder="Email" value={formData.email} onChange={handleChange}/>
           <input type="password" name='password' placeholder="Password" value={formData.password} onChange={handleChange}/>
@@ -96,8 +97,8 @@ const Auth = (props) => {
               <label for="caregiver">
                 <input type="radio" name='is_caregiver' id="careseeker" value={false} onClick={handleChange}/>careseeker</label>
           </div>
-          
-          <button type="submit">Continue</button>
+
+          <button type="submit" className='btn auth'>Continue</button>
         </form>
       </>
       }

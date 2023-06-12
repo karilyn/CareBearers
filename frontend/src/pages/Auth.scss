@@ -15,7 +15,7 @@
     align-items: center;
     gap: 10px;
     height: 100%;
-  
+
     padding-top: 40px;
 
     input:not([type="submit"]) {
@@ -28,21 +28,21 @@
       color: black;
     }
 
-    button {
-      width: 25%;
-      padding: 10px;
-      border: 2px solid black;
-      border-radius: 5px;
-      margin-top: 10px;
-      font-size: 0.99rem;
-      color: black;
-      background: white;
-      cursor: pointer;
-      transition: 0.3x linear;
-      &:hover {
-        background: black;
-        color: white;
-      }
-    }
+    // button {
+    //   width: 25%;
+    //   padding: 10px;
+    //   border: 2px solid black;
+    //   border-radius: 5px;
+    //   margin-top: 10px;
+    //   font-size: 0.99rem;
+    //   color: black;
+    //   background: white;
+    //   cursor: pointer;
+    //   transition: 0.3x linear;
+    //   &:hover {
+    //     background: black;
+    //     color: white;
+    //   }
+    // }
   }
 
