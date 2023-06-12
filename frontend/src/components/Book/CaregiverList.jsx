@@ -56,7 +56,7 @@ export default function CaregiverList(props) {
   // render the array of CaregiverListItem components
   return (
     <section className="caregivers">
-      <h4 className="caregivers__header">Available Caregivers</h4>
+      <h4 className="caregivers__header">Available Caregivers for This Date</h4>
       <ul className='caregivers__list'>{mappedCaregivers}</ul>
     </section>
   )
