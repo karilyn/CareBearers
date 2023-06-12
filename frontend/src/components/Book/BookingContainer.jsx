@@ -9,8 +9,7 @@ import './BookingContainer.scss'
 
 function BookingContainer(props) {
   const [startDate, setStartDate] = useState(null);
-  const [startTime, setStartTime] = useState(null);
-  const [endTime, setEndTime] = useState(null);
+  const [endDate, setEndDate] = useState(null);
   const [children, setChildren] = useState(null);
   const [components, setComponents] = useState([]);
   const [currentCaregiver, setCaregiver] = useState(props.caregiver || null);
@@ -25,16 +24,28 @@ function BookingContainer(props) {
     setComponents([...components, component]);
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(event) {
     // Prevent the browser from reloading the page
-    e.preventDefault();
+    event.preventDefault();
+    //TODO: Add post axios request to reservations. send body with all the info. Use postman to test it out first.
+    
 
-    // Read the form data
-    const form = e.target;
-    const formData = new FormData(form);
+    console.log(startDate);
+    console.log(endDate);
+    console.log(children);
+    console.log(currentCaregiver);
+    console.log(streetAddress);
+    console.log(city);
+    console.log(province);
+    console.log(postalCode);
 
-    const formJson = Object.fromEntries(formData.entries());
-    console.log(formJson);
+
+    // // Read the form data
+    // const form = e.target;
+    // const formData = new FormData(form);
+
+    // const formJson = Object.fromEntries(formData.entries());
+    // console.log(formJson);
   }
 
 
@@ -58,6 +69,11 @@ function BookingContainer(props) {
 
     if(!props.date) {
       setError("Please select a date")
+      return
+    }
+
+    if(!props.postalCode) {
+      setError("Please enter a postal code")
       return
     }
 
@@ -100,7 +116,7 @@ function BookingContainer(props) {
                       min='1'
                       max='10'
                       placeholder='One hour'
-                      onChange={(event) => {setEndTime(event.target.value)}}
+                      onChange={(event) => {setEndDate(event.target.value)}}
                     />
                   </div>
 
@@ -127,7 +143,11 @@ function BookingContainer(props) {
                     <div className='available-caregivers'>
                     {/* render CaregiverList when Button is clicked */}
                     {components.map((component) => (
-                      <CaregiverList text={component}/>
+                      <CaregiverList
+                        text={component}
+                        value={currentCaregiver}
+                        onChange={(event) => setCaregiver(event)}
+                        />
                     ))}
 
                       {/* <li className='caregivers__item'>
@@ -168,7 +188,7 @@ function BookingContainer(props) {
 
                   </div>
                   <div>
-                    <button type="button" className='btn book now'>Book Now</button>
+                    <Button type="button" className='btn book now' onClick={validate} text="Book Now"/>
                   </div>
               </form>
           </div>
