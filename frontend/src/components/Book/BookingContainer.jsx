@@ -7,6 +7,7 @@ import cartoon_care from '../../assets/cartoon_care.jpeg'
 import Navbar from '../Dashboard/Navbar'
 import './BookingContainer.scss'
 import axios from "axios";
+import { useAppState } from "../../AppState";
 
 function BookingContainer(props) {
   const [startDate, setStartDate] = useState(null);
@@ -19,6 +20,7 @@ function BookingContainer(props) {
   const [province, setProvince] = useState(null);
   const [postalCode, setPostalCode] = useState(null);
   const [error, setError] = useState("");
+
   const { state, dispatch } = useAppState();
 
   const token = state.token;
@@ -32,46 +34,46 @@ function BookingContainer(props) {
   function handleSubmit(event) {
     // Prevent the browser from reloading the page
     event.preventDefault();
-    const data = new FormData(form);
-    data.append("caregiver_id", currentCaregiver);
-    console.log(data);
-    console.log(startDate);
-    console.log(endDate);
-    console.log(children);
-    console.log(currentCaregiver);
-    console.log(streetAddress);
-    console.log(city);
-    console.log(province);
-    console.log(postalCode);
+    // const data = new FormData(form);
+    // data.append("caregiver_id", currentCaregiver);
+    // console.log(data);
+    // console.log(startDate);
+    // console.log(endDate);
+    // console.log(children);
+    // console.log(currentCaregiver);
+    // console.log(streetAddress);
+    // console.log(city);
+    // console.log(province);
+    // console.log(postalCode);
 
-    // Read the form data
-    // const form = event.target;
-    //
+    // // Read the form data
+    // // const form = event.target;
+    // //
 
-    // const formJson = Object.fromEntries(formData.entries());
-    // console.log(formJson);
-    // axios.post(`/reservations/`, JSON.stringify({ reservation: {message: "some data"} })
-    fetch("http://localhost:3000/reservations/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        'Authorization': 'Bearer '+ token
-      },
-      body: JSON.stringify({reservation: {
-        start_time: startDate,
-        end_time: endDate,
-        num_of_children: children,
-        caregiver_id: currentCaregiver,
-        street: streetAddress,
-        city: city,
-        province: province,
-        postal_code: postalCode,
-      }})
-    })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("logging data: ", data);
-    })
+    // // const formJson = Object.fromEntries(formData.entries());
+    // // console.log(formJson);
+    // // axios.post(`/reservations/`, JSON.stringify({ reservation: {message: "some data"} })
+    // fetch("http://localhost:3000/reservations/", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     'Authorization': 'Bearer '+ token
+    //   },
+    //   body: JSON.stringify({reservation: {
+    //     start_time: startDate,
+    //     end_time: endDate,
+    //     num_of_children: children,
+    //     caregiver_id: currentCaregiver,
+    //     street: streetAddress,
+    //     city: city,
+    //     province: province,
+    //     postal_code: postalCode,
+    //   }})
+    // })
+    // .then((response) => response.json())
+    // .then((data) => {
+    //   console.log("logging data: ", data);
+    // })
   }
 
   // reset the form
@@ -151,7 +153,7 @@ function BookingContainer(props) {
                       min='1'
                       max='10'
                       placeholder='One hour'
-                      value={duration}
+                      // value={duration}
                       onChange={(event) => {setEndDate(event.target.value)}}
                     />
                   </div>
