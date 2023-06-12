@@ -25,17 +25,23 @@ class ReservationsController < ApplicationController
   # POST /reservations or /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
-    @reservation.user = @user
+    @reservation.parent_id = @user.id
+    @reservation.save
 
-    respond_to do |format|
-      if @reservation.save
-        format.html { redirect_to reservation_url(@reservation), notice: "Reservation was successfully created." }
-        format.json { render :show, status: :created, location: @reservation }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @reservation.errors, status: :unprocessable_entity }
-      end
+    if @reservation.valid?
+      render json: { reservation: @reservation} 
+    else 
+      render json: {error: "Could not create reservation"}
     end
+    # respond_to do |format|
+    #   if @reservation.save
+    #     format.html { redirect_to reservation_url(@reservation), notice: "Reservation was successfully created." }
+    #     format.json { render :show, status: :created, location: @reservation }
+    #   else
+    #     format.html { render :new, status: :unprocessable_entity }
+    #     format.json { render json: @reservation.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /reservations/1 or /reservations/1.json
