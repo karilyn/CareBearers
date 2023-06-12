@@ -1,14 +1,32 @@
 import React, { useState } from 'react';
 import Rating from '@mui/material/Rating';
 import './ReviewPopup.scss';
+import { useAppState } from '../../../AppState';
+import axios from 'axios';
 
 const ReviewPopup = (props) => {
- const [message, setMessage] = useState('');
- const [rating, setRating] = useState(0);
+  const [message, setMessage] = useState('');
+  const [rating, setRating] = useState(0);
+
+  const { state, dispatch } = useAppState();
+  const token = state.token;
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(message, rating);
+    fetch('http://localhost:3000/reviews', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer '+ token
+      },
+      body: JSON.stringify({review: { message: message, rating: rating, reservation_id: props.reservation}})
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data, "props:", props);
+      props.handlePopup();
+    })
+
   }
 
   return (
