@@ -24,6 +24,7 @@ class ReservationsController < ApplicationController
 
   # POST /reservations or /reservations.json
   def create
+    puts "In create reservation"
     @reservation = Reservation.new(reservation_params)
     @reservation.parent_id = @user.id
     @reservation.save
@@ -42,7 +43,8 @@ class ReservationsController < ApplicationController
     #     format.html { render :new, status: :unprocessable_entity }
     #     format.json { render json: @reservation.errors, status: :unprocessable_entity }
     #   end
-    # end
+    #
+    end
   end
 
   # PATCH/PUT /reservations/1 or /reservations/1.json
@@ -76,6 +78,8 @@ class ReservationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def reservation_params
-      params.require(:reservation).permit(:start_time, :end_time, :num_of_children, :city, :street, :post_code, :status, :cost, :stripe_charge_id, :caregiver_id, :parent_id)
+      params.require(:reservation).permit(:start_time, :end_time, :num_of_children, :city, :street, :post_code, :caregiver_id)
+
+      # params.require(:reservation).permit(:start_time, :end_time, :num_of_children, :city, :street, :post_code, :status, :cost, :stripe_charge_id, :caregiver_id)
     end
 end

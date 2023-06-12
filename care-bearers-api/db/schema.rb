@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_30_191904) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_12_204955) do
   create_table "kids", force: :cascade do |t|
     t.string "name"
     t.integer "age"
@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_191904) do
 
   create_table "reservations", force: :cascade do |t|
     t.datetime "start_time"
-    t.datetime "end_time"
+    t.integer "duration_in_minutes"
     t.integer "num_of_children"
     t.string "city"
     t.string "street"
