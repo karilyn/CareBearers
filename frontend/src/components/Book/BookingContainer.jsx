@@ -6,6 +6,7 @@ import Button from "../Button";
 import cartoon_care from '../../assets/cartoon_care.jpeg'
 import Navbar from '../Dashboard/Navbar'
 import './BookingContainer.scss'
+import axios from "axios";
 
 function BookingContainer(props) {
   const [startDate, setStartDate] = useState(null);
@@ -24,11 +25,15 @@ function BookingContainer(props) {
     setComponents([...components, component]);
   }
 
+  // remove CaregiverList component when button is clicked
+  function removeComponent(component) {
+    setComponents(components.filter((c) => c !== component));
+  }
+
+
   function handleSubmit(event) {
     // Prevent the browser from reloading the page
     event.preventDefault();
-    //TODO: Add post axios request to reservations. send body with all the info. Use postman to test it out first.
-    
 
     console.log(startDate);
     console.log(endDate);
@@ -39,9 +44,23 @@ function BookingContainer(props) {
     console.log(province);
     console.log(postalCode);
 
-
-    // // Read the form data
-    // const form = e.target;
+    axios.post(`/reservations/`, {
+      reservation: {
+        start_date: startDate,
+        end_date: endDate,
+        num_children: children,
+        caregiver_id: currentCaregiver,
+        street_address: streetAddress,
+        city: city,
+        province: province,
+        postal_code: postalCode
+      }
+    })
+    .then(response => {
+      console.log(response);
+    })
+    // Read the form data
+    // const form = event.target;
     // const formData = new FormData(form);
 
     // const formJson = Object.fromEntries(formData.entries());
@@ -91,7 +110,6 @@ function BookingContainer(props) {
               <form
                 autoComplete='off'
                 onSubmit={handleSubmit}
-
               >
 
                 <div className='datepicker-container'>
@@ -112,6 +130,7 @@ function BookingContainer(props) {
                     <h4>For how many hours do you need childcare?</h4>
                     <input
                       className="select-hours"
+                      name='num_hours'
                       type='number'
                       min='1'
                       max='10'
@@ -125,6 +144,7 @@ function BookingContainer(props) {
                       <div className='children-container__item'>
                         <input
                           className="select-children"
+                          name="num_children"
                           type='number'
                           min='1'
                           max='10'
@@ -136,6 +156,7 @@ function BookingContainer(props) {
                   <div className="caregiver-container">
                     <Button
                       className='btn find-caregiver'
+                      type="button"
                       onClick={addComponent}
                       text="Find a Babysitter"
                       style={{width: "100%"}}
@@ -162,24 +183,28 @@ function BookingContainer(props) {
                     <h4>Where do you need childcare?</h4>
                       <input
                         className="address-input__input"
+                        name="street_address"
                         type='text'
                         placeholder='Street address'
                         onChange={(event) => {setStreetAddress(event.target.value)}}
                       />
                       <input
                         className="address-input__input"
+                        name="city"
                         type='text'
                         placeholder='City'
                         onChange={(event) => {setCity(event.target.value)}}
                       />
                       <input
                         className="address-input__input"
+                        name="province"
                         type='text'
                         placeholder='Province'
                         onChange={(event) => {setProvince(event.target.value)}}
                       />
                       <input
                         className="address-input__input"
+                        name="postal_code"
                         type='text'
                         placeholder='Postal code'
                         onChange={(event) => {setPostalCode(event.target.value)}}
@@ -188,7 +213,7 @@ function BookingContainer(props) {
 
                   </div>
                   <div>
-                    <Button type="button" className='btn book now' onClick={validate} text="Book Now"/>
+                    <Button type="submit" className='btn book now' onClick={validate} text="Book Now"/>
                   </div>
               </form>
           </div>
