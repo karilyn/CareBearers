@@ -7,17 +7,19 @@ import cartoon_care from '../../assets/cartoon_care.jpeg'
 import Navbar from '../Dashboard/Navbar'
 import './BookingContainer.scss'
 import axios from "axios";
+import { useAppState } from '../../AppState';
+
 
 function BookingContainer(props) {
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
-  const [children, setChildren] = useState(null);
+  const [startTime, setStartTime] = useState(null);
+  const [duration, setDuration] = useState("");
+  const [children, setChildren] = useState("");
   const [components, setComponents] = useState([]);
   const [currentCaregiver, setCaregiver] = useState(props.caregiver || null);
-  const [streetAddress, setStreetAddress] = useState(null);
-  const [city, setCity] = useState(null);
-  const [province, setProvince] = useState(null);
-  const [postalCode, setPostalCode] = useState(null);
+  const [street, setStreet] = useState("");
+  const [city, setCity] = useState("");
+  const [province, setProvince] = useState("");
+  const [postCode, setPostCode] = useState("");
   const [error, setError] = useState("");
   const { state, dispatch } = useAppState();
 
@@ -32,25 +34,6 @@ function BookingContainer(props) {
   function handleSubmit(event) {
     // Prevent the browser from reloading the page
     event.preventDefault();
-    const data = new FormData(form);
-    data.append("caregiver_id", currentCaregiver);
-    console.log(data);
-    console.log(startDate);
-    console.log(endDate);
-    console.log(children);
-    console.log(currentCaregiver);
-    console.log(streetAddress);
-    console.log(city);
-    console.log(province);
-    console.log(postalCode);
-
-    // Read the form data
-    // const form = event.target;
-    //
-
-    // const formJson = Object.fromEntries(formData.entries());
-    // console.log(formJson);
-    // axios.post(`/reservations/`, JSON.stringify({ reservation: {message: "some data"} })
     fetch("http://localhost:3000/reservations/", {
       method: "POST",
       headers: {
@@ -58,14 +41,15 @@ function BookingContainer(props) {
         'Authorization': 'Bearer '+ token
       },
       body: JSON.stringify({reservation: {
-        start_time: startDate,
-        end_time: endDate,
+        start_time: startTime,
+        duration_in_minutes: duration,
         num_of_children: children,
         caregiver_id: currentCaregiver,
-        street: streetAddress,
+        street: street,
         city: city,
         province: province,
-        postal_code: postalCode,
+        post_code: postCode,
+        status: "pending"
       }})
     })
     .then((response) => response.json())
@@ -111,11 +95,6 @@ function BookingContainer(props) {
       setComponents([...components, component]);
     }
 
-    // remove CaregiverList component when button is clicked
-    // function removeComponent(component) {
-    //   setComponents(components.filter((c) => c !== component));
-    // }
-
   return (
     <>
     <Navbar />
@@ -133,8 +112,8 @@ function BookingContainer(props) {
                     <div className='datepicker-container__input'>
                       <DatePicker
                         showIcon
-                        selected={startDate}
-                        onChange={(date) => setStartDate(date)}
+                        selected={startTime}
+                        onChange={(date) => setStartTime(date)}
                         dateFormat="MMMM d, yyyy h:mm aa"
                         minDate={new Date()}
                         isClearable
@@ -152,7 +131,7 @@ function BookingContainer(props) {
                       max='10'
                       placeholder='One hour'
                       value={duration}
-                      onChange={(event) => {setEndDate(event.target.value)}}
+                      onChange={(event) => {setDuration(event.target.value)}}
                     />
                   </div>
 
@@ -183,8 +162,7 @@ function BookingContainer(props) {
                     {components.map((component) => (
                       <CaregiverList
                         text={component}
-                        value={currentCaregiver}
-                        onChange={(event) => setCaregiver(event)}
+                        onChange={setCaregiver}
                         />
                     ))}
 
@@ -203,14 +181,15 @@ function BookingContainer(props) {
                         name="street"
                         type='text'
                         placeholder='Street address'
-                        value={streetAddress}
-                        onChange={(event) => {setStreetAddress(event.target.value)}}
+                        value={street}
+                        onChange={(event) => {setStreet(event.target.value)}}
                       />
                       <input
                         className="address-input__input"
                         name="city"
                         type='text'
                         placeholder='City'
+                        value={city}
                         onChange={(event) => {setCity(event.target.value)}}
                       />
                       <input
@@ -218,6 +197,7 @@ function BookingContainer(props) {
                         name="province"
                         type='text'
                         placeholder='Province'
+                        value={province}
                         onChange={(event) => {setProvince(event.target.value)}}
                       />
                       <input
@@ -225,13 +205,14 @@ function BookingContainer(props) {
                         name="postal_code"
                         type='text'
                         placeholder='Postal code'
-                        onChange={(event) => {setPostalCode(event.target.value)}}
+                        value={postCode}
+                        onChange={(event) => {setPostCode(event.target.value)}}
                       />
 
 
                   </div>
                   <div>
-                    <Button type="submit" className='btn book now' onClick={validate} text="Book Now"/>
+                    <Button type="submit" className='btn book now' onClick={handleSubmit} text="Book Now"/>
                   </div>
               </form>
           </div>
