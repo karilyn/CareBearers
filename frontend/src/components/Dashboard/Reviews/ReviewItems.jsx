@@ -9,7 +9,7 @@ import Navbar from "../Navbar.jsx";
 import { getCompletedReservations, getCaregiverDetails } from "../../../helpers/selectors";
 import moment from 'moment';
 import ReviewPopup from "./ReviewPopup.jsx";
-
+import './ReviewItems.scss';
 
 function ReviewItems(props) {
   const [popup, setPopup] = useState(false);
@@ -32,6 +32,7 @@ function ReviewItems(props) {
     let mounted = true;
     instance.get('/reservations')
     .then((items) => {
+      console.log("from /reservations axios call:", items.data)
       setCompletedReservations(getCompletedReservations(items.data));
       console.log("completedCare:", completedReservations)
     });
@@ -50,7 +51,7 @@ function ReviewItems(props) {
       {completedReservations.map((res) => {
         return (
           <>
-          <Card key={res.id} sx={{ width: 320, marginTop: 5, marginLeft: 50 }}>
+          {/* <Card key={res.id} sx={{ width: 320, marginTop: 5, marginLeft: 50 }}>
             
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h3">
@@ -63,7 +64,15 @@ function ReviewItems(props) {
               <CardActions onClick={handleClickReview}>
                 <button>Review</button>
               </CardActions>
-          </Card>
+          </Card> */}
+          <div className="card">
+            <img src="..." className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h5 className="card-title">{moment(res.start_time).format("MMM Do YYYY")}</h5>
+              <p className="card-text">{getCaregiverDetails(caregivers, res.caregiver_id).first_name} watched your kids from {moment(res.start_time).format("h:mm a")} - {moment(res.end_time).format("h:mm a")}</p>
+              <button className="btn btn-primary" onClick={handleClickReview}>Review</button>
+            </div>
+          </div>
           <div className="popup">
             {popup? <ReviewPopup name={getCaregiverDetails(caregivers, res.caregiver_id).first_name} /> : ''}
           </div>
@@ -75,3 +84,4 @@ function ReviewItems(props) {
 }
 
 export default ReviewItems;
+
