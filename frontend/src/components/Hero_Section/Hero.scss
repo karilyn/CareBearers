@@ -33,6 +33,10 @@
   color: $font-color-light;
   font-size: 1.5rem;
 }
+// align button in centre
+.d-grid.gap-2.d-sm-flex.justify-content-sm-center {
+  text-align: center;
+}
 
 // centre button
 .btn.sign-up {
