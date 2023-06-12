@@ -141,7 +141,7 @@ puts "Created #{Kid.count} kids."
 
 reservation1 = Reservation.create!(
   start_time: "2023-08-01 18:00:00",
-  end_time: "2023-08-01 22:00:00",
+  duration_in_minutes: 60,
   num_of_children: 2,
   city: "Vancouver",
   street: "123 Main Street",
@@ -157,7 +157,7 @@ reservation1 = Reservation.create!(
 
 reservation2 = Reservation.create!(
   start_time: "2023-06-22 13:00:00",
-  end_time: "2023-06-22 14:00:00",
+  duration_in_minutes: 60,
   num_of_children: 2,
   city: "Revelstoke",
   street: "456 Main Street",
@@ -170,7 +170,7 @@ reservation2 = Reservation.create!(
 )
 reservation3 = Reservation.create!(
   start_time: "2023-07-14 08:00:00",
-  end_time: "2023-07-14 11:00:00",
+  duration_in_minutes: 120,
   num_of_children: 1,
   city: "Banff",
   street: "789 Main Street",
@@ -183,7 +183,7 @@ reservation3 = Reservation.create!(
 )
 reservation4 = Reservation.create!(
   start_time: "2023-06-24 19:00:00",
-  end_time: "2023-06-24 23:00:00",
+  duration_in_minutes: 60,
   num_of_children: 2,
   city: "Vancouver",
   street: "321 Main Street",
