@@ -4,7 +4,7 @@ h1 {
   font-family: $font-h1;
   color: $dark-green-color;
   text-align: center;
-  
+
 }
 
 // Center the container and give it a white background
@@ -17,6 +17,12 @@ h1 {
   width: 50%;
   margin: auto;
   background-color: #ffffff;
+}
+
+// Make the image responsive and 80% of the container
+.booking-container__image {
+  width: 80%;
+  height: auto;
 }
 
 // make h4 text white

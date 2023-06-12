@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import './BookingContainer.scss'
 import CaregiverList from "../Book/CaregiverList";
 import Button from "../Button";
+import cartoon_care from '../../assets/cartoon_care.jpeg'
 
 function BookingContainer() {
   const[startDate, setStartDate] = useState(null);
@@ -23,7 +24,7 @@ function BookingContainer() {
     <div className='booking-container'>
       <h1>Book Childcare</h1>
       <div id='booking-container__form' >
-
+        <img className="booking-container__img" src={cartoon_care} alt='children_playing' />
         <div className='datepicker-container'>
           <h4>When do you need childcare?</h4>
             <div className='datepicker-container__input'>
