@@ -7,7 +7,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { mainNavBarItems } from './navbarItems';
+import { parentNavBarItems, caregiverNavBarItems } from './navbarItems';
 import { navbarStyles } from './styles';
 import { useNavigate } from 'react-router-dom';
 import { useAppState } from '../../AppState.jsx';
@@ -23,6 +23,10 @@ const Navbar = () => {
 
   const { state, dispatch } = useAppState();
 
+  const isCaregiver = state.user.is_caregiver
+
+  
+
 
   return (
     <Drawer
@@ -34,7 +38,7 @@ const Navbar = () => {
         <Toolbar />
         <Divider />
         <List>
-          {mainNavBarItems.map((item, index) => (
+          {(isCaregiver ? caregiverNavBarItems : parentNavBarItems).map((item, index) => (
             <ListItem
                 button
                 key={item.id}

@@ -19,7 +19,8 @@ function ReviewItems(props) {
 
   const { state, dispatch } = useAppState();
   const token = state.token;
-
+  const isCaregiver = state.user.is_caregiver;
+  
   const instance = axios.create({
     baseURL: 'http://localhost:3000',
     headers: {'Authorization': 'Bearer '+ token}
@@ -29,7 +30,17 @@ function ReviewItems(props) {
     instance.get('/reservations')
     .then((items) => {
       console.log("from /reservations axios call:", items.data)
-      setCompletedReservations(getCompletedReservations(items.data));
+      let myEvents;
+      if (isCaregiver) {
+        myEvents = items.data.filter((item) => {
+          return item.caregiver_id === state.user.id;
+        });
+      } else {
+        myEvents = items.data.filter((item) => {
+          return item.parent_id === state.user.id;
+        });
+      }
+      setCompletedReservations(getCompletedReservations(myEvents));
       console.log("completedCare:", completedReservations)
     });
 

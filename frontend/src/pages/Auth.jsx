@@ -25,7 +25,7 @@ const Auth = (props) => {
     if (userData) {
       console.log(userData);
       const { token, user } = userData;
-      dispatch({ type: 'auth', payload: { token, email: user.email, user_id: user.id } });
+      dispatch({ type: 'auth', payload: { token, user: user } });
       window.localStorage.setItem("auth", JSON.stringify({ token, email: user.email }))
       if (userData.user.description === null) {
         navigate('/profile');

@@ -20,7 +20,7 @@ const Description = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(`${state.url}/users/${state.user_id}`, {
+    fetch(`${state.url}/users/${state.user.id}`, {
       method: 'put',
       headers: {
         'Content-Type': 'application/json'

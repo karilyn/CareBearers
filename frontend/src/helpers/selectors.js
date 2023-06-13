@@ -6,3 +6,7 @@ export function getCaregiverDetails(caregivers, caregiver_id) {
   const array = caregivers.filter(caregiver => caregiver.id === caregiver_id);
   return array[0];
 }
+
+export function getPendingReservations(reservations) {
+  return reservations.filter(reservation => reservation.status === 'pending');
+}
