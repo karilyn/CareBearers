@@ -20,12 +20,13 @@ function Kids(props) {
   });
 
   useEffect(() => {
-    let mounted = true;
+
     instance.get('/kids')
     .then((items) => {
       setKids(items.data);
+      // console.log("kids length: ", items.data.length);
     })
-    return () => mounted = false;
+ 
   },[])
 
   const handleClickEdit = () => {
@@ -36,7 +37,7 @@ function Kids(props) {
 <>
     <Navbar />
       <h2>My Kids</h2>
-      {kids.map((kid) => {
+      {kids.length === 0 ? <button>Add Kids</button> : kids.map((kid) => {
         return (
           <div className="card">
           <img src="..." className="card-img-top" alt="..." />
@@ -47,7 +48,7 @@ function Kids(props) {
             </div>
           </div>
         );
-      })}
+      }) }
 </>
   );
 }
