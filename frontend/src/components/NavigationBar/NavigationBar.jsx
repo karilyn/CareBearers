@@ -10,15 +10,16 @@ const NavigationBar = (props) => {
   const navigate = useNavigate();
   return (
     <nav>
-      <ul>
-        <li><Link to='/'>Home</Link> </li>
-        <li><Link to='/auth/signup'>Sign Up</Link> </li>
-        <li><Link to='/auth/login'>Login</Link> </li>
-      </ul> 
-      {state.token && <div onClick={() => {
-        dispatch({type: 'logout'});
-        navigate('/');
-      }}>Logout</div>}
+      <h1 className="logo">Care Bearers</h1>
+        <ul>
+          <li className="Home"><Link to='/'>Home</Link> </li>
+          <li className="SignUp"><Link to='/auth/signup'>Sign Up</Link> </li>
+          <li><Link to='/auth/login'>Login</Link> </li>
+        </ul>
+        {state.token && <div onClick={() => {
+          dispatch({type: 'logout'});
+          navigate('/');
+        }}>Logout</div>}
     </nav>
   )
 }
