@@ -66,7 +66,7 @@ const MyCalendar = (props) => {
         />
       </div>
       <div className="event">
-        {clicked ? (<Event title={clickedEvent.title}/>) : null}
+        {clicked ? (<Event title={clickedEvent.title} start={moment(clickedEvent.start).format('MMM Do YYYY, h:mm a')} end={moment(clickedEvent.end).format('h:mm a')}/>) : null}
       </div>
     </>
   )

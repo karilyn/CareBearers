@@ -7,6 +7,7 @@ const Event = (props) => {
   return (
     <>
       <h3>{props.title}</h3>
+      <p>{props.start} - {props.end}</p>
       <div className="icons">
         <IconButton>
           <EditIcon /> 
