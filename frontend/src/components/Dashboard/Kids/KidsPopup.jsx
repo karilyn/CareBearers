@@ -26,8 +26,22 @@ const KidsPopup = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("form data: ", formData);
-    props.setPopup();
+    fetch('http://localhost:3000/kids', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer '+ state.token
+      },
+      body: JSON.stringify({kid: formData })
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      props.setKids(data.kid);
+      
+      props.setPopup();
+    })
+  
   }
 
   return (
