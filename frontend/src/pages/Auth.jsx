@@ -75,13 +75,32 @@ const Auth = (props) => {
     <div className={type}>
       {type === 'login' ?
       <>
-        <h1>Login</h1>
-          <form className="auth" onSubmit={handleSubmit}>
-            <input type="email" name='email' placeholder="Email" value={formData.email} onChange={handleChange}/>
-            <input type="password" name='password' placeholder="Password" value={formData.password} onChange={handleChange}/>
-            <Button className='btn auth' type="submit" text="Login"/>
-          </form>
-        </>
+      <div className="auth-container">
+        <form className="auth" onSubmit={handleSubmit}>
+          <h1 className='auth'>Login</h1>
+            <div className="form-outline mb-4">
+              <input type="email" className="form-control" placeholder="Email address" value={formData.email} onChange={handleChange}/>
+            </div>
+            <div className="form-outline mb-4">
+              <input type="password"  className="form-control" placeholder="Password" value={formData.password} onChange={handleChange}/>
+
+            </div>
+            <div className="row mb-4">
+              <div className="col d-flex justify-content-center">
+                <div className="form-check">
+                  <input className="form-check-input" type="checkbox" value="" defaultChecked />
+                  <label className="form-check-label">Remember me </label>
+                </div>
+              </div>
+
+              <div className="col">
+                <a href="#!">Forgot password?</a>
+              </div>
+            </div>
+            <Button type="submit" className="btn auth" text="Login"/>
+        </form>
+      </div>
+      </>
       :
       <>
       <h1>Create An Account</h1>

@@ -8,13 +8,18 @@
 //     padding: 15px 0;
 //   }
 
-  form.auth {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    height: 100%;
-    padding-top: 40px;
-  }
+.auth-container {
+  width: 50%;
+}
 
+form.auth {
+  width: 50%;
+
+}
+
+h1.auth {
+  font-family: $font-h1;
+  color: $dark-green-color;
+  padding-left: none;
+
+}
