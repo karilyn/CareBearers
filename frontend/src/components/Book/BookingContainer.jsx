@@ -6,9 +6,7 @@ import Button from "../Button";
 import cartoon_care from '../../assets/cartoon_care.jpeg'
 import Navbar from '../Dashboard/Navbar'
 import './BookingContainer.scss'
-import axios from "axios";
 import { useAppState } from "../../AppState";
-import { useAppState } from '../../AppState';
 
 
 function BookingContainer(props) {
@@ -27,12 +25,7 @@ function BookingContainer(props) {
 
   const token = state.token;
 
-  const instance = axios.create({
-    baseURL: 'http://localhost:3000',
-    headers: {'Authorization': 'Bearer '+ token}
-  });
-
-
+  // submit the form
   function handleSubmit(event) {
     // Prevent the browser from reloading the page
     event.preventDefault();
@@ -153,11 +146,11 @@ function BookingContainer(props) {
 
                   <div className="caregiver-container">
                     <Button
-                      className='btn find-caregiver'
-                      type="button"
+                      className='btn find-babysitter'
+
                       onClick={addComponent}
                       text="Find a Babysitter"
-                      style={{width: "100%"}}
+
                     />
                     <div className='available-caregivers'>
                     {/* render CaregiverList when Button is clicked */}
@@ -214,7 +207,7 @@ function BookingContainer(props) {
 
                   </div>
                   <div>
-                    <Button type="submit" className='btn book now' onClick={handleSubmit} text="Book Now"/>
+                    <Button type="submit" className='btn book-now' onClick={handleSubmit} text="Book Now"/>
                   </div>
               </form>
           </div>
