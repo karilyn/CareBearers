@@ -37,6 +37,10 @@ const MyKids = (props) => {
     //does nothing for now
   }
 
+  const handleSetKids = (newKid) => {
+    setKids((prev) => [...prev, newKid])
+  }
+
   return (
 <>
     <Navbar />
@@ -59,7 +63,7 @@ const MyKids = (props) => {
         <Button text="Add Kids" onClick={handleClickAdd} />
       </div>
       <div className="popup">
-        {popup? <KidsPopup setPopup={handleClickAdd}/> : ''}
+        {popup? <KidsPopup setPopup={handleClickAdd} setKids={handleSetKids}/> : ''}
       </div>
 </>
   );
