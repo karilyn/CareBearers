@@ -146,7 +146,7 @@ function BookingContainer(props) {
 
                   <div className="caregiver-container">
                     <Button
-                      className='btn find-babysitter'
+                      className='find-babysitter'
 
                       onClick={addComponent}
                       text="Find a Babysitter"
