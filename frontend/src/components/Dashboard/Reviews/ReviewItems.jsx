@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAppState } from '../../../AppState.jsx'
 import axios from "axios";
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
 import Navbar from "../Navbar.jsx";
 import { getCompletedReservations, getCaregiverDetails } from "../../../helpers/selectors";
 import moment from 'moment';
@@ -30,7 +26,6 @@ function ReviewItems(props) {
   });
 
   useEffect(() => {
-    let mounted = true;
     instance.get('/reservations')
     .then((items) => {
       console.log("from /reservations axios call:", items.data)
@@ -43,8 +38,6 @@ function ReviewItems(props) {
       console.log('caregivers:', items.data);
       setCaregivers(items.data);
     });
-
-    return () => mounted = false;
   },[])
 
   return (
