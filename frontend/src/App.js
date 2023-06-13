@@ -10,6 +10,7 @@ import BookingContainer from './components/Book/BookingContainer';
 import MyKids from './components/Dashboard/Kids/MyKids';
 import MyCalendar from './components/Dashboard/Calendar/MyCalendar.jsx';
 import ReviewItems from './components/Dashboard/Reviews/ReviewItems';
+import Requests from './components/Dashboard/Requests/Requests';
 
 function App(props) {
 
@@ -42,6 +43,7 @@ function App(props) {
             <Route path='/kids' element={<MyKids />} />
             <Route path='/calendar' element={<MyCalendar />} />
             <Route path='/review' element={<ReviewItems />} />
+            <Route path='/requests' element={<Requests />} />
           </Routes>
         </div>
       </div>
