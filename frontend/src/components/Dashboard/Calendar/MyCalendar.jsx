@@ -31,6 +31,7 @@ const MyCalendar = (props) => {
 
   },[])
 
+
   const myEventsList = events.map((event) => {
    
     return {
@@ -39,13 +40,7 @@ const MyCalendar = (props) => {
       title: event.status.charAt(0).toUpperCase() + event.status.slice(1) + ": " + event.city + ', ' + event.street
     }
   })
-  // const myEventsList = [
-  //   {
-  //     start: moment('2023-06-09T15:00:00').toDate(),
-  //     end: moment('2023-06-09T16:30:00').toDate(),
-  //     title: 'My first event'
-  //   }
-  // ];
+ 
   return (
     <>
       <Navbar />
