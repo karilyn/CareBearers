@@ -37,14 +37,14 @@ function BookingContainer(props) {
       },
       body: JSON.stringify({reservation: {
         start_time: startTime,
-        duration_in_minutes: duration,
+        duration_in_minutes: duration * 60,
         num_of_children: children,
         caregiver_id: currentCaregiver,
         street: street,
         city: city,
         province: province,
         post_code: postCode,
-        status: "pending"
+        status: 0
       }})
     })
     .then((response) => response.json())
