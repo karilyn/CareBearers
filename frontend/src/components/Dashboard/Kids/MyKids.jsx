@@ -59,7 +59,7 @@ const MyKids = (props) => {
         <Button text="Add Kids" onClick={handleClickAdd} />
       </div>
       <div className="popup">
-        {popup? <KidsPopup /> : ''}
+        {popup? <KidsPopup setPopup={handleClickAdd}/> : ''}
       </div>
 </>
   );

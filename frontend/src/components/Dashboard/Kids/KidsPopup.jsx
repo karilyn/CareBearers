@@ -27,6 +27,7 @@ const KidsPopup = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("form data: ", formData);
+    props.setPopup();
   }
 
   return (
