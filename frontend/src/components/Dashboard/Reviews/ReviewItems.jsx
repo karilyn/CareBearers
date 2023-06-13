@@ -59,7 +59,7 @@ function ReviewItems(props) {
             <img src="..." className="card-img-top" alt="..." />
             <div className="card-body">
               <h5 className="card-title">{moment(res.start_time).format("MMM Do YYYY")}</h5>
-              <p className="card-text">{getCaregiverDetails(caregivers, res.caregiver_id) ? getCaregiverDetails(caregivers, res.caregiver_id).first_name : null } watched your kids at {moment(res.start_time).format("h:mm a")} for {moment(res.duration_in_minutes).format("h:mm a")}</p>
+              <p className="card-text">{getCaregiverDetails(caregivers, res.caregiver_id) ? getCaregiverDetails(caregivers, res.caregiver_id).first_name : null } watched your kids at {moment(res.start_time).format("h:mm a")} for {res.duration_in_minutes} minutes</p>
               <button className="btn btn-primary" onClick={handleClickReview}>Review</button>
             </div>
           </div>

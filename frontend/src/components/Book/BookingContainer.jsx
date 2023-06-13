@@ -7,6 +7,7 @@ import cartoon_care from '../../assets/cartoon_care.jpeg'
 import Navbar from '../Dashboard/Navbar'
 import './BookingContainer.scss'
 import axios from "axios";
+import { useAppState } from "../../AppState";
 import { useAppState } from '../../AppState';
 
 
@@ -21,6 +22,7 @@ function BookingContainer(props) {
   const [province, setProvince] = useState("");
   const [postCode, setPostCode] = useState("");
   const [error, setError] = useState("");
+
   const { state, dispatch } = useAppState();
 
   const token = state.token;
