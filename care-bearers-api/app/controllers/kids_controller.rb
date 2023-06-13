@@ -25,17 +25,21 @@ class KidsController < ApplicationController
   # POST /kids or /kids.json
   def create
     @kid = Kid.create(kid_params)
-    @kid.user = @user
 
-    respond_to do |format|
-      if @kid.save
-        format.html { redirect_to kid_url(@kid), notice: "Kid was successfully created." }
-        format.json { render :show, status: :created, location: @kid }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @kid.errors, status: :unprocessable_entity }
-      end
+    if @kid.valid?
+      render json: { kid: @kid} 
+    else 
+      render json: {error: "Could not create kid"}
     end
+    # respond_to do |format|
+    #   if @kid.save
+    #     format.html { redirect_to kid_url(@kid), notice: "Kid was successfully created." }
+    #     format.json { render :show, status: :created, location: @kid }
+    #   else
+    #     format.html { render :new, status: :unprocessable_entity }
+    #     format.json { render json: @kid.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /kids/1 or /kids/1.json
@@ -69,6 +73,6 @@ class KidsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def kid_params
-      params.require(:kid).permit(:parent_id, :first_name, :last_name, :age, :description)
+      params.require(:kid).permit(:parent_id, :name, :age, :description)
     end
 end

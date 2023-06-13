@@ -12,7 +12,7 @@ const MyCalendar = (props) => {
 
   const [events, setEvents] = useState([]);
 
-  const { state, dispatch } = useAppState();
+  const { state } = useAppState();
   const token = state.token;
 
   const instance = axios.create({
@@ -21,14 +21,14 @@ const MyCalendar = (props) => {
   });
 
   useEffect(() => {
-    let mounted = true;
+
     instance.get('/reservations')
     .then((items) => {
       console.log(items.data);
       setEvents(items.data);
  
     })
-    return () => mounted = false;
+
   },[])
 
   const myEventsList = events.map((event) => {

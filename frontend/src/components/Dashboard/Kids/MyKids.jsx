@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from "react";
 import './MyKids.scss';
-import { useAppState } from "../../AppState";
+import { useAppState } from "../../../AppState.jsx";
 import axios from "axios";
-import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import Navbar from "./Navbar";
+import Button from "../../Button";
+import Navbar from "../Navbar";
+import KidsPopup from "./KidsPopup";
 
-function Kids(props) {
+const MyKids = (props) => {
+  const [popup, setPopup] = useState(false);
+
+  const handleClickAdd = () => {
+    setPopup(!popup);
+  }
+  
   const [kids, setKids] = useState([]);
 
-  const { state, dispatch } = useAppState();
+  const { state } = useAppState();
   const token = state.token;
 
   const instance = axios.create({
@@ -20,22 +24,28 @@ function Kids(props) {
   });
 
   useEffect(() => {
-    let mounted = true;
+
     instance.get('/kids')
     .then((items) => {
       setKids(items.data);
+      // console.log("kids length: ", items.data.length);
     })
-    return () => mounted = false;
+ 
   },[])
 
   const handleClickEdit = () => {
     //does nothing for now
   }
 
+  const handleSetKids = (newKid) => {
+    setKids((prev) => [...prev, newKid])
+  }
+
   return (
 <>
     <Navbar />
       <h2>My Kids</h2>
+      <div className="kids-mapped">
       {kids.map((kid) => {
         return (
           <div className="card">
@@ -48,10 +58,17 @@ function Kids(props) {
           </div>
         );
       })}
+      </div>
+      <div className="add_kids_btn">
+        <Button text="Add Kids" onClick={handleClickAdd} />
+      </div>
+      <div className="popup">
+        {popup? <KidsPopup setPopup={handleClickAdd} setKids={handleSetKids}/> : ''}
+      </div>
 </>
   );
 }
 
-export default Kids;
+export default MyKids;
 
         
