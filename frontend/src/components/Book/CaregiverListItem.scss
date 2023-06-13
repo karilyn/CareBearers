@@ -4,20 +4,21 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 1rem;
-  padding: 1rem;
+  // margin: 1rem;
+  // padding: 1rem;
   list-style-type: none;
 
 
   &__item {
     margin-right: 1rem;
-    padding: 0 1rem;
+    // padding: 0 1rem;
     list-style-type: none;
 
     &-image {
       width: 100px;
       height: 100px;
       margin-bottom: 1rem;
+      margin-top: 1rem;
       background-color: $dark-green-color;
       background-size: cover;
       background-position: center;
@@ -42,6 +43,7 @@
     &:hover {
       cursor: pointer;
       background-color: $light-aqua-color;
+      box-shadow: 0 8px 11px  #657298;
     }
   }
 }
