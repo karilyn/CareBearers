@@ -7,13 +7,14 @@ import cartoon_care from '../../assets/cartoon_care.jpeg'
 import Navbar from '../Dashboard/Navbar'
 import './BookingContainer.scss'
 import { useAppState } from "../../AppState";
+import { useNavigate } from "react-router-dom";
 
 
 function BookingContainer(props) {
   const [startTime, setStartTime] = useState(null);
   const [duration, setDuration] = useState("");
   const [children, setChildren] = useState("");
-  const [components, setComponents] = useState([]);
+  const [showCareGiverList, setShowCaregiverList] = useState(false);
   const [currentCaregiver, setCaregiver] = useState(props.caregiver || null);
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
@@ -21,7 +22,10 @@ function BookingContainer(props) {
   const [postCode, setPostCode] = useState("");
   const [error, setError] = useState("");
 
+
   const { state, dispatch } = useAppState();
+
+  const navigate = useNavigate();
 
   const token = state.token;
 
@@ -50,6 +54,9 @@ function BookingContainer(props) {
     .then((response) => response.json())
     .then((data) => {
       console.log("logging data: ", data);
+      alert("Your booking has been submitted!");
+      navigate("/calendar");
+
     })
   }
 
@@ -84,11 +91,10 @@ function BookingContainer(props) {
     setError("")
     props.onSave(currentCaregiver)
   }
-
-    // render CaregiverList component when button is clicked
-    function addComponent(component) {
-      setComponents([...components, component]);
-    }
+   const handleBabysitterClick = (event) => {
+      event.preventDefault();
+      setShowCaregiverList(true);
+   }
 
   return (
     <>
@@ -99,7 +105,7 @@ function BookingContainer(props) {
             <div id='booking-container__form' >
               <form
                 autoComplete='off'
-                onSubmit={handleSubmit}
+                // onSubmit={handleSubmit}
               >
 
                 <div className='datepicker-container'>
@@ -148,18 +154,19 @@ function BookingContainer(props) {
                     <Button
                       className='btn find-babysitter'
 
-                      onClick={addComponent}
+                      onClick={handleBabysitterClick}
                       text="Find a Babysitter"
 
                     />
                     <div className='available-caregivers'>
                     {/* render CaregiverList when Button is clicked */}
-                    {components.map((component) => (
-                      <CaregiverList
-                        text={component}
+                    {showCareGiverList ?
+                      (<CaregiverList
                         onChange={setCaregiver}
-                        />
-                    ))}
+                        value={currentCaregiver}
+
+                        />)
+                    : null}
 
                       {/* <li className='caregivers__item'>
                         <ul>
