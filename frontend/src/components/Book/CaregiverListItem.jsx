@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import classNames from 'classnames'
 import './CaregiverListItem.scss'
 import PropTypes from 'prop-types'
@@ -10,16 +10,16 @@ export default function CaregiverListItem(props) {
 
 
   // conditionally render class if selected
-  // let caregiversClass = classNames('caregivers__item', {
-  //   'caregivers__item--selected': props.selected,
-  // })
+  let caregiversClass = classNames('caregivers__item', {
+    'caregivers__item--selected': props.selected,
+  })
 
 
   return (
       // onClick, set the caregiver to the selected caregiver
-      <li className="caregiver__item" onClick={props.setCaregiver}>
+      <li className={caregiversClass} onClick={props.setCaregiver}>
         <img
-          className='interviewers__item-image'
+          className='caregivers__item-image'
           src={props.photoUrl}
           alt={props.firstName}
         />

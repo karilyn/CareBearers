@@ -65,44 +65,35 @@ input.address-input__input
   margin-top: .5em;
 }
 
-.btn.find-caregiver {
+.btn.find-babysitter {
+  width: 100% !important;
+}
+
+// make the button full width of container
+.btn.book-now {
   width: 100%;
 }
 
-
-.btn.book {
-  text-align: center;
-  padding: .875em 1.25em;
-  border: 1px solid transparent;
-  border-radius: 80em;
-  position: relative;
-  display: inline-block;
-  background-color: $light-aqua-color;
-  color: $dark-green-color;
-  font-weight: 600;
-  width: 100%;
-}
-
-.btn.book:hover {
-  background-color: #F5F5DC;
-  color: $dark-green-color;
-  border: 1px solid $dark-green-color;
-}
 
 .caregivers {
   margin-top: 1em;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 85%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-color: $background-color;
-  padding: 2em;
+  padding: 1em;
   border-radius: 1em;
   list-style-type: none;
+}
+
+h4.caregivers__header {
+  margin-left: 1em;
 }
 
 .caregivers__list {
   list-style-type: none;
 }
+

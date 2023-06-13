@@ -4,3 +4,7 @@ class Reservation < ApplicationRecord
   has_many :reviews, dependent: :destroy
   enum status: [:pending, :accepted, :rejected, :canceled, :completed]
 end
+
+def duration_in_hours=(hours)
+  self.duration_in_minutes = hours.to_i * 60
+end
