@@ -51,15 +51,23 @@ class ReservationsController < ApplicationController
 
   # PATCH/PUT /reservations/1 or /reservations/1.json
   def update
-    respond_to do |format|
-      if @reservation.update(reservation_params)
-        format.html { redirect_to reservation_url(@reservation), notice: "Booking was successfully updated." }
-        format.json { render :show, status: :ok, location: @reservation }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @reservation.errors, status: :unprocessable_entity }
-      end
+    # @reservation.status = reservation_params[:status]
+    # @reservation.save
+    if @reservation.update(reservation_params)
+      render json: @reservation
+    else
+      render json: {error: "update didn't work"}
     end
+ 
+    # respond_to do |format|
+    #   if @reservation.update(reservation_params)
+    #     format.html { redirect_to reservation_url(@reservation), notice: "Booking was successfully updated." }
+    #     format.json { render :show, status: :ok, location: @reservation }
+    #   else
+    #     format.html { render :edit, status: :unprocessable_entity }
+    #     format.json { render json: @reservation.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /reservations/1 or /reservations/1.json
