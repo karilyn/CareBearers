@@ -151,13 +151,8 @@ function BookingContainer(props) {
                   </div>
 
                   <div className="caregiver-container">
-                    <Button
-                      className='find-babysitter'
+                    <button className='btn booking' onClick={handleBabysitterClick}>Find a babysitter</button>
 
-                      onClick={handleBabysitterClick}
-                      text="Find a Babysitter"
-
-                    />
                     <div className='available-caregivers'>
                     {/* render CaregiverList when Button is clicked */}
                     {showCareGiverList ?
@@ -214,7 +209,7 @@ function BookingContainer(props) {
 
                   </div>
                   <div>
-                    <Button type="submit" className='btn book-now' onClick={handleSubmit} text="Book Now"/>
+                    <button type="submit" className='btn booking' onClick={handleSubmit}>Book Now</button>
                   </div>
               </form>
           </div>

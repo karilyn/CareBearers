@@ -4,7 +4,6 @@ h1.booking-container__title {
   font-family: $font-h1;
   color: $dark-green-color;
   padding-left: none;
-
 }
 
 // Center the container and give it a white background
@@ -13,14 +12,14 @@ h1.booking-container__title {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 40%;
+  width: 45%;
   margin: 0 auto;
   background-color: #ffffff;
 }
 
 // Make the image  80% of the container
 .booking-container__img {
-  width: 80%;
+  width: 85%;
   border-radius: 1em;
 }
 
@@ -33,7 +32,7 @@ h4 {
 
 // Center the form and give it dark green background
 #booking-container__form {
-  width: 75%;
+  width: 85%;
   display: flex;
   justify-content: center;
   align-items: start;
@@ -49,30 +48,27 @@ h4 {
 }
 
 input.select-hours {
-  width: 94%;
+  width: 100%;
   padding: 6px 10px 5px 10px;
 }
 
 input.select-children {
-  width: 94%;
+  width: 100%;
   padding: 6px 10px 5px 10px;
 }
 
 input.address-input__input
 {
-  width: 94%;
+  width: 100%;
   padding: 6px 10px 5px 10px;
   margin-top: .5em;
+
 }
 
-.find-babysitter {
-  width: 100% !important;
-}
-
-// make the button full width of container
-.btn.book-now {
+.btn.booking {
   width: 100%;
 }
+
 
 
 .caregivers {
