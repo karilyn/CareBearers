@@ -13,7 +13,7 @@ const KidsPopup = (props) => {
     name: "",
     age: "",
     description: "",
-    parent_id: state.user_id
+    parent_id: state.user.id
   });
 
   const handleYearsMonths = (event) => {
