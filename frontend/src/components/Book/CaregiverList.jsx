@@ -21,19 +21,18 @@ export default function CaregiverList(props) {
   });
 
   useEffect(() => {
-    let mounted = true;
+
     instance.get('/users')
     .then((items) => {
-      console.log(items.data);
+    
       setCaregivers(items.data);
     })
-    return () => mounted = false;
+  
   },[])
 
 
   // map the caregivers array to caregiverListItem components
   const mappedCaregivers = caregivers.map((caregiver) => {
-    console.log(caregiver);
     return (
       <CaregiverListItem
         key={caregiver.id}
