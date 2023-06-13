@@ -8,13 +8,18 @@
 //     padding: 15px 0;
 //   }
 
-.auth-container {
-  width: 50%;
+#auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 40%;
+  margin: 0 auto;
+  background-color: #ffffff;
 }
 
-form.auth {
-  width: 50%;
-
+.auth-form-container {
+  width: 80%;
 }
 
 h1.auth {

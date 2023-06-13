@@ -4,6 +4,7 @@ import { useAppState } from '../AppState.jsx';
 
 import NavigationBar from '../components/NavigationBar/NavigationBar.jsx';
 import Button from '../components/Button.jsx';
+import './Auth.scss';
 
 const Auth = (props) => {
   const { form } = useParams();
@@ -72,11 +73,11 @@ const Auth = (props) => {
     <>
     <NavigationBar />
 
-    <div className={type}>
+    <div id="auth-container" className={type}>
       {type === 'login' ?
       <>
-      <div className="auth-container">
-        <form className="auth" onSubmit={handleSubmit}>
+      <div >
+        <form className="auth-form-container" onSubmit={handleSubmit}>
           <h1 className='auth'>Login</h1>
             <div className="form-outline mb-4">
               <input type="email" className="form-control" placeholder="Email address" value={formData.email} onChange={handleChange}/>
