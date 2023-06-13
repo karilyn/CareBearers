@@ -5,11 +5,14 @@ import Navbar from '../Navbar';
 import { useAppState } from '../../../AppState';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Event from './Event';
+import './MyCalendar.scss';
 
 
 const MyCalendar = (props) => {
   const localizer = momentLocalizer(moment);
-
+  const [clicked, setClicked] = useState(false);
+  const [clickedEvent, setClickedEvent] = useState(null);
   const [events, setEvents] = useState([]);
 
   const { state } = useAppState();
@@ -31,6 +34,7 @@ const MyCalendar = (props) => {
 
   },[])
 
+
   const myEventsList = events.map((event) => {
    
     return {
@@ -39,13 +43,13 @@ const MyCalendar = (props) => {
       title: event.status.charAt(0).toUpperCase() + event.status.slice(1) + ": " + event.city + ', ' + event.street
     }
   })
-  // const myEventsList = [
-  //   {
-  //     start: moment('2023-06-09T15:00:00').toDate(),
-  //     end: moment('2023-06-09T16:30:00').toDate(),
-  //     title: 'My first event'
-  //   }
-  // ];
+ 
+  const handleEventClick = (event) => {
+    setClicked(true)
+    setClickedEvent(event)
+    console.log('event data: ', event);
+  }
+
   return (
     <>
       <Navbar />
@@ -58,7 +62,11 @@ const MyCalendar = (props) => {
         style={{ height: 700, marginLeft: 320 }}
         min={new Date(0, 0, 0, 7, 0, 0)}
         max={new Date(0, 0, 0, 23, 0, 0)}
+        onSelectEvent={handleEventClick}
         />
+      </div>
+      <div className="event">
+        {clicked ? (<Event title={clickedEvent.title} start={moment(clickedEvent.start).format('MMM Do YYYY, h:mm a')} end={moment(clickedEvent.end).format('h:mm a')}/>) : null}
       </div>
     </>
   )

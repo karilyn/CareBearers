@@ -31,7 +31,7 @@ const Auth = (props) => {
       if (userData.user.description === null) {
         navigate('/profile');
       } else {
-        navigate('/dashboard');
+        navigate('/calendar');
       }
     }
   }, [userData, dispatch, navigate]);

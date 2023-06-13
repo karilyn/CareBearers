@@ -29,7 +29,7 @@ const Description = (props) => {
     }).then((response) => response.json())
     .then((data) => {
       console.log(data);
-      navigate('/dashboard');
+      navigate('/calendar');
     });
   }
 
