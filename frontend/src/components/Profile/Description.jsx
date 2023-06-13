@@ -7,12 +7,6 @@ const Description = (props) => {
   const { state } = useAppState();
   const navigate = useNavigate();;
 
-  const [numOfKids, setnumOfKids] = useState(0);
-  
-  const changeKids = (event) => {
-    setnumOfKids(parseInt(event.target.value, 10));
-  };
-
   const [formData, setFormData] = useState({
     description: "",
     first_name: "",
@@ -66,24 +60,6 @@ const Description = (props) => {
                   value={formData.description} 
                   onChange={handleChange}>
                 </textarea>
-              {/* <div className='dropdown'>
-                <label>
-                  How many children do you have?
-                  <select 
-                    className='dropdown' 
-                    value={numOfKids} 
-                    onChange={changeKids}>
-                      <option value={0}>0</option>
-                      <option value={1}>1</option>
-                      <option value={2}>2</option>
-                      <option value={3}>3</option>
-                      <option value={4}>4+</option>
-                  </select>
-                </label>
-              </div> */}
-            {/* {numOfKids === 0 && <button type="submit">Save</button>}
-            {numOfKids > 0 && <h1>My Kids</h1>}
-            {numOfKids > 0 && [...Array(numOfKids)].map((e, i) => <Kids key={i}/>)} */}
             <button type="submit">Save</button>
           </form>
         </div>
