@@ -18,6 +18,7 @@ function App(props) {
 
 
   React.useState(() => {
+
     const auth = JSON.parse(window.localStorage.getItem('auth'));
     if (auth) {
       dispatch({ type: 'auth', payload: auth })
@@ -30,7 +31,7 @@ function App(props) {
 
   return (
 
-      <div className="App">
+      <div className="App Home">
 
         <div className='content'>
           <Routes>
