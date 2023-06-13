@@ -25,6 +25,7 @@ class ReservationsController < ApplicationController
   # POST /reservations or /reservations.json
   def create
     puts "In create reservation"
+    # binding.break
     @reservation = Reservation.new(reservation_params)
     @reservation.parent_id = @user.id
     @reservation.save
@@ -79,7 +80,7 @@ class ReservationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def reservation_params
-      params.require(:reservation).permit(:start_time, :duration_in_minutes, :end_time, :num_of_children, :city, :street, :post_code, :province, :caregiver_id)
+      params.require(:reservation).permit(:start_time, :duration_in_minutes, :end_time, :num_of_children, :city, :street, :post_code, :province, :caregiver_id, :status)
 
       # params.require(:reservation).permit(:start_time, :end_time, :num_of_children, :city, :street, :post_code, :status, :cost, :stripe_charge_id, :caregiver_id)
     end
