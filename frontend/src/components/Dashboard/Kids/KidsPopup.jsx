@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './KidsPopup.scss';
-import { useAppState } from '../../../AppState';
-
+import { useAppState } from '../../../AppState.jsx';
+import Button from '../../Button';
 
 
 const KidsPopup = (props) => {
@@ -25,6 +25,7 @@ const KidsPopup = (props) => {
   }
 
   const handleSubmit = (event) => {
+    event.preventDefault();
     console.log("form data: ", formData);
   }
 
@@ -32,7 +33,7 @@ const KidsPopup = (props) => {
     <div className='kids-form-popup'>
       <div className='kids-form-popup__content'>
         <h1>Add a Kid</h1>
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className='form-group'>
             <input type="text" placeholder="Name" name='name' value={formData.name} onChange={handleChange}/>
           </div>
@@ -46,7 +47,7 @@ const KidsPopup = (props) => {
           <div className='form-group'>
             <textarea rows='3' cols='60' name='description' value={formData.description} onChange={handleChange} placeholder="Description..."></textarea>
           </div>
-          <button type='submit'>Save</button>
+          <Button text="Save" onClick={handleSubmit}  />
         </form>
       </div>
     </div>
