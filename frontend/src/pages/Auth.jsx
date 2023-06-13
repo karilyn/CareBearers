@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAppState } from '../AppState.jsx';
-
 import NavigationBar from '../components/NavigationBar/NavigationBar.jsx';
-import Button from '../components/Button.jsx';
 import './Auth.scss';
 
 const Auth = (props) => {
@@ -76,49 +74,57 @@ const Auth = (props) => {
     <div id="auth-container" className={type}>
       {type === 'login' ?
       <>
-      <div >
-        <form className="auth-form-container" onSubmit={handleSubmit}>
-          <h1 className='auth'>Login</h1>
+        <h1 className="auth__header">Login</h1>
+          <form className="auth-form-container" onSubmit={handleSubmit}>
             <div className="form-outline mb-4">
-              <input type="email" className="form-control" placeholder="Email address" value={formData.email} onChange={handleChange}/>
+              <input type="email" className="form-control" placeholder="Email address" value={formData.email} onChange={handleChange} autoComplete="on"/>
             </div>
             <div className="form-outline mb-4">
-              <input type="password"  className="form-control" placeholder="Password" value={formData.password} onChange={handleChange}/>
-
+              <input type="password"  className="form-control" placeholder="Password" value={formData.password} onChange={handleChange} autoComplete="on"/>
             </div>
             <div className="row mb-4">
               <div className="col d-flex justify-content-center">
                 <div className="form-check">
                   <input className="form-check-input" type="checkbox" value="" defaultChecked />
-                  <label className="form-check-label">Remember me </label>
+                  <label className="form-check-label">Remember me</label>
                 </div>
               </div>
 
               <div className="col">
-                <a href="#!">Forgot password?</a>
+                <a className="forgotPW" href="#!">Forgot password?</a>
               </div>
             </div>
-            <Button type="submit" className="btn auth" text="Login"/>
-        </form>
-      </div>
+            <button type="submit" className="btn auth" onClick={handleSubmit}>Login</button>
+          </form>
+
       </>
       :
       <>
-      <h1>Create An Account</h1>
-
-        <form className='auth' onSubmit={handleSubmit}>
-          <input type="email" name='email' placeholder="Email" value={formData.email} onChange={handleChange}/>
-          <input type="password" name='password' placeholder="Password" value={formData.password} onChange={handleChange}/>
-          <input type="text" name='postal_code' placeholder="Postal Code" value={formData.postal_code} onChange={handleChange}/>
-          <p className='role'>I am a...</p>
-          <div className="radio">
-              <label for="role">
-                <input type="radio" name='is_caregiver' id="caregiver" value={true} onClick={handleChange}/>caregiver</label>
-              <label for="caregiver">
-                <input type="radio" name='is_caregiver' id="careseeker" value={false} onClick={handleChange}/>careseeker</label>
+      <h1 className="auth__header">Create an Account</h1>
+        <form className='auth-form-container' onSubmit={handleSubmit}>
+          <div className="form-outline mb-4">
+            <input type="email" className="form-control" placeholder="Email address" value={formData.email} onChange={handleChange} autoComplete="on"/>
           </div>
+          <div className="form-outline mb-4">
+            <input type="password"  className="form-control" placeholder="Password" value={formData.password} onChange={handleChange} autoComplete="on"/>
+          </div>
+          <div className="form-outline mb-4">
+            <input type="postal_code"  className="form-control" placeholder="Postal code" value={formData.postal_code} onChange={handleChange} autoComplete="on"/>
+          </div>
+          <div className="radio">
+            <label className="p auth-role">I am a:</label>
+              <div className="form-check">
+                <input className="form-check-input" type="radio" name="is_caregiver" id="caregiver"  value={true} onClick={handleChange}/>
+                <label className="form-check-label"> Caregiver </label>
+              </div>
 
-          <Button type="submit" className='btn auth' text="Continue"/>
+              <div className="form-check">
+                <input className="form-check-input" type="radio" name="is_caregiver" id="careseeker" value={false} onClick={handleChange}/>
+                <label className="form-check-label"> Care seeker </label>
+              </div>
+
+          </div>
+          <button type="submit" className='btn auth' onClick={handleSubmit}>Continue</button>
         </form>
       </>
       }
