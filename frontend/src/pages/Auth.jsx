@@ -159,7 +159,7 @@ const Auth = (props) => {
                 </div>
                 <div className='form-outline mb-4'>
                   <input
-                    type='postal_code'
+                    type='text'
                     name='postal_code'
                     className='form-control'
                     placeholder='Postal code'
