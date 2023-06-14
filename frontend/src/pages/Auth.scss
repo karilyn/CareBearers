@@ -1,20 +1,60 @@
 @import '../styles/variables.scss';
 
-//   h1 {
-//     font-size: 2rem;
-//     margin-bottom: 20px;
-//     color: black;
-//     font-weight: bold;
-//     padding: 15px 0;
-//   }
+#auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 30%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
 
-  form.auth {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    height: 100%;
-    padding-top: 40px;
-  }
+.auth-form-container {
+  width: 90%;
+  display: flex;
+  // justify-content: center;
+  // align-items: start;
+  flex-direction: column;
+  padding: 2em;
+  border-radius: 1em;
+}
 
+.form-control {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.form-check-label {
+  color: $dark-green-color;
+}
+
+h1.auth__header {
+  font-family: $font-p;
+  color: $dark-green-color;
+  padding-left: none;
+}
+
+.form-outline.mb-4 {
+  margin-bottom: 0.75em !important;
+}
+
+a.forgotPW {
+  margin-left: 1em;
+}
+
+.btn.auth {
+  width: 100%;
+}
+.btn.auth:hover {
+  box-shadow: 0 3px 4px #9a9b9e;
+}
+
+.p.auth-role {
+  color: $dark-green-color;
+  margin-bottom: 0.5em;
+}

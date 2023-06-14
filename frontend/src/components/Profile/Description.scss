@@ -1,45 +1,51 @@
-.description-form {
+@import '../../styles/variables.scss';
 
-  background: white;
+#description-container {
   display: flex;
-  flex-direction: column;
-  padding-top: 40px;
-
-
-form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 10px;
-
-
-  textarea {
-    width: 50%;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
-    font-size: 0.99rem;
-    font-weight: bold;
-    color: black;
-  }
-  
-  button {
-    width: 100px;
-    margin: auto;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: black;
-    color: white;
-    border: 1px solid black;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.99rem;
-    transition: 0.2s linear;
-    &:hover {
-      background-color: rgba(53, 51, 51, 0.946);
-      border: 1px solid rgba(53, 51, 51, 0.946);
-    }
-  }
+  flex-direction: column;
+  width: 40%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
 }
+
+.description-form-container {
+  width: 90%;
+  display: flex;
+  // justify-content: center;
+  // align-items: start;
+  flex-direction: column;
+  padding: 2em;
+  border-radius: 1em;
+}
+
+.form-control {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.form-check-label {
+  color: $dark-green-color;
+}
+
+h1.description__header {
+  font-family: $font-p;
+  color: $dark-green-color;
+  padding-left: none;
+}
+
+.row.mb-4 {
+  margin-bottom: 0.75em !important;
+}
+
+.btn.description {
+  width: 100%;
+}
+.btn.description:hover {
+  box-shadow: 0 3px 4px #9a9b9e;
 }

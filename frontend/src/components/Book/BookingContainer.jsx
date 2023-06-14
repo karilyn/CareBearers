@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import CaregiverList from "../Book/CaregiverList";
-import Button from "../Button";
 import cartoon_care from '../../assets/cartoon_care.jpeg'
 import Navbar from '../Dashboard/Navbar'
 import './BookingContainer.scss'
@@ -20,7 +19,6 @@ function BookingContainer(props) {
   const [city, setCity] = useState("");
   const [province, setProvince] = useState("");
   const [postCode, setPostCode] = useState("");
-  const [error, setError] = useState("");
 
 
   const { state, dispatch } = useAppState();
@@ -60,41 +58,10 @@ function BookingContainer(props) {
     })
   }
 
-  // reset the form
-  function reset() {
-    setCaregiver(null)
+  const handleBabysitterClick = (event) => {
+    event.preventDefault();
+    setShowCaregiverList(true);
   }
-
-  // cancel the form
-  function cancel() {
-    reset()
-    props.onCancel()
-  }
-
-  // validate the form
-  function validate() {
-    if (!currentCaregiver) {
-      setError("Please select a caregiver")
-      return
-    }
-
-    if(!props.date) {
-      setError("Please select a date")
-      return
-    }
-
-    if(!props.postalCode) {
-      setError("Please enter a postal code")
-      return
-    }
-
-    setError("")
-    props.onSave(currentCaregiver)
-  }
-   const handleBabysitterClick = (event) => {
-      event.preventDefault();
-      setShowCaregiverList(true);
-   }
 
   return (
     <>
@@ -151,13 +118,8 @@ function BookingContainer(props) {
                   </div>
 
                   <div className="caregiver-container">
-                    <Button
-                      className='btn find-babysitter'
+                    <button className='btn booking' onClick={handleBabysitterClick}>Find a babysitter</button>
 
-                      onClick={handleBabysitterClick}
-                      text="Find a Babysitter"
-
-                    />
                     <div className='available-caregivers'>
                     {/* render CaregiverList when Button is clicked */}
                     {showCareGiverList ?
@@ -167,12 +129,6 @@ function BookingContainer(props) {
 
                         />)
                     : null}
-
-                      {/* <li className='caregivers__item'>
-                        <ul>
-                        <CaregiverList />
-                        </ul>
-                      </li> */}
                     </div>
                   </div>
 
@@ -214,7 +170,7 @@ function BookingContainer(props) {
 
                   </div>
                   <div>
-                    <Button type="submit" className='btn book-now' onClick={handleSubmit} text="Book Now"/>
+                    <button type="submit" className='btn booking' onClick={handleSubmit}>Book Now</button>
                   </div>
               </form>
           </div>
