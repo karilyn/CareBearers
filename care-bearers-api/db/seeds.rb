@@ -37,7 +37,7 @@ parent1 = User.create!(
   email: "parent1@parent.com",
   postal_code: "V0E2S0",
   password_digest: BCrypt::Password.create('Your_Password'),
-  description: "I am a parent looking for a babysitter to occasionally watch my two children.",
+  description: "I'm looking for a babysitter to occasionally watch my two delightful children, mostly later evenings and occasional weekends. FYI, we have a well-behaved dog and cat in case you're allergic.",
   gender: "female",
   is_caregiver: false,
   photo_url: "https://picsum.photos/100/100"
@@ -61,7 +61,7 @@ parent3 = User.create!(
   email: "john@johndoe.com",
   postal_code: "V0E2S0",
   password_digest: BCrypt::Password.create('Your_Password'),
-  description: "Father of three looking for some extra help!",
+  description: "Father of three looking for some extra help over summer holidays!",
   gender: "male",
   is_caregiver: false,
   photo_url: "https://picsum.photos/100/100"
@@ -74,7 +74,7 @@ babysitter1 = User.create!(
   email: "amy@babysitting.com",
   postal_code: "V0E2S0",
   password_digest: BCrypt::Password.create('Your_Password'),
-  description: "I am a babysitter looking for a family to work with.",
+  description: "I am an energetic, easy-going babysitter looking for families to work with. I'm a full-time university student. I love kids and I have a lot of experience.",
   gender: "female",
   is_caregiver: true,
   photo_url: "https://picsum.photos/100/100"
@@ -86,7 +86,7 @@ babysitter2 = User.create!(
   email: "sally@jones.com",
   postal_code: "V0E2S0",
   password_digest: BCrypt::Password.create('Your_Password'),
-  description: "I'm a barista and I love kids! Looking to make some extra money by helping families who need care.",
+  description: "I'm a barista and I just really love kids! I've got tons of energy (must be the coffee!) Looking to make some extra money. I have a bunch of neices and newphews!",
   gender: "female",
   is_caregiver: true,
   photo_url: "https://picsum.photos/100/100"
@@ -98,7 +98,7 @@ babysitter3 = User.create!(
   email: "farah@test.com",
   postal_code: "V0E2S0",
   password_digest: BCrypt::Password.create('Your_Password'),
-  description: "I am a stay-at-home mom looking to care for some extra kids",
+  description: "I am a stay-at-home parent looking to care for some extra kids in my own home. I've got a big backyard and lots of toys, and two kids of my own (6 and 8). I'm available during the day and on weekends.",
   gender: "female",
   is_caregiver: true,
   photo_url: "https://picsum.photos/100/100"
@@ -110,29 +110,33 @@ puts "Created #{User.count} users."
 kid1 = Kid.create!(
   name: "Johnny",
   age: 5,
-  description: "Spirited five year old who loves trucks and building things.",
-  parent_id: parent1.id
+  description: "Johnny is a spirited five year old who loves trucks, building things, and having living room dance parties with glow sticks. He's a total sweetheart and a really funny kid. He asks a LOT of questions!",
+  parent_id: parent1.id,
+  photo_url: "https://picsum.photos/100/100"
 )
 
 kid2 = Kid.create!(
   name: "Ada",
   age: 3,
-  description: "Three year old who loves to read and play with her dinosaurs.",
-  parent_id: parent1.id
+  description: "She's three years old and really loves to read books with you. She's a total snugglebug and she's super easy to put down for naps and bedtime. She likes to play with dinosaurs. She's got a peanut allergy so we're a nut-free house.",
+  parent_id: parent1.id,
+  photo_url: "https://picsum.photos/100/100",
 )
 
 kid3 = Kid.create!(
   name: "Miles",
   age: 2,
   description: "Two year old who loves to play outside and go for walks.",
-  parent_id: parent2.id
+  parent_id: parent2.id,
+  photo_url: "https://picsum.photos/100/100"
 )
 
 kid4 = Kid.create!(
   name: "Lily",
   age: 8,
   description: "Lily loves to play soccer and read books (on her own and with you!).",
-  parent_id: parent3.id
+  parent_id: parent3.id,
+  photo_url: "https://picsum.photos/100/100"
 )
 
 puts "Created #{Kid.count} kids."
