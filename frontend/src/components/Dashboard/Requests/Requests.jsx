@@ -13,7 +13,8 @@ const Requests = () => {
   const [pendingRequests, setPendingRequests] = useState([])
   const [parents, setParents] = useState([]);
   const [buttonPopup, setButtonPopup] = useState(false);
-  const [buttonData, setButtonData] = useState({});
+  const [parentData, setParentData] = useState({});
+  const [resData, setResData] = useState({});
 
   const { state } = useAppState();
   const token = state.token;
@@ -65,7 +66,8 @@ const Requests = () => {
   console.log('parents:', parents);
 
   const onClickDetails = (id) => {
-    setButtonData(getParentDetails(parents, id));
+    setParentData(getParentDetails(parents, id.parent_id));
+    setResData(id)
     setButtonPopup(true);
   }
   return (
@@ -84,8 +86,8 @@ const Requests = () => {
               <p className="card-text">{moment(res?.start_time).format("h:mm a")} for {res.duration_in_minutes} minutes</p>
               <Button text='Accept' onClick={() => clickButton(1, res?.id)} />
               <Button text='Reject' onClick={() => clickButton(2, res?.id)} />
-              <Button text='Details' onClick={() => onClickDetails(res?.parent_id)} />
-              <RequestPopup key={res?.id} trigger={buttonPopup} setTrigger={setButtonPopup} popupData={buttonData} numOfKids={res?.num_of_children} />
+              <Button text='Details' onClick={() => onClickDetails(res)} />
+              <RequestPopup key={res?.id} trigger={buttonPopup} setTrigger={setButtonPopup} popupData={parentData} numOfKids={res?.num_of_children} resData={resData}/>
                 
           
 
