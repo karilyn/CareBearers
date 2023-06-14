@@ -22,13 +22,11 @@
   flex-direction: column;
   padding: 2em;
   border-radius: 1em;
-
 }
 
 .form-control {
   margin-bottom: 10px;
   width: 100%;
-
 }
 
 .form-check-label {
@@ -42,7 +40,7 @@ h1.auth__header {
 }
 
 .form-outline.mb-4 {
-  margin-bottom: .75em !important;
+  margin-bottom: 0.75em !important;
 }
 
 a.forgotPW {
@@ -53,10 +51,10 @@ a.forgotPW {
   width: 100%;
 }
 .btn.auth:hover {
-  box-shadow: 0 3px 4px  #9a9b9e;
+  box-shadow: 0 3px 4px #9a9b9e;
 }
 
 .p.auth-role {
   color: $dark-green-color;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
