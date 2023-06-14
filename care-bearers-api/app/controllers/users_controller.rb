@@ -4,11 +4,11 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    # @users = User.all
-    # render json: @users
+    @users = User.all
+    render json: @users
 
-    @caregivers = User.where(is_caregiver: true)
-    render json: @caregivers
+    # @caregivers = User.where(is_caregiver: true)
+    # render json: @caregivers
 
   end
 
