@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Rating from '@mui/material/Rating';
 import './ReviewPopup.scss';
 import { useAppState } from '../../../AppState';
-import axios from 'axios';
 
 const ReviewPopup = (props) => {
   const [message, setMessage] = useState('');
@@ -36,7 +35,7 @@ const ReviewPopup = (props) => {
           <form onSubmit={handleSubmit}>
             <div className='form-group'>
               <label for='message'>Message</label>
-                <input type="text" className='form-control' name='message' value={message} 
+                <input type="text" className='form-control' name='message' value={message}
                 onChange={(event) => {
                     setMessage(event.target.value);
                 }}/>
@@ -52,7 +51,7 @@ const ReviewPopup = (props) => {
               />
             </div>
             <button className='btn btn-primary' type="submit">Submit</button>
-           
+
           </form>
       </div>
     </div>
