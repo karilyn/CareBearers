@@ -7,6 +7,7 @@ import Navbar from '../Dashboard/Navbar'
 import './BookingContainer.scss'
 import { useAppState } from "../../AppState";
 import { useNavigate } from "react-router-dom";
+import Header from "../Dashboard/Header";
 
 
 function BookingContainer(props) {
@@ -65,6 +66,7 @@ function BookingContainer(props) {
 
   return (
     <>
+
     <Navbar />
       <div className='booking-container'>
         <h1 className="booking-container__title">Book Childcare</h1>

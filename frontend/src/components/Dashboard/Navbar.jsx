@@ -23,9 +23,9 @@ const Navbar = () => {
 
   const { state, dispatch } = useAppState();
 
-  const isCaregiver = state.user.is_caregiver
+  const isCaregiver = state?.user?.is_caregiver
 
-  
+
 
 
   return (
