@@ -46,11 +46,12 @@ h1.my-kids-container__title {
   background-color: $dark-green-color;
   background-size: cover;
   background-position: top right 10px;
-  border-radius: 1rem;
+  border-radius: .75rem;
   width: 130px;
   height: 130px;
   margin-bottom: .5rem;
   margin-top: .5rem;
+  display: flex;
 
 }
 
@@ -58,8 +59,7 @@ h1.my-kids-container__title {
   border-radius: 1em;
   width: 100px;
   height: 100px;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
+  margin: auto;
   background-size: cover;
   background-position: top right 10px;
   border-radius: 0.5rem;
@@ -71,6 +71,6 @@ h1.my-kids-container__title {
 }
 
 .add-kids-container {
-  width: 85%;
+  width: 100%;
 }
 

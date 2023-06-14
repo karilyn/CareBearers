@@ -61,13 +61,14 @@ const MyKids = (props) => {
               </div>
             );
           })}
-          </div>
           <div className="add-kids-container">
             <button className='btn kids add' onClick={handleClickAdd}>Add a Kid</button>
           </div>
           <div className="popup">
           {popup? <KidsPopup setPopup={handleClickAdd} setKids={handleSetKids}/> : ''}
           </div>
+          </div>
+
        </div>
 
 </>
