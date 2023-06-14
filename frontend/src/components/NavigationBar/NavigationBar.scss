@@ -11,7 +11,7 @@ nav {
   justify-content: space-between;
   padding: 10px;
 
-  h1.logo {
+  h1 > a {
     font-family: $font-logo;
     font-size: 2.5rem;
     margin-left: 15px;

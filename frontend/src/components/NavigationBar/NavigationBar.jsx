@@ -10,9 +10,9 @@ const NavigationBar = (props) => {
   const navigate = useNavigate();
   return (
     <nav>
-      <h1 className="logo">Care Bearers</h1>
+      <h1 className="logo"><Link to='/'>Care Bearers</Link></h1>
         <ul>
-          <li className="Home"><Link to='/'>Home</Link> </li>
+          {/* <li className="Home"><Link to='/'>Home</Link> </li> */}
           <li className="SignUp"><Link to='/auth/signup'>Sign Up</Link> </li>
           <li><Link to='/auth/login'>Login</Link> </li>
         </ul>
