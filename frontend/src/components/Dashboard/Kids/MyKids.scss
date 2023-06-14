@@ -1,12 +1,76 @@
-h2 {
-  padding-left: 320px;
+@import "../../../styles/variables.scss";
+
+// Center the container and give it a white background
+.my-kids-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  margin-left: 33%;
+}
+
+h1.my-kids-container__title {
+  font-family: $font-h1;
+  color: $dark-green-color;
+  padding-top: 1em;
+  padding-bottom: .5em;
+}
+
+.kids-mapped-container {
+  width: 85%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: $dark-green-color;
+  padding: 2em;
+  border-radius: 1em;
+  margin-bottom: 1em;
+}
+
+.kid-card {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 2em;
+  border-radius: 1em;
+  margin-bottom: 1em;
+}
+
+.card-img-top__background{
+  background-color: $dark-green-color;
+  background-size: cover;
+  background-position: top right 10px;
+  border-radius: 1rem;
+  width: 130px;
+  height: 130px;
+  margin-bottom: .5rem;
+  margin-top: .5rem;
 
 }
 
-.kids {
-  padding-left: 320px;
+.card-img-top {
+  border-radius: 1em;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  background-size: cover;
+  background-position: top right 10px;
+  border-radius: 0.5rem;
 }
 
-.add_kids_btn {
-  margin-left: 320px;
+
+.btn.kids {
+  width: 100%;
 }
+
+.add-kids-container {
+  width: 85%;
+}
+
