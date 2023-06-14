@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
 nav {
   position: relative;
@@ -22,8 +22,6 @@ nav {
     gap: 10px;
   }
 
-
-
   li {
     display: inline;
   }
@@ -41,15 +39,5 @@ nav {
     margin-left: 15px;
     font-family: $font-h1;
     font-size: 2.25rem;
-
   }
-
-  ul {
-    display: flex;
-    gap: 20px;
-
-  }
-
-
 }
-
