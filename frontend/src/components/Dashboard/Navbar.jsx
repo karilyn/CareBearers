@@ -25,6 +25,7 @@ const Navbar = () => {
 
 
   return (
+
     <Drawer
         sx={navbarStyles.drawer}
         variant="permanent"
@@ -46,7 +47,7 @@ const Navbar = () => {
                       navigate(item.route)
                     }
                 }}>
-              <ListItemButton selected={selectedIndex === item.id} 
+              <ListItemButton selected={selectedIndex === item.id}
                 onClick={(event) => handleListItemClick(event, item.id)}>
                 <ListItemIcon sx={navbarStyles.icons}>
                   {item.icon}
