@@ -9,7 +9,8 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding-bottom: 10px;
+  top: 0;
 
   h1 > a {
     font-family: $font-logo;
