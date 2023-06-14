@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_12_211648) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_14_202702) do
   create_table "kids", force: :cascade do |t|
     t.string "name"
     t.integer "age"
@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_211648) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "parent_id"
+    t.string "photo_url"
   end
 
   create_table "reservations", force: :cascade do |t|
