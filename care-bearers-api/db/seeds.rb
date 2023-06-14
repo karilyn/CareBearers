@@ -124,17 +124,17 @@ kid2 = Kid.create!(
 )
 
 kid3 = Kid.create!(
-  name: "Miles",
+  name: "Lily",
   age: 2,
-  description: "Two year old who loves to play outside and go for walks.",
+  description: "Two year old who loves to play outside and go for walks to the playground.",
   parent_id: parent2.id,
   photo_url: "https://picsum.photos/100/100"
 )
 
 kid4 = Kid.create!(
-  name: "Lily",
+  name: "Riley",
   age: 8,
-  description: "Lily loves to play soccer and read books (on her own and with you!).",
+  description: "Riley loves to play soccer and read books (on his own and with you!). He will probably ask you to play video games with him, but he's not allowed to play for more than 30 minutes a day. He's a really sweet kid and he's very helpful. He gets an hour of Minecraft time after he finishes his homework.",
   parent_id: parent3.id,
   photo_url: "https://picsum.photos/100/100"
 )
