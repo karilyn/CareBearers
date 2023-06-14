@@ -39,7 +39,10 @@ h1.auth__header {
   font-family: $font-p;
   color: $dark-green-color;
   padding-left: none;
-  padding-bottom: .5em;
+}
+
+.form-outline.mb-4 {
+  margin-bottom: .75em !important;
 }
 
 a.forgotPW {
