@@ -16,6 +16,8 @@ const MyCalendar = (props) => {
   const [events, setEvents] = useState([]);
 
   const { state } = useAppState();
+  const isCaregiver = state.user.is_caregiver;
+
   const token = state.token;
 
   const instance = axios.create({
@@ -27,8 +29,18 @@ const MyCalendar = (props) => {
 
     instance.get('/reservations')
     .then((items) => {
-      console.log(items.data);
-      setEvents(items.data);
+      console.log('reservations: ', items.data);
+      let myEvents;
+      if (isCaregiver) {
+        myEvents = items.data.filter((item) => {
+          return item.caregiver_id === state.user.id;
+        });
+      } else {
+        myEvents = items.data.filter((item) => {
+          return item.parent_id === state.user.id;
+        });
+      }
+      setEvents(myEvents);
  
     })
 
