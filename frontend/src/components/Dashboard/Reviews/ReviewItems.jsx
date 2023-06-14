@@ -47,7 +47,10 @@ function ReviewItems(props) {
     instance.get('/users')
     .then((items) => {
       console.log('caregivers:', items.data);
-      setCaregivers(items.data);
+      const filteredCaregivers = items.data.filter((item) => {
+        return item.is_caregiver === true;
+      });
+      setCaregivers(filteredCaregivers);
     });
   },[])
 

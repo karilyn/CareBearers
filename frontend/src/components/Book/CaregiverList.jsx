@@ -24,8 +24,10 @@ export default function CaregiverList(props) {
 
     instance.get('/users')
     .then((items) => {
-    
-      setCaregivers(items.data);
+      const filteredCaregivers = items.data.filter((item) => {
+        return item.is_caregiver === true;
+      })
+      setCaregivers(filteredCaregivers);
     })
   
   },[])
