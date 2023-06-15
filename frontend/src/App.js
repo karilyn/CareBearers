@@ -11,12 +11,12 @@ import MyKids from './components/Dashboard/Kids/MyKids';
 import MyCalendar from './components/Dashboard/Calendar/MyCalendar.jsx';
 import ReviewItems from './components/Dashboard/Reviews/ReviewItems';
 import Requests from './components/Dashboard/Requests/Requests';
+import MyProfile from './components/Dashboard/Profile/MyProfile';
 
 function App(props) {
 
   const { state, dispatch } = useAppState();
   const navigate = useNavigate();
-
 
   React.useState(() => {
 
@@ -45,6 +45,7 @@ function App(props) {
             <Route path='/calendar' element={<MyCalendar />} />
             <Route path='/review' element={<ReviewItems />} />
             <Route path='/requests' element={<Requests />} />
+            <Route path='/dashboard/profile' element={<MyProfile user={state.user}/>} />
           </Routes>
         </div>
       </div>
