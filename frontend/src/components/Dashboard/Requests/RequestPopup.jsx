@@ -14,6 +14,7 @@ const RequestPopup = (props) => {
           <p>
             About {props.popupData.first_name}: {props.popupData.description}
           </p>
+          <p>Contact: {props.popupData.email}</p>
         </div>  
       </div>
     </div>
