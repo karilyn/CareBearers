@@ -47,7 +47,6 @@ const KidsPopup = (props) => {
   return (
     <div className='add-kid-container'>
       <div className='add-kid-form'>
-        {/* <h1 className="add-kid__header">Add a Kid</h1> */}
         <form>
           <div className='form-outline mb-4'>
             <input
@@ -63,22 +62,17 @@ const KidsPopup = (props) => {
             <div className='col-4'>
               <input type="text" className='form-control mb-2' placeholder="Age" name='age' value={formData.age} onChange={handleChange}/>
             </div>
-            <div className='col'>
+            <div className='col-auto'>
               <div className='form-check form-check-inline'>
                 <input className='form-check-input' type='radio' name='age' id='years' onChange={handleYearsMonths} value={value} defaultChecked/>
                 <label className='form-check-label' for='years'>years</label>
               </div>
               <div className='form-check form-check-inline'>
-                <input className='form-check-input' type='radio' name='age' id='months' onChange={handleYearsMonths} value={value} defaultChecked/>
+                <input className='form-check-input' type='radio' name='age' id='months' onChange={handleYearsMonths} value={value} />
                 <label className='form-check-label' for='years'>months</label>
               </div>
             </div>
           </div>
-              {/* <select className='dropdown-age' value={value} onChange={handleYearsMonths}>
-                <option value="years">years</option>
-                <option value="months">months</option>
-              </select> */}
-
           <div className='form-outline mb-4'>
             <textarea
               className='form-control'
@@ -89,9 +83,9 @@ const KidsPopup = (props) => {
               onChange={handleChange}
             ></textarea>
           </div>
-          <div className='form-control-file'>
-            <label for='image'>Upload an image</label>
-            <input type="file" className='form-control-file' name="image" accept="image/*" />
+          <div className='mb-3'>
+            <label for='image' className='form-label'>Upload an image</label>
+            <input type="file" className='form-control' name="image" id='image' accept="image/*" />
           </div>
           <button className='btn add-kid' type='submit' onClick={handleSubmit}>Save</button>
         </form>
