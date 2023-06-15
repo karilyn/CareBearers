@@ -20,12 +20,12 @@ const MyCalendar = (props) => {
 
   const token = state.token;
 
-  const instance = axios.create({
-    baseURL: 'http://localhost:3000',
-    headers: {'Authorization': 'Bearer '+ token}
-  });
-
+  
   useEffect(() => {
+    const instance = axios.create({
+      baseURL: 'http://localhost:3000',
+      headers: {'Authorization': 'Bearer '+ token}
+    });
 
     instance.get('/reservations')
     .then((items) => {
@@ -44,7 +44,7 @@ const MyCalendar = (props) => {
  
     })
 
-  },[])
+  },[token, state.user.id, isCaregiver])
 
 
   const myEventsList = events.map((event) => {

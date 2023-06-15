@@ -48,6 +48,7 @@ const Requests = () => {
 
   }, [token, state?.user?.id])
 
+
   const clickButton = (status, id) => {
     fetch(`${state.url}/reservations/${id}`, {
       method: 'put',
@@ -58,7 +59,13 @@ const Requests = () => {
     body: JSON.stringify({reservation: {status: status}}),
     }).then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      console.log("Updated reservation: ", data);
+      const index = pendingRequests.findIndex((res) => res.id === id);
+
+      setPendingRequests((prev) => {
+        return [...prev.slice(0, index), ...prev.slice(index + 1)];
+      })
+      console.log("index: ", index);
     }); 
   }
 
