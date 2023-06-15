@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import './MyKids.scss';
 import { useAppState } from "../../../AppState.jsx";
 import axios from "axios";
-import Button from "../../Button";
 import Navbar from "../Navbar";
 import KidsPopup from "./KidsPopup";
 
