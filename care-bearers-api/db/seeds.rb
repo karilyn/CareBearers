@@ -40,7 +40,7 @@ parent1 = User.create!(
   description: "I'm looking for a babysitter to occasionally watch my two delightful children, mostly later evenings and occasional weekends. FYI, we have a well-behaved dog and cat in case you're allergic.",
   gender: "female",
   is_caregiver: false,
-  photo_url: "https://picsum.photos/100/100"
+  photo_url: "https://i.imgur.com/TEbcGV2.jpg"
 )
 
 parent2 = User.create!(
@@ -77,7 +77,7 @@ babysitter1 = User.create!(
   description: "I am an energetic, easy-going babysitter looking for families to work with. I'm a full-time university student. I love kids and I have a lot of experience.",
   gender: "female",
   is_caregiver: true,
-  photo_url: "https://picsum.photos/100/100"
+  photo_url: "https://i.imgur.com/v77wJ6t.jpeg"
 )
 
 babysitter2 = User.create!(
@@ -89,7 +89,7 @@ babysitter2 = User.create!(
   description: "I'm a barista and I just really love kids! I've got tons of energy (must be the coffee!) Looking to make some extra money. I have a bunch of neices and newphews!",
   gender: "female",
   is_caregiver: true,
-  photo_url: "https://picsum.photos/100/100"
+  photo_url: "https://i.imgur.com/XMKdDWJ.jpg"
 )
 
 babysitter3 = User.create!(
@@ -101,7 +101,7 @@ babysitter3 = User.create!(
   description: "I am a stay-at-home parent looking to care for some extra kids in my own home. I've got a big backyard and lots of toys, and two kids of my own (6 and 8). I'm available during the day and on weekends.",
   gender: "female",
   is_caregiver: true,
-  photo_url: "https://picsum.photos/100/100"
+  photo_url: "https://i.imgur.com/vljdVAo.jpg"
 )
 
 puts "Created #{User.count} users."
@@ -112,23 +112,23 @@ kid1 = Kid.create!(
   age: 5,
   description: "Johnny is a spirited five year old who loves trucks, building things, and having living room dance parties with glow sticks. He's a total sweetheart and a really funny kid. He asks a LOT of questions!",
   parent_id: parent1.id,
-  photo_url: "https://picsum.photos/100/100"
+  photo_url: "https://i.imgur.com/w4wMP96.jpg"
 )
 
 kid2 = Kid.create!(
   name: "Ada",
-  age: 3,
-  description: "Ada is three years old and really loves to read books on your lap. She's a total snugglebug and she's super easy to put down for naps and bedtime. She likes to play with dinosaurs. She's got a peanut allergy so we're a nut-free house.",
+  age: 2,
+  description: "Ada is two years old and really loves to read books on your lap. She's a total snugglebug and she's super easy to put down for naps and bedtime. She likes to play with dinosaurs. She's got a peanut allergy so we're a nut-free house.",
   parent_id: parent1.id,
-  photo_url: "https://picsum.photos/100/100",
+  photo_url: "https://i.imgur.com/vVjgOAM.jpg"
 )
 
 kid3 = Kid.create!(
   name: "Lily",
   age: 2,
-  description: "Two year old who loves to play outside and go for walks.",
+  description: "Lily loves to play outside and go for walks.",
   parent_id: parent2.id,
-  photo_url: "https://picsum.photos/100/100"
+  photo_url: "https://i.imgur.com/803xExI.jpg"
 )
 
 kid4 = Kid.create!(
@@ -136,7 +136,7 @@ kid4 = Kid.create!(
   age: 8,
   description: "Riley loves to play soccer and read books (on his own and with you!). He will probably ask you to play video games with him, but he's not allowed to play for more than 30 minutes a day. He's a really sweet kid and he's very helpful. He gets an hour of Minecraft time after he finishes his homework.",
   parent_id: parent3.id,
-  photo_url: "https://picsum.photos/100/100"
+  photo_url: "https://i.imgur.com/4iq9qrI.jpg"
 )
 
 puts "Created #{Kid.count} kids."
