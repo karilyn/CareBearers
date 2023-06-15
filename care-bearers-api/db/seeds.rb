@@ -29,7 +29,7 @@ karilyn = User.create!(
   password_digest: BCrypt::Password.create('1234'),
   description: "I am a parent looking for a babysitter to occasionally watch my two children.",
   gender: "female",
-  photo_url: "https://picsum.photos/100/100"
+  photo_url: "https://picsum.photos/100/100",
   is_caregiver: false,
 )
 
