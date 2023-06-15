@@ -101,28 +101,28 @@ johnny = Kid.create!(
   name: "Johnny",
   age: 5,
   description: "Spirited five year old who loves trucks and building things.",
-  parent_id: parent1.id
+  parent_id: karilyn.id
 )
 
 ada = Kid.create!(
   name: "Ada",
   age: 3,
   description: "Three year old who loves to read and play with her dinosaurs.",
-  parent_id: parent1.id
+  parent_id: karilyn.id
 )
 
 miles = Kid.create!(
   name: "Miles",
   age: 2,
   description: "Two year old who loves to play outside and go for walks.",
-  parent_id: parent2.id
+  parent_id: michele.id
 )
 
 lily = Kid.create!(
   name: "Lily",
   age: 8,
   description: "Lily loves to play soccer and read books (on her own and with you!).",
-  parent_id: parent3.id
+  parent_id: john.id
 )
 
 puts "Created #{Kid.count} kids."
