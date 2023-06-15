@@ -15,7 +15,7 @@ export default function Hero() {
       style={{ backgroundImage: `url(${hero})` }}>
       <h1 className="display-5 fw-bold">Reliable childcare <br/>on demand</h1>
       <div className="col-lg-6 mx-auto">
-        <p className="lead mb-4">Find a trusted caregiver for your child in minutes</p>
+        <p className="lead mb-4">Find a trusted caregiver for your child<br/> in minutes</p>
         <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
           <Button className="btn sign-up" text="Sign up" onClick={() => navigate("/auth/signup")}/>
         </div>
