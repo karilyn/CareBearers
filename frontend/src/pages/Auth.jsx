@@ -23,8 +23,12 @@ const Auth = (props) => {
     if (userData) {
       console.log(userData);
       const { token, user } = userData;
+      console.log(user);
       dispatch({ type: 'auth', payload: { token, email: user.email, user_id: user.id, user: user } });
-      window.localStorage.setItem("auth", JSON.stringify({ token, email: user.email }))
+      window.localStorage.setItem(
+        "auth",
+        JSON.stringify({ token, email: user.email, id: user.id })
+      );
       if (userData.user.description === null) {
         navigate('/profile');
       } else {
