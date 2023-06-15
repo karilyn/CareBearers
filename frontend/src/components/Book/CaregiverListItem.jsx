@@ -14,11 +14,21 @@ export default function CaregiverListItem(props) {
     'caregivers__item--selected': props.selected,
   })
 
-
   return (
       // onClick, set the caregiver to the selected caregiver
       <li className={caregiversClass} onClick={props.setCaregiver}>
-        <img
+
+              <div className="card-img-top__background">
+                <img src={props.photoUrl} className="card-img-top" alt={props.firstName} />
+              </div>
+              <div className="card-body">
+                <h5 className="card-title">{props.firstName} {props.lastName}</h5>
+                <p className="card-text">{props.description}</p>
+              </div>
+              <hr/>
+
+
+        {/* <img
           className='caregivers__item-image'
           src={props.photoUrl}
           alt={props.firstName}
@@ -26,7 +36,7 @@ export default function CaregiverListItem(props) {
         <br/>
         <strong>{props.firstName} {props.lastName}</strong>
         <br/>{props.description}
-        <hr/>
+        <hr/> */}
       </li>
 
   )
