@@ -3,9 +3,9 @@ class ReviewsController < ApplicationController
   before_action :authorized
   # GET /reviews or /reviews.json
   def index
-    # @reviews = Review.all
+    @reviews = Review.all
     # find only reviews by that user logged in 
-    @reviews = Review.where(reviewer_id: @user.id)
+    # @reviews = Review.where(reviewer_id: @user.id)
     render json: @reviews
   end
 
