@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
-import Navbar from "../Navbar";
-import "./MyProfile.scss";
-import Button from "../../Button";
-import axios from "axios";
-import { useAppState } from "../../../AppState";
-import Rating from "@mui/material/Rating";
+import React, { useState, useEffect } from 'react';
+import Navbar from '../Navbar';
+import './MyProfile.scss';
+import axios from 'axios';
+import { useAppState } from '../../../AppState';
+import Rating from '@mui/material/Rating';
+import { useNavigate } from 'react-router';
 
 const MyProfile = (props) => {
+  const navigate = useNavigate();
   const [reviews, setReviews] = useState([]);
   const [myReservations, setMyReservations] = useState([]);
 
@@ -16,20 +17,20 @@ const MyProfile = (props) => {
 
   useEffect(() => {
     const instance = axios.create({
-      baseURL: "http://localhost:3000",
-      headers: { Authorization: "Bearer " + token },
+      baseURL: 'http://localhost:3000',
+      headers: { Authorization: 'Bearer ' + token },
     });
 
-    instance.get("/reviews").then((items) => {
+    instance.get('/reviews').then((items) => {
       setReviews(items.data);
     });
 
-    instance.get("/reservations").then((items) => {
+    instance.get('/reservations').then((items) => {
       if (isCaregiver) {
         setMyReservations(
           items.data.filter((item) => {
             return (
-              item.caregiver_id === state.user.id && item.status === "completed"
+              item.caregiver_id === state.user.id && item.status === 'completed'
             );
           })
         );
@@ -37,7 +38,7 @@ const MyProfile = (props) => {
         setMyReservations(
           items.data.filter((item) => {
             return (
-              item.parent_id === state.user.id && item.status === "completed"
+              item.parent_id === state.user.id && item.status === 'completed'
             );
           })
         );
@@ -45,7 +46,7 @@ const MyProfile = (props) => {
     });
   }, [token, isCaregiver]);
 
-  console.log("My reservations: ", myReservations);
+  console.log('My reservations: ', myReservations);
 
   const myReviews = [];
 
@@ -56,7 +57,7 @@ const MyProfile = (props) => {
       }
     }
   }
-  console.log("My Reviews: ", myReviews);
+  console.log('My Reviews: ', myReviews);
 
   const handleClickEdit = () => {
     //does nothing for now
@@ -65,31 +66,50 @@ const MyProfile = (props) => {
   return (
     <>
       <Navbar />
-      <div className="my-profile">
-        <img src="" alt="header" />
-        <div className="my-profile__header">
-          <img src={props.user.photo_url} alt="profile-pic" />
-          <h2>
-            {props.user.first_name} {props.user.last_name}
-          </h2>
-          <div className="rating">
-            <h5>Rated by {isCaregiver ? "parents" : "caregivers"}: </h5>
-            <Rating
-              name="read-only"
-              value={myReviews.reduce((a, b) => a + b, 0) / myReviews.length}
-              readOnly
-              precision={0.5}
-            />
-            
+      <div className='user-container'>
+        <h1 className='user-container__title'>My Profile</h1>
+        <div className='profile-container'>
+          <div className='profile-card'>
+            <div className='card-img-top__background'>
+              <img
+                src={props.user.photo_url}
+                className='card-img-top'
+                alt={props.first_name}
+              />
+            </div>
+            <div className='card-body'>
+              <h5 className='card-title'>
+                {props.user.first_name} {props.user.last_name}, {props.user.city}
+              </h5>
+              <div className='rating'>
+                <h5>Rated by {isCaregiver ? 'parents' : 'caregivers'}: </h5>
+                <Rating
+                  name='read-only'
+                  value={
+                    myReviews.reduce((a, b) => a + b, 0) / myReviews.length
+                  }
+                  readOnly
+                  precision={0.5}
+                />
+              </div>
+              <p className='card-text'>{props.user.description}</p>
+              <div className='button-container'>
+                <button className='btn edit' onClick={handleClickEdit}>
+                  Edit Profile
+                </button>
+                <button
+                  className='btn my-kids'
+                  onClick={() => navigate('/kids')}
+                >
+                  View My Kids
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="my-profile__body">
-          <p>{props.user.description}</p>
-          <Button onClick={handleClickEdit} text="Edit" />
-        </div>
-        {/* <div className='my-profile__footer'>
+          {/* <div className='my-profile__footer'>
         <a href='/kids'>My Kids</a>
       </div> */}
+        </div>
       </div>
     </>
   );
