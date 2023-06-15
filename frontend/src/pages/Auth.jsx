@@ -28,7 +28,7 @@ const Auth = (props) => {
       if (userData.user.description === null) {
         navigate('/profile');
       } else {
-        navigate('/calendar');
+        userData.user.is_caregiver ? navigate('/requests') : navigate('/book');
       }
     }
   }, [userData, dispatch, navigate]);
