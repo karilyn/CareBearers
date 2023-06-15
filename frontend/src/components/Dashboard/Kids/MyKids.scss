@@ -46,15 +46,13 @@ h1.my-kids-container__title {
 
 .card-img-top__background{
   background-color: $dark-green-color;
-  background-size: cover;
-  background-position: top right 10px;
   border-radius: .75rem;
   width: 130px;
   height: 130px;
   margin-bottom: .5rem;
   margin-top: .5rem;
   display: flex;
-
+  margin-left: 1em;
 }
 
 .card-img-top {
@@ -62,8 +60,6 @@ h1.my-kids-container__title {
   width: 100px;
   height: 100px;
   margin: auto;
-  background-size: cover;
-  background-position: top right 10px;
   border-radius: 0.5rem;
 }
 
