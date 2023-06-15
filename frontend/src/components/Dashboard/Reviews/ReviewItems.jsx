@@ -5,6 +5,7 @@ import Navbar from "../Navbar.jsx";
 import {
   getCompletedReservations,
   getCaregiverDetails,
+  getParentDetails
 } from "../../../helpers/selectors";
 import moment from "moment";
 import ReviewPopup from "./ReviewPopup.jsx";
@@ -19,8 +20,9 @@ function ReviewItems(props) {
 
   const [completedReservations, setCompletedReservations] = useState([]);
   const [caregivers, setCaregivers] = useState([]);
+  const [parents, setParents] = useState([]);
 
-  const { state, dispatch } = useAppState();
+  const { state } = useAppState();
   const token = state.token;
   const isCaregiver = state.user.is_caregiver;
 
@@ -43,7 +45,6 @@ function ReviewItems(props) {
         });
       }
       setCompletedReservations(getCompletedReservations(myEvents));
-      console.log("completedCare:", completedReservations);
     });
 
     instance.get("/users").then((items) => {
@@ -51,9 +52,26 @@ function ReviewItems(props) {
       const filteredCaregivers = items.data.filter((item) => {
         return item.is_caregiver === true;
       });
+      const filteredParents = items.data.filter((item) => {
+        return item.is_caregiver === false;
+      });
       setCaregivers(filteredCaregivers);
+      setParents(filteredParents);
     });
-  }, []);
+  }, [isCaregiver, state.user.id, token]);
+
+  console.log("completedCare:", completedReservations);
+  console.log("caregivers:", caregivers);
+  console.log("parents:", parents);
+
+  const caregiver = (id) => {
+    return getCaregiverDetails(caregivers, id);
+  };
+
+  const parent = (id) => {
+    return getParentDetails(parents, id);
+  };
+
 
   return (
     <>
@@ -69,13 +87,13 @@ function ReviewItems(props) {
                   {moment(res.start_time).format("MMM Do YYYY")}
                 </h5>
                 <p className="card-text">
-                  
-                  {getCaregiverDetails(caregivers, res.caregiver_id)
-                    ? getCaregiverDetails(caregivers, res.caregiver_id)
-                        .first_name
-                    : null}{" "}
-                  watched your kids at {moment(res.start_time).format("h:mm a")}{" "}
-                  for {res.duration_in_minutes} minutes
+
+                 {isCaregiver &&  (`You watched ${parent(res.parent_id).first_name}'s kids at ${moment(res.start_time).format("h:mm a")} for ${res.duration_in_minutes} minutes`) }
+
+
+                  {!isCaregiver && (
+                  `${caregiver(res.caregiver_id).first_name} watched your kids at ${moment(res.start_time).format("h:mm a")} for ${res.duration_in_minutes} minutes`)}
+
                 </p>
                 <button className="btn btn-primary" onClick={handleClickReview}>
                   Review
