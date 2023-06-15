@@ -4,6 +4,8 @@ import React, { useReducer } from 'react';
 const initialState = {
   url: 'http://localhost:3000',
   token: null,
+  email: null,
+  user_id: null,
   user: null,
 }
 
@@ -16,7 +18,7 @@ const reducer = (state, action) => {
       newState = {...state, ...action.payload};
       return newState;
     case "logout":
-      newState = {...state, token: null, user: null};
+      newState = {...state, token: null, user: null, email: null, user_id: null};
       window.localStorage.removeItem("auth");
       return newState;
     default:
