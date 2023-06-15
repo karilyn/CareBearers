@@ -1,4 +1,4 @@
-@import "../../../styles/variables.scss";
+@import '../../../styles/variables.scss';
 
 // Center the container and give it a white background
 .my-kids-container {
@@ -16,7 +16,7 @@ h1.my-kids-container__title {
   font-family: $font-h1;
   color: $dark-green-color;
   padding-top: 1em;
-  padding-bottom: .5em;
+  padding-bottom: 0.5em;
 }
 
 .kids-mapped-container {
@@ -41,16 +41,15 @@ h1.my-kids-container__title {
   padding: 2em;
   border-radius: 1em;
   margin-top: 1em;
-  // margin-bottom: 1em;
 }
 
-.card-img-top__background{
+.card-img-top__background {
   background-color: $dark-green-color;
-  border-radius: .75rem;
+  border-radius: 0.75rem;
   width: 130px;
   height: 130px;
-  margin-bottom: .5rem;
-  margin-top: .5rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
   display: flex;
   margin-left: 1em;
 }
@@ -63,7 +62,6 @@ h1.my-kids-container__title {
   border-radius: 0.5rem;
 }
 
-
 .btn.kids {
   width: 100%;
 }
@@ -71,4 +69,3 @@ h1.my-kids-container__title {
 .add-kids-container {
   width: 85%;
 }
-
