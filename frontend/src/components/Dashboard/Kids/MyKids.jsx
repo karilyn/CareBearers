@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import './MyKids.scss';
 import { useAppState } from "../../../AppState.jsx";
 import axios from "axios";
@@ -6,10 +6,13 @@ import Navbar from "../Navbar";
 import KidsPopup from "./KidsPopup";
 
 const MyKids = (props) => {
+  const bottomEl = useRef(null);
+
   const [popup, setPopup] = useState(false);
 
   const handleClickAdd = () => {
     setPopup(!popup);
+    bottomEl?.current?.scrollIntoView({ behavior: 'smooth' });
   }
 
   const [kids, setKids] = useState([]);
@@ -64,8 +67,8 @@ const MyKids = (props) => {
           <div className="add-kids-container">
             <button className='btn kids add' onClick={handleClickAdd}>Add a Kid</button>
           </div>
-          <div className="popup">
-          {popup? <KidsPopup setPopup={handleClickAdd} setKids={handleSetKids}/> : ''}
+          <div className="popup" >
+          {popup? <KidsPopup ref={bottomEl} setPopup={handleClickAdd} setKids={handleSetKids}/> : ''}
           </div>
        </div>
 
