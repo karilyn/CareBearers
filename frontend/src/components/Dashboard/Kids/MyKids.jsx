@@ -17,12 +17,12 @@ const MyKids = (props) => {
   const { state } = useAppState();
   const token = state.token;
 
-  const instance = axios.create({
-    baseURL: 'http://localhost:3000',
-    headers: {'Authorization': 'Bearer '+ token}
-  });
 
   useEffect(() => {
+    const instance = axios.create({
+      baseURL: 'http://localhost:3000',
+      headers: {'Authorization': 'Bearer '+ token}
+    });
 
     instance.get('/kids')
     .then((items) => {
@@ -30,7 +30,9 @@ const MyKids = (props) => {
       // console.log("kids length: ", items.data.length);
     })
 
-  },[])
+  
+
+  },[token])
 
   const handleClickEdit = () => {
     //does nothing for now
@@ -43,33 +45,27 @@ const MyKids = (props) => {
   return (
 <>
     <Navbar />
-      <div className="my-kids-container">
-        <h1 className="my-kids-container__title">My Kids</h1>
-          <div className="kids-mapped-container">
-          {kids.map((kid) => {
-            return (
-              <div className="kid-card">
-                <div className="card-img-top__background">
-                  <img src={kid.photo_url} className="card-img-top" alt={kid.name} />
-                </div>
-                <div className="card-body">
-                  <h5 className="card-title">{kid.name}, {kid.age}</h5>
-                  <p className="card-text">{kid.description}</p>
-                  <button className="btn kids" onClick={handleClickEdit}>Edit</button>
-                </div>
-              </div>
-            );
-          })}
-          <div className="add-kids-container">
-            <button className='btn kids add' onClick={handleClickAdd}>Add a Kid</button>
+      <h2>My Kids</h2>
+      <div className="kids-mapped">
+      {kids.length !== 0 ? (kids.map((kid) => {
+        return (
+          <div className="card">
+          <img src="..." className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h5 className="card-title">{kid.name}, {kid.age}</h5>
+              <p className="card-text">{kid.description}</p>
+              <button className="btn btn-primary" onClick={handleClickEdit}>Edit</button>
+            </div>
           </div>
-          <div className="popup">
-          {popup? <KidsPopup setPopup={handleClickAdd} setKids={handleSetKids}/> : ''}
-          </div>
-          </div>
-
-       </div>
-
+        );
+      })) : ''}
+      </div>
+      <div className="add_kids_btn">
+        <Button text="Add Kids" onClick={handleClickAdd} />
+      </div>
+      <div className="popup">
+        {popup? <KidsPopup setPopup={handleClickAdd} setKids={handleSetKids}/> : ''}
+      </div>
 </>
   );
 }

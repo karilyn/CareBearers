@@ -73,9 +73,15 @@ export const caregiverNavBarItems = [
     label: 'Profile',
     route: '/dashboard/profile',
   },
-  
   {
     id: 4,
+    icon: <EscalatorWarningIcon />,
+    label: 'My Kids',
+    route: '/kids',
+  },
+  
+  {
+    id: 5,
     icon: <LogoutIcon />,
     label: 'Logout',
     route: '/logout',

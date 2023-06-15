@@ -8,10 +8,13 @@ const Event = (props) => {
     <>
       <h3>{props.title}</h3>
       <p>{props.start} - {props.end}</p>
+      
       <div className="icons">
+      {props.isCaregiver ? '' :
         <IconButton>
           <EditIcon /> 
         </IconButton>
+      }
         <IconButton>
           <DeleteIcon />
         </IconButton>

@@ -150,7 +150,7 @@ reservation1 = Reservation.create!(
   city: "Vancouver",
   street: "123 Main Street",
   post_code: "V0E2S0",
-  status: 4,
+  status: 0,
   cost: 80.00,
   stripe_charge_id: "ch_1J5JZn2eZvKYlo2C0QYQ0Q0Q",
   caregiver_id: babysitter1.id,
@@ -186,13 +186,13 @@ reservation3 = Reservation.create!(
   parent_id: parent1.id
 )
 reservation4 = Reservation.create!(
-  start_time: "2023-06-24 19:00:00",
+  start_time: "2023-06-13 19:00:00",
   duration_in_minutes: 60,
   num_of_children: 2,
   city: "Vancouver",
   street: "321 Main Street",
   post_code: "S0E2S0",
-  status: 2,
+  status: 4,
   cost: 80.00,
   stripe_charge_id: "ch_1J5JZn2eZvKYlo2C0WNQ0Q0Q",
   caregiver_id: babysitter1.id,

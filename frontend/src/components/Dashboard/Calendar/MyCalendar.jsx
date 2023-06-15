@@ -20,12 +20,12 @@ const MyCalendar = (props) => {
 
   const token = state.token;
 
-  const instance = axios.create({
-    baseURL: 'http://localhost:3000',
-    headers: {'Authorization': 'Bearer '+ token}
-  });
-
+  
   useEffect(() => {
+    const instance = axios.create({
+      baseURL: 'http://localhost:3000',
+      headers: {'Authorization': 'Bearer '+ token}
+    });
 
     instance.get('/reservations')
     .then((items) => {
@@ -44,7 +44,7 @@ const MyCalendar = (props) => {
  
     })
 
-  },[])
+  },[token, state.user.id, isCaregiver])
 
 
   const myEventsList = events.map((event) => {
@@ -78,7 +78,7 @@ const MyCalendar = (props) => {
         />
       </div>
       <div className="event">
-        {clicked ? (<Event title={clickedEvent.title} start={moment(clickedEvent.start).format('MMM Do YYYY, h:mm a')} end={moment(clickedEvent.end).format('h:mm a')}/>) : null}
+        {clicked ? (<Event title={clickedEvent.title} start={moment(clickedEvent.start).format('MMM Do YYYY, h:mm a')} end={moment(clickedEvent.end).format('h:mm a')} isCaregiver={isCaregiver}/>) : null}
       </div>
     </>
   )
