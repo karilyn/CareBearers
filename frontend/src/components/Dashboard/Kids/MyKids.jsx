@@ -46,9 +46,9 @@ const MyKids = (props) => {
     <Navbar />
       <h2>My Kids</h2>
       <div className="kids-mapped">
-      {kids.map((kid) => {
+      {kids.length !== 0 ? (kids.map((kid) => {
         return (
-          <div className="card">
+          <div className="card" key={kid.id}>
           <img src="..." className="card-img-top" alt="..." />
             <div className="card-body">
               <h5 className="card-title">{kid.name}, {kid.age}</h5>
@@ -57,7 +57,7 @@ const MyKids = (props) => {
             </div>
           </div>
         );
-      })}
+      })) : ''}
       </div>
       <div className="add_kids_btn">
         <Button text="Add Kids" onClick={handleClickAdd} />
