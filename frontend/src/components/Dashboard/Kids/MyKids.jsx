@@ -18,12 +18,12 @@ const MyKids = (props) => {
   const { state } = useAppState();
   const token = state.token;
 
-  const instance = axios.create({
-    baseURL: 'http://localhost:3000',
-    headers: {'Authorization': 'Bearer '+ token}
-  });
-
+  
   useEffect(() => {
+    const instance = axios.create({
+      baseURL: 'http://localhost:3000',
+      headers: {'Authorization': 'Bearer '+ token}
+    });
 
     instance.get('/kids')
     .then((items) => {
@@ -31,7 +31,7 @@ const MyKids = (props) => {
       // console.log("kids length: ", items.data.length);
     })
  
-  },[])
+  },[token])
 
   const handleClickEdit = () => {
     //does nothing for now
@@ -44,7 +44,7 @@ const MyKids = (props) => {
   return (
 <>
     <Navbar />
-      <h2>My Kids</h2>
+      <h2 className="kids_h2">My Kids</h2>
       <div className="kids-mapped">
       {kids.length !== 0 ? (kids.map((kid) => {
         return (
