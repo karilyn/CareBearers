@@ -118,7 +118,7 @@ kid1 = Kid.create!(
 kid2 = Kid.create!(
   name: "Ada",
   age: 3,
-  description: "She's three years old and really loves to read books with you. She's a total snugglebug and she's super easy to put down for naps and bedtime. She likes to play with dinosaurs. She's got a peanut allergy so we're a nut-free house.",
+  description: "Ada is three years old and really loves to read books on your lap. She's a total snugglebug and she's super easy to put down for naps and bedtime. She likes to play with dinosaurs. She's got a peanut allergy so we're a nut-free house.",
   parent_id: parent1.id,
   photo_url: "https://picsum.photos/100/100",
 )
@@ -126,7 +126,7 @@ kid2 = Kid.create!(
 kid3 = Kid.create!(
   name: "Lily",
   age: 2,
-  description: "Two year old who loves to play outside and go for walks to the playground.",
+  description: "Two year old who loves to play outside and go for walks.",
   parent_id: parent2.id,
   photo_url: "https://picsum.photos/100/100"
 )
