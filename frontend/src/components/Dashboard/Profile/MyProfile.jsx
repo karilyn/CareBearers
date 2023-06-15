@@ -79,7 +79,7 @@ const MyProfile = (props) => {
             </div>
             <div className='card-body'>
               <h5 className='card-title'>
-                {props.user.first_name} {props.user.last_name}, {props.user.city}
+                {props.user.first_name} {props.user.last_name}
               </h5>
               <div className='rating'>
                 <h5>Rated by {isCaregiver ? 'parents' : 'caregivers'}: </h5>
