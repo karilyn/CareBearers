@@ -14,14 +14,18 @@
   border-bottom-right-radius: 1em;
 }
 
+.auth-container__img {
+  width: 80%;
+  border-radius: 1em;
+}
+
 .auth-form-container {
   width: 90%;
   display: flex;
-  // justify-content: center;
-  // align-items: start;
   flex-direction: column;
-  padding: 2em;
+  padding: 1em;
   border-radius: 1em;
+  padding-top: 0.5em;
 }
 
 .form-control {
@@ -36,7 +40,9 @@
 h1.auth__header {
   font-family: $font-p;
   color: $dark-green-color;
-  padding-left: none;
+  align-self: flex-start;
+  padding-top: .5em;
+  padding-left: .8em;
 }
 
 .form-outline.mb-4 {
