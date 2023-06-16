@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { useAppState } from "../../../AppState.jsx";
-import axios from "axios";
-import Navbar from "../Navbar.jsx";
+import React, { useState, useEffect } from 'react';
+import { useAppState } from '../../../AppState.jsx';
+import axios from 'axios';
+import Navbar from '../Navbar.jsx';
 import {
   getCompletedReservations,
   getCaregiverDetails,
-  getParentDetails
-} from "../../../helpers/selectors";
-import moment from "moment";
-import ReviewPopup from "./ReviewPopup.jsx";
-import "./ReviewItems.scss";
+  getParentDetails,
+} from '../../../helpers/selectors';
+import moment from 'moment';
+import ReviewPopup from './ReviewPopup.jsx';
+import './ReviewItems.scss';
+
 
 function ReviewItems(props) {
   const [popup, setPopup] = useState(-1);
@@ -66,12 +67,11 @@ function ReviewItems(props) {
       setCaregivers(filteredCaregivers);
       setParents(filteredParents);
     });
-  }, [isCaregiver, state.user, token]);
+  }, [isCaregiver, state.user.id, token, popup]);
 
   console.log("completedCare:", completedReservations);
   console.log("caregivers:", caregivers);
   console.log("parents:", parents);
-
 
   return (
     <>
@@ -79,31 +79,46 @@ function ReviewItems(props) {
       <div className='reviews-container'>
         <h1 className='reviews-container__title'>Completed Care Events</h1>
         {completedReservations.map((res, index) => {
-        return (
-          <>
-            <div className='completed-care-container'>
-              <div className='completed-care-card'>
-              <h5 className="card-title">Date of care: {moment(res.start_time).format("MMM Do YYYY")}</h5>
+          return (
+            <>
+              <div className='completed-care-container'>
+                <div className='completed-care-card' key={res?.id}>
+                  <h5 className='card-title'>
+                    Date of care:{' '}
+                    {moment(res?.start_time).format('MMM Do YYYY')}
+                  </h5>
 
-              <div className="card-body">
+                  <div className='card-body'>
+                    <p className='card-text'>
+                      {isCaregiver &&
+                        `You watched ${
+                          getParentDetails(parents, res?.parent_id)?.first_name
+                        }'s kids at ${moment(res?.start_time).format(
+                          'h:mm a'
+                        )} for ${res?.duration_in_minutes} minutes`}
+                      {!isCaregiver &&
+                        `${
+                          getCaregiverDetails(caregivers, res?.caregiver_id)
+                            ?.first_name
+                        } watched your kids at ${moment(res?.start_time).format(
+                          'h:mm a'
+                        )} for ${res?.duration_in_minutes} minutes`}
+                      watched your kids at{' '}
+                      {moment(res.start_time).format('h:mm a')} for{' '}
+                      {res.duration_in_minutes} minutes
+                    </p>
 
-                <p className="card-text">
-
-                  {getCaregiverDetails(caregivers, res.caregiver_id)
-                    ? getCaregiverDetails(caregivers, res.caregiver_id)
-                        .first_name
-                    : null}{" "}
-                  watched your kids at {moment(res.start_time).format("h:mm a")}{" "}
-                  for {res.duration_in_minutes} minutes
-                </p>
-
-                <button className="btn review" onClick={handleClickReview(index)} disabled={res?.review ? true : false}>
-                  Leave a Review
-                </button>
+                    <button
+                      className='btn review'
+                      onClick={handleClickReview(index)}
+                      disabled={res?.review ? true : false}
+                    >
+                      Leave a Review
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-            </div>
-            <div className="popup review">
+              <div className='popup review'>
               {popup === index ? (
                 <ReviewPopup
                   name={ isCaregiver ?
@@ -116,12 +131,10 @@ function ReviewItems(props) {
               ) : (
                 ""
               )}
-            </div>
-
-          </>
-        );
-      })}
-
+              </div>
+            </>
+          );
+        })}
       </div>
     </>
   );
