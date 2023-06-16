@@ -15,7 +15,7 @@
 h1.my-kids-container__title {
   font-family: $font-h1;
   color: $dark-green-color;
-  padding-top: 1em;
+  padding-top: .5em;
   padding-bottom: 0.5em;
 }
 
@@ -64,6 +64,9 @@ h1.my-kids-container__title {
 
 .btn.kids {
   width: 100%;
+}
+.btn.kids:hover {
+  box-shadow: 0 8px 11px #657298;
 }
 
 .add-kids-container {
