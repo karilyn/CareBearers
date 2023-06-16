@@ -78,9 +78,9 @@ const MyProfile = (props) => {
               />
             </div>
             <div className='card-body'>
-              <h5 className='card-title'>
+              <h2 className='card-title'>
                 {props.user.first_name} {props.user.last_name}
-              </h5>
+              </h2>
               <div className='rating'>
                 <h5>Rated by {isCaregiver ? 'parents' : 'caregivers'}: </h5>
                 <Rating
@@ -95,20 +95,13 @@ const MyProfile = (props) => {
               <p className='card-text'>{props.user.description}</p>
               <div className='button-container'>
                 <button className='btn edit' onClick={handleClickEdit}>
-                  Edit Profile
+                  Edit My Profile
                 </button>
-                {/* <button
-                  className='btn my-kids'
-                  onClick={() => navigate('/kids')}
-                >
-                  View My Kids
-                </button> */}
+
               </div>
             </div>
           </div>
-          {/* <div className='my-profile__footer'>
-        <a href='/kids'>My Kids</a>
-      </div> */}
+
         </div>
       </div>
     </>
