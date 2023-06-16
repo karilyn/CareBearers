@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import './MyKids.scss';
+import "./MyKids.scss";
 import { useAppState } from "../../../AppState.jsx";
 import axios from "axios";
-import Navbar from "../Navbar";
 import KidsPopup from "./KidsPopup";
 
 const MyKids = (props) => {
@@ -12,69 +11,84 @@ const MyKids = (props) => {
 
   const handleClickAdd = () => {
     setPopup(!popup);
-    bottomEl?.current?.scrollIntoView({ behavior: 'smooth' });
-  }
+  };
 
   const [kids, setKids] = useState([]);
 
   const { state } = useAppState();
   const token = state.token;
 
+  useEffect(() => {
+    if (popup) {
+      bottomEl.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  })
 
   useEffect(() => {
     const instance = axios.create({
-      baseURL: 'http://localhost:3000',
-      headers: {'Authorization': 'Bearer '+ token}
+      baseURL: "http://localhost:3000",
+      headers: { Authorization: "Bearer " + token },
     });
 
-    instance.get('/kids')
-    .then((items) => {
+    instance.get("/kids").then((items) => {
       setKids(items.data);
       // console.log("kids length: ", items.data.length);
-    })
-
-  },[token])
+    });
+  }, [token]);
 
   const handleClickEdit = () => {
     //does nothing for now
-  }
+  };
 
   const handleSetKids = (newKid) => {
-    setKids((prev) => [...prev, newKid])
-  }
+    setKids((prev) => [...prev, newKid]);
+  };
 
   return (
-<>
-
+    <>
       <div className="my-kids-container">
         <h1 className="my-kids-container__title">My Kids</h1>
-          <div className="kids-mapped-container">
-          {kids.length !== 0 ? (kids.map((kid) => {
-          return (
-            <div className="kid-card">
-              <div className="card-img-top__background">
-                <img src={kid.photo_url} className="card-img-top" alt={kid.name} />
-              </div>
-              <div className="card-body">
-                <h5 className="card-title">{kid.name}, {kid.age}</h5>
-                <p className="card-text">{kid.description}</p>
-                <button className="btn kids" onClick={handleClickEdit}>Edit</button>
-              </div>
-            </div>
-        );
-      })) : ''}
-       </div>
-          <div className="add-kids-container">
-            <button className='btn kids add' onClick={handleClickAdd}>Add a Kid</button>
-          </div>
-          <div className="popup" >
-          {popup? <KidsPopup ref={bottomEl} setPopup={handleClickAdd} setKids={handleSetKids}/> : ''}
-          </div>
-       </div>
-
-</>
+        <div className="kids-mapped-container">
+          {kids.length !== 0
+            ? kids.map((kid) => {
+                return (
+                  <div className="kid-card">
+                    <div className="card-img-top__background">
+                      <img
+                        src={kid.photo_url}
+                        className="card-img-top"
+                        alt={kid.name}
+                      />
+                    </div>
+                    <div className="card-body">
+                      <h5 className="card-title">
+                        {kid.name}, {kid.age}
+                      </h5>
+                      <p className="card-text">{kid.description}</p>
+                      <button className="btn kids" onClick={handleClickEdit}>
+                        Edit
+                      </button>
+                    </div>
+                  </div>
+                );
+              })
+            : ""}
+        </div>
+        <div className="add-kids-container">
+          <button className="btn kids add" onClick={handleClickAdd}>
+            Add a Kid
+          </button>
+        </div>
+        <div className="popup" ref={bottomEl}>
+          {popup ? (
+            <KidsPopup setPopup={handleClickAdd} setKids={handleSetKids} />
+          ) : (
+            ""
+          )}
+        </div>
+      </div>
+    </>
   );
-}
+};
 
 export default MyKids;
-
