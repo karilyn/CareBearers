@@ -7,6 +7,12 @@ import Navbar from '../Dashboard/Navbar'
 import './BookingContainer.scss'
 import { useAppState } from "../../AppState";
 import { useNavigate } from "react-router-dom";
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
 
 
 function BookingContainer(props) {
@@ -20,8 +26,14 @@ function BookingContainer(props) {
   const [province, setProvince] = useState("");
   const [postCode, setPostCode] = useState("");
 
+  const [open, setOpen] = useState(false);
 
-  const { state, dispatch } = useAppState();
+  const handleClose = () => {
+    setOpen(false);
+    navigate("/calendar");
+  }
+
+  const { state } = useAppState();
 
   const navigate = useNavigate();
 
@@ -52,8 +64,9 @@ function BookingContainer(props) {
     .then((response) => response.json())
     .then((data) => {
       console.log("logging data: ", data);
-      alert("Your booking has been submitted!");
-      navigate("/calendar");
+      // alert("Your booking has been submitted!");
+      setOpen(true);
+      // navigate("/calendar");
 
     })
   }
@@ -174,6 +187,21 @@ function BookingContainer(props) {
                   </div>
               </form>
           </div>
+      </div>
+      <div>
+        <Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
+        <DialogTitle id="alert-dialog-title">
+            {"Your booking has been submitted!"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Check your email for confirmation that your booking has been accepted.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose}>Ok</Button>
+          </DialogActions>
+        </Dialog>
       </div>
       </>
   )
