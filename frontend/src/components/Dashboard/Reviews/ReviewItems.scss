@@ -15,7 +15,7 @@
 h1.reviews-container__title {
   font-family: $font-h1;
   color: $dark-green-color;
-  padding-top: 1em;
+  padding-top: .5em;
   padding-bottom: 0.5em;
 }
 
@@ -43,6 +43,14 @@ h1.reviews-container__title {
   margin-top: 1em;
 }
 
+.card-title {
+  padding-left: 0.8em;
+}
+
 .btn.review {
   width: 100%;
+}
+
+.btn.review:hover {
+  box-shadow: 0 8px 11px #87aaae;
 }

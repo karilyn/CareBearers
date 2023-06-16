@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './KidsPopup.scss';
 import { useAppState } from '../../../AppState.jsx';
-import Button from '../../Button';
 
 const KidsPopup = (props) => {
   const [value, setValue] = useState('years');

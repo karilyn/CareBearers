@@ -15,7 +15,7 @@
 h1.user-container__title {
   font-family: $font-h1;
   color: $dark-green-color;
-  padding-top: 1em;
+  padding-top: .5em;
   padding-bottom: 0.5em;
 }
 
@@ -54,4 +54,8 @@ h1.user-container__title {
 
 .btn.edit {
   width: 100%;
+}
+
+.btn.edit:hover {
+  box-shadow: 0 8px 11px #657298;
 }
