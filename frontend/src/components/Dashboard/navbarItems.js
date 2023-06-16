@@ -10,32 +10,32 @@ export const parentNavBarItems = [
     id: 0,
     icon: <MoreTimeIcon />,
     label: 'Book Care',
-    route: '/book',
+    route: '/dashboard/book',
   },
   {
     id: 1,
     icon: <EventNoteIcon />,
     label: 'Reservations',
-    route: '/calendar',
+    route: '/dashboard/calendar',
 
   },
   {
     id: 2,
     icon: <ReviewsIcon />,
     label: 'Leave a Review',
-    route: '/review'
+    route: '/dashboard/review'
   },
   {
     id: 3,
     icon: <AccountCircleIcon />,
     label: 'Profile',
-    route: '/dashboard/profile',
+    route: '/dashboard/myprofile',
   },
   {
     id: 4,
     icon: <EscalatorWarningIcon />,
     label: 'My Kids',
-    route: '/kids',
+    route: '/dashboard/kids',
   },
   
   {
@@ -52,32 +52,32 @@ export const caregiverNavBarItems = [
     id: 0,
     icon: <MoreTimeIcon />,
     label: 'Requests',
-    route: '/requests',
+    route: '/dashboard/requests',
   },
   {
     id: 1,
     icon: <EventNoteIcon />,
     label: 'Reservations',
-    route: '/calendar',
+    route: '/dashboard/calendar',
 
   },
   {
     id: 2,
     icon: <ReviewsIcon />,
     label: 'Leave a Review',
-    route: '/review'
+    route: '/dashboard/review'
   },
   {
     id: 3,
     icon: <AccountCircleIcon />,
     label: 'Profile',
-    route: '/dashboard/profile',
+    route: '/dashboard/myprofile',
   },
   {
     id: 4,
     icon: <EscalatorWarningIcon />,
     label: 'My Kids',
-    route: '/kids',
+    route: '/dashboard/kids',
   },
   
   {

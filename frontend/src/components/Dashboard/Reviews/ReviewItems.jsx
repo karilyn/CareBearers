@@ -67,7 +67,7 @@ function ReviewItems(props) {
       setCaregivers(filteredCaregivers);
       setParents(filteredParents);
     });
-  }, []);
+  }, [popup]);
 
   console.log("completedCare:", completedReservations);
   console.log("caregivers:", caregivers);
@@ -75,7 +75,7 @@ function ReviewItems(props) {
 
   return (
     <>
-      <Navbar />
+
       <div className='reviews-container'>
         <h1 className='reviews-container__title'>Completed Care Events</h1>
         {completedReservations.map((res, index) => {
@@ -96,6 +96,7 @@ function ReviewItems(props) {
                         }'s kids at ${moment(res?.start_time).format(
                           'h:mm a'
                         )} for ${res?.duration_in_minutes} minutes`}
+
                       {!isCaregiver &&
                         `${
                           getCaregiverDetails(caregivers, res?.caregiver_id)
@@ -103,8 +104,7 @@ function ReviewItems(props) {
                         } watched your kids at ${moment(res?.start_time).format(
                           'h:mm a'
                         )} for ${res?.duration_in_minutes} minutes`}
-                      </p>
-
+                    </p>
                     <button
                       className='btn review'
                       onClick={() => handleClickReview(index)}
