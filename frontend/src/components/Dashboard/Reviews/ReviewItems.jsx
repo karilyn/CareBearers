@@ -96,6 +96,7 @@ function ReviewItems(props) {
                         }'s kids at ${moment(res?.start_time).format(
                           'h:mm a'
                         )} for ${res?.duration_in_minutes} minutes`}
+
                       {!isCaregiver &&
                         `${
                           getCaregiverDetails(caregivers, res?.caregiver_id)
@@ -103,9 +104,7 @@ function ReviewItems(props) {
                         } watched your kids at ${moment(res?.start_time).format(
                           'h:mm a'
                         )} for ${res?.duration_in_minutes} minutes`}
-                      watched your kids at{' '}
-                      {moment(res.start_time).format('h:mm a')} for{' '}
-                      {res.duration_in_minutes} minutes
+
                     </p>
 
                     <button
