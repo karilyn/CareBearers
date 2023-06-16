@@ -78,7 +78,7 @@ function BookingContainer(props) {
   return (
     <>
 
-    <Navbar />
+  
       <div className='booking-container'>
         <h1 className="booking-container__title">Book Childcare</h1>
           <img className="booking-container__img" src={cartoon_care} alt='children_playing' />

@@ -67,7 +67,7 @@ function ReviewItems(props) {
       setCaregivers(filteredCaregivers);
       setParents(filteredParents);
     });
-  }, []);
+  }, [popup]);
 
   console.log("completedCare:", completedReservations);
   console.log("caregivers:", caregivers);
@@ -75,7 +75,7 @@ function ReviewItems(props) {
 
   return (
     <>
-      <Navbar />
+
       <div className='reviews-container'>
         <h1 className='reviews-container__title'>Completed Care Events</h1>
         {completedReservations.map((res, index) => {

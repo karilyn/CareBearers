@@ -45,7 +45,7 @@ const MyKids = (props) => {
 
   return (
 <>
-    <Navbar />
+
       <div className="my-kids-container">
         <h1 className="my-kids-container__title">My Kids</h1>
           <div className="kids-mapped-container">

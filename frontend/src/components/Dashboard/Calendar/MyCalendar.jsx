@@ -65,7 +65,7 @@ const MyCalendar = (props) => {
 
   return (
     <>
-      <Navbar />
+ 
       <div className="calendar">
       <Calendar
         localizer={localizer}
