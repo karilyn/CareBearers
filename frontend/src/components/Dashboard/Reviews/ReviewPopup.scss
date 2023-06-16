@@ -12,7 +12,7 @@
   margin-bottom: 1em;
 }
 
-.add-review-container {
+.review-container {
   width: 85%;
   display: flex;
   justify-content: center;
@@ -24,26 +24,37 @@
   margin-bottom: 1em;
 }
 
-h1.add-review-container-title {
-  font-family: $font-h1;
+.review-card {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 2em;
+  border-radius: 1em;
+  margin-bottom: 1em;
+}
+
+h2.review-card {
+
   color: $dark-green-color;
   padding-top: 1em;
   padding-bottom: .5em;
 }
 
-.add-review-form {
-
+.form.review {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: right;
   flex-direction: column;
-  background-color: #ffffff;
   padding: 1em;
   border-radius: 1em;
   margin-bottom: 1em;
-  margin-top: 1em;
+  margin-top: 0;
 }
 
-.btn.add-kid {
+.btn.review {
   width: 100%;
 }
