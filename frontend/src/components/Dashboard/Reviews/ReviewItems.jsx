@@ -12,15 +12,10 @@ import ReviewPopup from "./ReviewPopup.jsx";
 import "./ReviewItems.scss";
 
 function ReviewItems(props) {
-  const [popup, setPopup] = useState(false);
-  const [disabled, setDisabled] = useState(false);
+  const [popup, setPopup] = useState(-1);
 
-  const handleClickSubmit = () => {
-    setDisabled(true);
-  };
-
-  const handleClickReview = () => {
-    setPopup(!popup);
+  const handleClickReview = (index) => {
+    setPopup(index);
   };
 
   const [completedReservations, setCompletedReservations] = useState([]);
@@ -38,17 +33,25 @@ function ReviewItems(props) {
     });
 
     instance.get("/reservations").then((items) => {
-      console.log("from /reservations axios call:", items.data);
+      console.log("from /reservations axios call:", items.data.reservations);
       let myEvents;
       if (isCaregiver) {
-        myEvents = items.data.filter((item) => {
+        myEvents = items.data.reservations.filter((item) => {
           return item.caregiver_id === state.user?.id;
         });
       } else {
-        myEvents = items.data.filter((item) => {
+        myEvents = items.data.reservations.filter((item) => {
           return item.parent_id === state.user?.id;
         });
       }
+      items.data.reviews.forEach((review) => {
+        myEvents.forEach((event) => {
+          if (review.reservation_id === event.id) {
+            event.review = review;
+          }
+        });
+      });
+
       setCompletedReservations(getCompletedReservations(myEvents));
     });
 
@@ -63,7 +66,7 @@ function ReviewItems(props) {
       setCaregivers(filteredCaregivers);
       setParents(filteredParents);
     });
-  }, [isCaregiver, state.user.id, token]);
+  }, [isCaregiver, state.user.id, token, popup]);
 
   console.log("completedCare:", completedReservations);
   console.log("caregivers:", caregivers);
@@ -74,10 +77,10 @@ function ReviewItems(props) {
     <>
       <Navbar />
       <h2>Completed Care Events</h2>
-      {completedReservations.map((res) => {
+      {completedReservations.map((res, index) => {
         return (
           <>
-            <div className="card">
+            <div className="card" key={res?.id}>
               <img src="..." className="card-img-top" alt="..." />
               <div className="card-body">
                 <h5 className="card-title">
@@ -92,20 +95,20 @@ function ReviewItems(props) {
                   `${getCaregiverDetails(caregivers, res?.caregiver_id)?.first_name} watched your kids at ${moment(res?.start_time).format("h:mm a")} for ${res?.duration_in_minutes} minutes`)}
 
                 </p>
-                <button className="btn btn-primary" onClick={handleClickReview} disabled={disabled}>
+                <button className="btn btn-primary" onClick={() => handleClickReview(index)} disabled={res?.review ? true : false}>
                   Review
                 </button>
               </div>
             </div>
             <div className="popup">
-              {popup ? (
+              {popup === index ? (
                 <ReviewPopup
                   name={ isCaregiver ?
                     getParentDetails(parents, res?.parent_id).first_name : getCaregiverDetails(caregivers, res?.caregiver_id).first_name 
                   }
                   reservation={res?.id}
-                  handlePopup={handleClickReview}
-                  onClick={handleClickSubmit}
+                  handlePopup={() => setPopup(-1)}
+            
                 />
               ) : (
                 ""
