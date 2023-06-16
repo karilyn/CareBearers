@@ -4,6 +4,7 @@ import { useAppState } from '../AppState.jsx';
 import NavigationBar from '../components/NavigationBar/NavigationBar.jsx';
 import './Auth.scss';
 import two from '../assets/two.jpeg';
+import hands from '../assets/hands.jpg';
 
 const Auth = (props) => {
   const { form } = useParams();
@@ -86,7 +87,7 @@ const Auth = (props) => {
         {type === 'login' ? (
           <>
             <div id='auth-container'>
-              <img className="auth-container__img" src={two} alt='children_playing' />
+              <img className="auth-container__img" src={two} alt='woman_walking_with_child' />
               <h1 className='auth__header'>Login</h1>
               <form className='auth-form-container' onSubmit={handleSubmit}>
                 <div className='form-outline mb-4'>
@@ -141,6 +142,7 @@ const Auth = (props) => {
         ) : (
           <>
             <div id='auth-container'>
+            <img className="auth-container__img" src={hands} alt='man_holding_hands_with_child' />
               <h1 className='auth__header'>Create an Account</h1>
               <form className='auth-form-container' onSubmit={handleSubmit}>
                 <div className='form-outline mb-4'>
