@@ -29,14 +29,14 @@ const MyCalendar = (props) => {
 
     instance.get('/reservations')
     .then((items) => {
-      console.log('reservations: ', items.data);
+      console.log('reservations: ', items.data.reservations);
       let myEvents;
       if (isCaregiver) {
-        myEvents = items.data.filter((item) => {
+        myEvents = items.data.reservations.filter((item) => {
           return item.caregiver_id === state.user.id;
         });
       } else {
-        myEvents = items.data.filter((item) => {
+        myEvents = items.data.reservations.filter((item) => {
           return item.parent_id === state.user.id;
         });
       }
