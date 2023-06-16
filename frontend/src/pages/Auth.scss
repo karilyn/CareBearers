@@ -14,6 +14,12 @@
   border-bottom-right-radius: 1em;
 }
 
+// Make the image  80% of the container
+.auth-container__img {
+  width: 85%;
+  border-radius: 1em;
+}
+
 .auth-form-container {
   width: 90%;
   display: flex;
@@ -37,6 +43,8 @@ h1.auth__header {
   font-family: $font-p;
   color: $dark-green-color;
   padding-left: none;
+  align-self: start;
+  padding-top: .5em;
 }
 
 .form-outline.mb-4 {

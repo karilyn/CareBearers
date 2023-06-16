@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useAppState } from '../AppState.jsx';
 import NavigationBar from '../components/NavigationBar/NavigationBar.jsx';
 import './Auth.scss';
+import two from '../assets/two.jpeg';
 
 const Auth = (props) => {
   const { form } = useParams();
@@ -85,6 +86,7 @@ const Auth = (props) => {
         {type === 'login' ? (
           <>
             <div id='auth-container'>
+              <img className="auth-container__img" src={two} alt='children_playing' />
               <h1 className='auth__header'>Login</h1>
               <form className='auth-form-container' onSubmit={handleSubmit}>
                 <div className='form-outline mb-4'>
