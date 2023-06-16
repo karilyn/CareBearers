@@ -1,7 +1,19 @@
 @import "../../../styles/variables.scss";
 
+.popup.review {
+  width: 85%;
+}
+
 .add-review-container {
-    display: flex;
+  width: 85%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: $olive-green-color;
+  padding: 2em;
+  border-radius: 1em;
+  margin-bottom: 1em;
 }
 
 h1.add-review-container-title {
@@ -12,13 +24,13 @@ h1.add-review-container-title {
 }
 
 .add-review-form {
-  width: 100%;
+
   display: flex;
   justify-content: space-between;
   align-items: right;
   flex-direction: column;
   background-color: #ffffff;
-  padding: 2em;
+  padding: 1em;
   border-radius: 1em;
   margin-bottom: 1em;
   margin-top: 1em;

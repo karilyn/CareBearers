@@ -75,12 +75,12 @@ function ReviewItems(props) {
                   for {res.duration_in_minutes} minutes
 
                 <button className="btn review" onClick={handleClickReview}>
-                  Leave a review
+                  Leave a Review
                 </button>
               </div>
             </div>
             </div>
-            <div className="popup">
+            <div className="popup review">
               {popup ? (
                 <ReviewPopup
                   name={
