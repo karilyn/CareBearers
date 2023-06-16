@@ -4,10 +4,10 @@ import './MyProfile.scss';
 import axios from 'axios';
 import { useAppState } from '../../../AppState';
 import Rating from '@mui/material/Rating';
-import { useNavigate } from 'react-router';
+// import { useNavigate } from 'react-router';
 
 const MyProfile = (props) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [reviews, setReviews] = useState([]);
   const [myReservations, setMyReservations] = useState([]);
 
@@ -97,12 +97,12 @@ const MyProfile = (props) => {
                 <button className='btn edit' onClick={handleClickEdit}>
                   Edit Profile
                 </button>
-                <button
+                {/* <button
                   className='btn my-kids'
                   onClick={() => navigate('/kids')}
                 >
                   View My Kids
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
