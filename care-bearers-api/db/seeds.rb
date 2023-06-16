@@ -251,33 +251,33 @@ review6 = Review.create!(
 )
 
 
-review7 = Review.create!(
-  message: "Karilyn had a lot of last minute requests which was stressful. Would communicate this before watching her kids again.",
-  rating: 3.5,
-  reviewer_id: amy.id,
-  reservation_id: reservation4.id
-)
+# review7 = Review.create!(
+#   message: "Karilyn had a lot of last minute requests which was stressful. Would communicate this before watching her kids again.",
+#   rating: 3.5,
+#   reviewer_id: amy.id,
+#   reservation_id: reservation4.id
+# )
 
-review8 = Review.create!(
-  message: "Amy had a lot of distracting phone calls this time my kids told me afterwards.",
-  rating: 3.5,
-  reviewer_id: karilyn.id,
-  reservation_id: reservation4.id
-)
+# review8 = Review.create!(
+#   message: "Amy had a lot of distracting phone calls this time my kids told me afterwards.",
+#   rating: 3.5,
+#   reviewer_id: karilyn.id,
+#   reservation_id: reservation4.id
+# )
 
 
-review9 = Review.create!(
-  message: "Michele was delightful and her kids were a blast.",
-  rating: 4.5,
-  reviewer_id: amy.id,
-  reservation_id: reservation5.id
-)
+# review9 = Review.create!(
+#   message: "Michele was delightful and her kids were a blast.",
+#   rating: 4.5,
+#   reviewer_id: amy.id,
+#   reservation_id: reservation5.id
+# )
 
-review10 = Review.create!(
-  message: "Amy has a real talent, got my kid to nap!",
-  rating: 4.5,
-  reviewer_id: michele.id,
-  reservation_id: reservation5.id
-)
+# review10 = Review.create!(
+#   message: "Amy has a real talent, got my kid to nap!",
+#   rating: 4.5,
+#   reviewer_id: michele.id,
+#   reservation_id: reservation5.id
+# )
 
 puts "Created #{Review.count} reviews."

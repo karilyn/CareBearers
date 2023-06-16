@@ -6,7 +6,8 @@ class ReservationsController < ApplicationController
     # @reservations = Reservation.all
     # find only reservations by that user logged in
     @reservations = Reservation.all
-    render json: @reservations
+    @reviews = Review.where(reviewer_id: @user.id)
+    render json:  { reservations: @reservations, reviews: @reviews }
   end
 
   # GET /reservations/1 or /reservations/1.json

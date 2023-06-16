@@ -29,7 +29,7 @@ const Requests = () => {
     instance.get('/reservations')
     .then((items) => {
       console.log('reservations: ', items.data);
-      const myEvents = items.data.filter((item) => {
+      const myEvents = items.data.reservations.filter((item) => {
         return item.caregiver_id === state.user.id;
       });
       setPendingRequests(getPendingReservations(myEvents));
