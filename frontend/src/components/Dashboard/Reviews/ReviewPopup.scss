@@ -1,4 +1,29 @@
-.review-popup {
+@import "../../../styles/variables.scss";
 
-  margin-left: 330px;
+.add-review-container {
+    display: flex;
+}
+
+h1.add-review-container-title {
+  font-family: $font-h1;
+  color: $dark-green-color;
+  padding-top: 1em;
+  padding-bottom: .5em;
+}
+
+.add-review-form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: right;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 2em;
+  border-radius: 1em;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.btn.add-kid {
+  width: 100%;
 }
