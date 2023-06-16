@@ -8,8 +8,7 @@ const Dashboard = (props) => {
 
   return (
     <>
-      <div>
-        <h1 className="dashboard">Dashboard</h1>
+      <div className='dashboard'>
         <Navbar />
         <Outlet />
       </div>
