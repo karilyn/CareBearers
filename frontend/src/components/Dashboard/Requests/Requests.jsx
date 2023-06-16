@@ -79,7 +79,7 @@ const Requests = () => {
   }
   return (
     <>
-    <Navbar />
+
     <div className="requests">
       <h2>Pending Requests</h2>
       {pendingRequests.length !== 0 &&  (pendingRequests.map((res) => {

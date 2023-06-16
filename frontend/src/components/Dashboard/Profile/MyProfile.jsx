@@ -65,7 +65,7 @@ const MyProfile = (props) => {
 
   return (
     <>
-      <Navbar />
+
       <div className='user-container'>
         <h1 className='user-container__title'>My Profile</h1>
         <div className='profile-container'>
