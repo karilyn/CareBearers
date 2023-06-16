@@ -104,9 +104,7 @@ function ReviewItems(props) {
                         } watched your kids at ${moment(res?.start_time).format(
                           'h:mm a'
                         )} for ${res?.duration_in_minutes} minutes`}
-
                     </p>
-
                     <button
                       className='btn review'
                       onClick={() => handleClickReview(index)}
@@ -117,9 +115,10 @@ function ReviewItems(props) {
                   </div>
                 </div>
               </div>
-              <div className='popup review'>
+
               {popup === index ? (
                 <ReviewPopup
+                className='popup review'
                   name={ isCaregiver ?
                     getParentDetails(parents, res?.parent_id).first_name : getCaregiverDetails(caregivers, res?.caregiver_id).first_name
                   }
@@ -130,7 +129,7 @@ function ReviewItems(props) {
               ) : (
                 ""
               )}
-              </div>
+
             </>
           );
         })}
