@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
 h1.booking-container__title {
   font-family: $font-h1;
@@ -16,7 +16,7 @@ h1.booking-container__title {
   width: 55%;
   margin: 0 auto;
   background-color: #ffffff;
-  margin-left: 33%
+  margin-left: 33%;
 }
 
 // Make the image  80% of the container
@@ -29,7 +29,7 @@ h1.booking-container__title {
 h4 {
   color: #ffffff;
   margin-top: 1em;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
 // Center the form and give it dark green background
@@ -45,7 +45,8 @@ h4 {
 }
 
 // Make the form inputs 80% of the container
-.react-datepicker-wrapper, .react-datepicker__input-container {
+.react-datepicker-wrapper,
+.react-datepicker__input-container {
   display: block !important;
 }
 
@@ -59,19 +60,15 @@ input.select-children {
   padding: 6px 10px 5px 10px;
 }
 
-input.address-input__input
-{
+input.address-input__input {
   width: 100%;
   padding: 6px 10px 5px 10px;
-  margin-top: .5em;
-
+  margin-top: 0.5em;
 }
 
 .btn.booking {
   width: 100%;
 }
-
-
 
 .caregivers {
   margin-top: 1em;
@@ -94,4 +91,3 @@ h4.caregivers__header {
 .caregivers__list {
   list-style-type: none;
 }
-
