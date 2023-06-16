@@ -67,7 +67,7 @@ function ReviewItems(props) {
       setCaregivers(filteredCaregivers);
       setParents(filteredParents);
     });
-  }, [isCaregiver, state.user.id, token, popup]);
+  }, []);
 
   console.log("completedCare:", completedReservations);
   console.log("caregivers:", caregivers);
@@ -110,7 +110,7 @@ function ReviewItems(props) {
 
                     <button
                       className='btn review'
-                      onClick={handleClickReview(index)}
+                      onClick={() => handleClickReview(index)}
                       disabled={res?.review ? true : false}
                     >
                       Leave a Review
