@@ -58,29 +58,27 @@ function ReviewItems(props) {
   return (
     <>
       <Navbar />
-      <h2>Completed Care Events</h2>
-      {completedReservations.map((res) => {
+      <div className='reviews-container'>
+        <h1 className='reviews-container__title'>Completed Care Events</h1>
+        {completedReservations.map((res) => {
         return (
           <>
-            <div className="card">
-              <img src="..." className="card-img-top" alt="..." />
+            <div className='completed-care-container'>
+              <div className='completed-care-card'>
+              <h5 className="card-title">{moment(res.start_time).format("MMM Do YYYY")}</h5>
               <div className="card-body">
-                <h5 className="card-title">
-                  {moment(res.start_time).format("MMM Do YYYY")}
-                </h5>
-                <p className="card-text">
-                  
-                  {getCaregiverDetails(caregivers, res.caregiver_id)
-                    ? getCaregiverDetails(caregivers, res.caregiver_id)
-                        .first_name
+              {getCaregiverDetails(caregivers, res.caregiver_id)
+                ? getCaregiverDetails(caregivers, res.caregiver_id)
+                  .first_name
                     : null}{" "}
                   watched your kids at {moment(res.start_time).format("h:mm a")}{" "}
                   for {res.duration_in_minutes} minutes
-                </p>
-                <button className="btn btn-primary" onClick={handleClickReview}>
-                  Review
+
+                <button className="btn review" onClick={handleClickReview}>
+                  Leave a review
                 </button>
               </div>
+            </div>
             </div>
             <div className="popup">
               {popup ? (
@@ -95,9 +93,12 @@ function ReviewItems(props) {
                 ""
               )}
             </div>
+
           </>
         );
       })}
+
+      </div>
     </>
   );
 }
