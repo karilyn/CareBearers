@@ -28,7 +28,7 @@ const MyProfile = (props) => {
     instance.get('/reservations').then((items) => {
       if (isCaregiver) {
         setMyReservations(
-          items.data.filter((item) => {
+          items.data.reservations.filter((item) => {
             return (
               item.caregiver_id === state.user.id && item.status === 'completed'
             );
@@ -36,7 +36,7 @@ const MyProfile = (props) => {
         );
       } else {
         setMyReservations(
-          items.data.filter((item) => {
+          items.data.reservations.filter((item) => {
             return (
               item.parent_id === state.user.id && item.status === 'completed'
             );
