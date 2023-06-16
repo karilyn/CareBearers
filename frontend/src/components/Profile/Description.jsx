@@ -30,7 +30,7 @@ const Description = (props) => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        state.user.is_caregiver ? navigate('/dashboard/profile') : navigate('/book');
+        state.user.is_caregiver ? navigate('/dashboard/requests') : navigate('/dashboard/book');
       });
   };
 
