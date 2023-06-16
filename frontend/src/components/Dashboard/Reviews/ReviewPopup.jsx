@@ -29,13 +29,12 @@ const ReviewPopup = (props) => {
   }
 
   return (
-    <div className='review-popup'>
-      <div className='review-popup__content'>
-        <h3>Review {props.name}</h3>
+    <div className='add-review-container'>
+      <div className='add-review-form'>
+        <h1 className='add-review-form__title'>Review {props.name}</h1>
           <form onSubmit={handleSubmit}>
-            <div className='form-group'>
-              <label for='message'>Message</label>
-                <input type="text" className='form-control' name='message' value={message}
+            <div className='form-outline mb-4'>
+                <input type="text" className='form-control' placeholder="Please review the booking and interaction" name='message' value={message}
                 onChange={(event) => {
                     setMessage(event.target.value);
                 }}/>
@@ -50,7 +49,7 @@ const ReviewPopup = (props) => {
                 }}
               />
             </div>
-            <button className='btn btn-primary' type="submit" onClick={props.onClick}>Submit</button>
+            <button className='btn review' type="submit">Submit Your Review</button>
 
           </form>
       </div>

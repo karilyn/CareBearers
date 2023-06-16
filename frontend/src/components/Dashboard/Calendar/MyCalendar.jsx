@@ -9,6 +9,7 @@ import Event from './Event';
 import './MyCalendar.scss';
 
 
+
 const MyCalendar = (props) => {
   const localizer = momentLocalizer(moment);
   const [clicked, setClicked] = useState(false);
@@ -20,7 +21,7 @@ const MyCalendar = (props) => {
 
   const token = state.token;
 
-  
+
   useEffect(() => {
     const instance = axios.create({
       baseURL: 'http://localhost:3000',
@@ -41,21 +42,21 @@ const MyCalendar = (props) => {
         });
       }
       setEvents(myEvents);
- 
+
     })
 
   },[token, state.user.id, isCaregiver])
 
 
   const myEventsList = events.map((event) => {
-   
+
     return {
       start: moment(event.start_time).toDate(),
       end: moment(event.start_time).add(event.duration_in_minutes, 'm').toDate(),
       title: event.status.charAt(0).toUpperCase() + event.status.slice(1) + ": " + event.city + ', ' + event.street
     }
   })
- 
+
   const handleEventClick = (event) => {
     setClicked(true)
     setClickedEvent(event)
@@ -66,7 +67,7 @@ const MyCalendar = (props) => {
     <>
       <Navbar />
       <div className="calendar">
-      <Calendar 
+      <Calendar
         localizer={localizer}
         events={myEventsList}
         startAccessor="start"

@@ -26,11 +26,13 @@ karilyn = User.create!(
   last_name: "Kempton",
   email: "parent1@parent.com",
   postal_code: "V0E2S0",
+  password_digest: BCrypt::Password.create('Your_Password'),
+  description: "I'm looking for a babysitter to occasionally watch my two delightful children, mostly later evenings and occasional weekends. FYI, we have a well-behaved dog and cat in case you're allergic.",
   password_digest: BCrypt::Password.create('1234'),
   description: "I am a parent looking for a babysitter to occasionally watch my two children.",
   gender: "female",
-  photo_url: "https://picsum.photos/100/100",
   is_caregiver: false,
+  photo_url: "https://i.imgur.com/TEbcGV2.jpg"
 )
 
 michele = User.create!(
@@ -51,7 +53,7 @@ john = User.create!(
   email: "john@johndoe.com",
   postal_code: "V0E2S0",
   password_digest: BCrypt::Password.create('1234'),
-  description: "Father of three looking for some extra help!",
+  description: "Father of three looking for some extra help over summer holidays!",
   gender: "male",
   is_caregiver: false,
   photo_url: "https://picsum.photos/100/100"
@@ -64,10 +66,10 @@ amy = User.create!(
   email: "amy@babysitting.com",
   postal_code: "V0E2S0",
   password_digest: BCrypt::Password.create('1234'),
-  description: "I am a babysitter looking for a family to work with.",
+  description: "I am an energetic, easy-going babysitter looking for families to work with. I'm a full-time university student. I love kids and I have a lot of experience.",
   gender: "female",
   is_caregiver: true,
-  photo_url: "https://picsum.photos/100/100"
+  photo_url: "https://i.imgur.com/v77wJ6t.jpeg"
 )
 
 sally = User.create!(
@@ -76,10 +78,10 @@ sally = User.create!(
   email: "sally@jones.com",
   postal_code: "V0E2S0",
   password_digest: BCrypt::Password.create('1234'),
-  description: "I'm a barista and I love kids! Looking to make some extra money by helping families who need care.",
+  description: "I'm a barista and I just really love kids! I've got tons of energy (must be the coffee!) Looking to make some extra money. I have a bunch of neices and newphews!",
   gender: "female",
   is_caregiver: true,
-  photo_url: "https://picsum.photos/100/100"
+  photo_url: "https://i.imgur.com/XMKdDWJ.jpg"
 )
 
 farah = User.create!(
@@ -87,11 +89,10 @@ farah = User.create!(
   last_name: "Khan",
   email: "farah@test.com",
   postal_code: "V0E2S0",
-  password_digest: BCrypt::Password.create('1234'),
-  description: "I am a stay-at-home mom looking to care for some extra kids",
+  description: "I am a stay-at-home parent looking to care for some extra kids in my own home. I've got a big backyard and lots of toys, and two kids of my own (6 and 8). I'm available during the day and on weekends.",
   gender: "female",
   is_caregiver: true,
-  photo_url: "https://picsum.photos/100/100"
+  photo_url: "https://i.imgur.com/vljdVAo.jpg"
 )
 
 puts "Created #{User.count} users."
@@ -100,15 +101,34 @@ puts "Created #{User.count} users."
 johnny = Kid.create!(
   name: "Johnny",
   age: 5,
-  description: "Spirited five year old who loves trucks and building things.",
+  parent_id: parent1.id,
+  description: "Johnny is a spirited five year old who loves trucks, building things, and having living room dance parties with glow sticks. He's a total sweetheart and a really funny kid. He asks a LOT of questions!",
   parent_id: karilyn.id
+  photo_url: "https://i.imgur.com/w4wMP96.jpg"
 )
 
 ada = Kid.create!(
   name: "Ada",
-  age: 3,
-  description: "Three year old who loves to read and play with her dinosaurs.",
+  age: 2,
+  description: "Ada is two years old and really loves to read books on your lap. She's a total snugglebug and she's super easy to put down for naps and bedtime. She likes to play with dinosaurs. She's got a peanut allergy so we're a nut-free house.",
   parent_id: karilyn.id
+  photo_url: "https://i.imgur.com/vVjgOAM.jpg"
+)
+
+lily = Kid.create!(
+  name: "Lily",
+  age: 2,
+  description: "Lily loves to play outside and go for walks.",
+  parent_id: parent2.id,
+  photo_url: "https://i.imgur.com/803xExI.jpg"
+)
+
+riley = Kid.create!(
+  name: "Riley",
+  age: 8,
+  description: "Riley loves to play soccer and read books (on his own and with you!). He will probably ask you to play video games with him, but he's not allowed to play for more than 30 minutes a day. He's a really sweet kid and he's very helpful. He gets an hour of Minecraft time after he finishes his homework.",
+  parent_id: john.id,
+  photo_url: "https://i.imgur.com/4iq9qrI.jpg"
 )
 
 miles = Kid.create!(

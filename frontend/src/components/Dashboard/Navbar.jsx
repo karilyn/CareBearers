@@ -25,7 +25,7 @@ const Navbar = () => {
 
   const isCaregiver = state?.user?.is_caregiver
 
-  
+
 
 
   return (

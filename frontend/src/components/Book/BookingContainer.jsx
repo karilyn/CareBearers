@@ -14,7 +14,6 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 
-
 function BookingContainer(props) {
   const [startTime, setStartTime] = useState(null);
   const [duration, setDuration] = useState("");
@@ -78,6 +77,7 @@ function BookingContainer(props) {
 
   return (
     <>
+
     <Navbar />
       <div className='booking-container'>
         <h1 className="booking-container__title">Book Childcare</h1>

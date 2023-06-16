@@ -1,3 +1,30 @@
-.kids-form-popup {
-  margin-left: 320px;
+@import "../../../styles/variables.scss";
+
+
+.add-kid-container {
+    display: flex;
+}
+
+h1.add-kid {
+  font-family: $font-h1;
+  color: $dark-green-color;
+  padding-top: 1em;
+  padding-bottom: .5em;
+}
+
+.add-kid-form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: right;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 2em;
+  border-radius: 1em;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.btn.add-kid {
+  width: 100%;
 }

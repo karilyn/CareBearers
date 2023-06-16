@@ -4,6 +4,7 @@ h1.booking-container__title {
   font-family: $font-h1;
   color: $dark-green-color;
   padding-left: none;
+  padding-top: 1em;
 }
 
 // Center the container and give it a white background
@@ -12,9 +13,10 @@ h1.booking-container__title {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 45%;
+  width: 55%;
   margin: 0 auto;
   background-color: #ffffff;
+  margin-left: 33%
 }
 
 // Make the image  80% of the container

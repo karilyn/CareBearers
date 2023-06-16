@@ -1,8 +1,48 @@
-.card {
-  width: 18rem;
-  margin-left: 330px;
+@import '../../../styles/variables.scss';
+
+
+.reviews-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  margin-left: 33%;
+  padding-bottom: 3em;
 }
 
-h2 {
-  margin-left: 320px;
+h1.reviews-container__title {
+  font-family: $font-h1;
+  color: $dark-green-color;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+}
+
+.completed-care-container {
+  width: 85%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: $dark-green-color;
+  padding: 2em;
+  border-radius: 1em;
+  margin-bottom: 1em;
+}
+
+.completed-care-card {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: right;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 2em;
+  border-radius: 1em;
+  margin-top: 1em;
+}
+
+.btn.review {
+  width: 100%;
 }

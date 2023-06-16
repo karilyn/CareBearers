@@ -13,7 +13,7 @@ const KidsPopup = (props) => {
     name: "",
     age: "",
     description: "",
-    parent_id: state.user.id
+    parent_id: state.user_id
   });
 
   const handleYearsMonths = (event) => {
@@ -38,31 +38,56 @@ const KidsPopup = (props) => {
     .then((data) => {
       console.log(data);
       props.setKids(data.kid);
-      
+
       props.setPopup();
     })
-  
+
   }
 
   return (
-    <div className='kids-form-popup'>
-      <div className='kids-form-popup__content'>
-        <h1>Add a Kid</h1>
+    <div className='add-kid-container'>
+      <div className='add-kid-form'>
         <form>
-          <div className='form-group'>
-            <input type="text" placeholder="Name" name='name' value={formData.name} onChange={handleChange}/>
+          <div className='form-outline mb-4'>
+            <input
+              type="text"
+              className='form-control'
+              placeholder="Child's name"
+              name='name'
+              value={formData.name}
+              onChange={handleChange}
+            />
           </div>
-          <div className='age'>
-            <input type="text" placeholder="Age" name='age' value={formData.age} onChange={handleChange}/>
-            <select className='dropdown-age' value={value} onChange={handleYearsMonths}>
-              <option value="years">years</option>
-              <option value="months">months</option>
-            </select>
+          <div className='form-row'>
+            <div className='col-4'>
+              <input type="text" className='form-control mb-2' placeholder="Age" name='age' value={formData.age} onChange={handleChange}/>
+            </div>
+            <div className='col-auto'>
+              <div className='form-check form-check-inline'>
+                <input className='form-check-input' type='radio' name='age' id='years' onChange={handleYearsMonths} value={value} defaultChecked/>
+                <label className='form-check-label' for='years'>years</label>
+              </div>
+              <div className='form-check form-check-inline'>
+                <input className='form-check-input' type='radio' name='age' id='months' onChange={handleYearsMonths} value={value} />
+                <label className='form-check-label' for='years'>months</label>
+              </div>
+            </div>
           </div>
-          <div className='form-group'>
-            <textarea rows='3' cols='60' name='description' value={formData.description} onChange={handleChange} placeholder="Description..."></textarea>
+          <div className='form-outline mb-4'>
+            <textarea
+              className='form-control'
+              rows='3'
+              name='description'
+              placeholder='A little bit about your child'
+              value={formData.description}
+              onChange={handleChange}
+            ></textarea>
           </div>
-          <Button text="Save" onClick={handleSubmit}  />
+          <div className='mb-3'>
+            <label for='image' className='form-label'>Upload an image</label>
+            <input type="file" className='form-control' name="image" id='image' accept="image/*" />
+          </div>
+          <button className='btn add-kid' type='submit' onClick={handleSubmit}>Save</button>
         </form>
       </div>
     </div>

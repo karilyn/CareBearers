@@ -4,7 +4,7 @@ class KidsController < ApplicationController
   # GET /kids or /kids.json
   def index
     # @kids = Kid.all
-    # get only kids associated with user logged in 
+    # get only kids associated with user logged in
     @kids = Kid.where(parent_id: @user.id)
     render json: @kids
   end
@@ -27,8 +27,8 @@ class KidsController < ApplicationController
     @kid = Kid.create(kid_params)
 
     if @kid.valid?
-      render json: { kid: @kid} 
-    else 
+      render json: { kid: @kid}
+    else
       render json: {error: "Could not create kid"}
     end
     # respond_to do |format|

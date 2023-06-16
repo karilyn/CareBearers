@@ -66,7 +66,7 @@ function ReviewItems(props) {
       setCaregivers(filteredCaregivers);
       setParents(filteredParents);
     });
-  }, [isCaregiver, state.user.id, token, popup]);
+  }, [isCaregiver, state.user, token]);
 
   console.log("completedCare:", completedReservations);
   console.log("caregivers:", caregivers);
@@ -76,35 +76,38 @@ function ReviewItems(props) {
   return (
     <>
       <Navbar />
-      <h2>Completed Care Events</h2>
-      {completedReservations.map((res, index) => {
+      <div className='reviews-container'>
+        <h1 className='reviews-container__title'>Completed Care Events</h1>
+        {completedReservations.map((res) => {
         return (
           <>
-            <div className="card" key={res?.id}>
-              <img src="..." className="card-img-top" alt="..." />
+            <div className='completed-care-container'>
+              <div className='completed-care-card'>
+              <h5 className="card-title">Date of care: {moment(res.start_time).format("MMM Do YYYY")}</h5>
+
               <div className="card-body">
-                <h5 className="card-title">
-                  {moment(res?.start_time).format("MMM Do YYYY")}
-                </h5>
+
                 <p className="card-text">
 
-                 {isCaregiver &&  (`You watched ${getParentDetails(parents, res?.parent_id)?.first_name}'s kids at ${moment(res?.start_time).format("h:mm a")} for ${res?.duration_in_minutes} minutes`) }
-
-
-                  {!isCaregiver && (
-                  `${getCaregiverDetails(caregivers, res?.caregiver_id)?.first_name} watched your kids at ${moment(res?.start_time).format("h:mm a")} for ${res?.duration_in_minutes} minutes`)}
-
+                  {getCaregiverDetails(caregivers, res.caregiver_id)
+                    ? getCaregiverDetails(caregivers, res.caregiver_id)
+                        .first_name
+                    : null}{" "}
+                  watched your kids at {moment(res.start_time).format("h:mm a")}{" "}
+                  for {res.duration_in_minutes} minutes
                 </p>
-                <button className="btn btn-primary" onClick={() => handleClickReview(index)} disabled={res?.review ? true : false}>
-                  Review
+
+                <button className="btn review" onClick={handleClickReview(index)} disabled={res?.review ? true : false}}>
+                  Leave a Review
                 </button>
               </div>
             </div>
-            <div className="popup">
-              {popup === index ? (
+            </div>
+            <div className="popup review">
+              {popup === index ?? (
                 <ReviewPopup
                   name={ isCaregiver ?
-                    getParentDetails(parents, res?.parent_id).first_name : getCaregiverDetails(caregivers, res?.caregiver_id).first_name 
+                    getParentDetails(parents, res?.parent_id).first_name : getCaregiverDetails(caregivers, res?.caregiver_id).first_name
                   }
                   reservation={res?.id}
                   handlePopup={() => setPopup(-1)}
@@ -114,9 +117,12 @@ function ReviewItems(props) {
                 ""
               )}
             </div>
+
           </>
         );
       })}
+
+      </div>
     </>
   );
 }
