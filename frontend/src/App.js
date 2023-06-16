@@ -13,6 +13,7 @@ import ReviewItems from './components/Dashboard/Reviews/ReviewItems';
 import Requests from './components/Dashboard/Requests/Requests';
 import MyProfile from './components/Dashboard/Profile/MyProfile';
 
+
 function App(props) {
 
   const { state, dispatch } = useAppState();
@@ -38,14 +39,15 @@ function App(props) {
           <Routes>
             <Route exact path='/' element={<Hero />} />
             <Route exact path='/auth/:form' element={<Auth />} />
-            <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/profile' element={<Description />} />
-            <Route path='/book' element={<BookingContainer />} />
-            <Route path='/kids' element={<MyKids />} />
-            <Route path='/calendar' element={<MyCalendar />} />
-            <Route path='/review' element={<ReviewItems />} />
-            <Route path='/requests' element={<Requests />} />
-            <Route path='/dashboard/profile' element={<MyProfile user={state.user}/>} />
+            <Route path='/dashboard' element={<Dashboard />}>
+              <Route path='/dashboard/book' element={<BookingContainer />} />
+              <Route path='/dashboard/kids' element={<MyKids />} />
+              <Route path='/dashboard/calendar' element={<MyCalendar />} />
+              <Route path='/dashboard/review' element={<ReviewItems />} />
+              <Route path='/dashboard/requests' element={<Requests />} />
+              <Route path='/dashboard/myprofile' element={<MyProfile user={state.user}/>} />
+            </Route>
           </Routes>
         </div>
       </div>
