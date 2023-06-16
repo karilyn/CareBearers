@@ -31,7 +31,7 @@ const ReviewPopup = (props) => {
   return (
     <div className='review-popup'>
       <div className='review-popup__content'>
-        <h1>Review {props.name}</h1>
+        <h3>Review {props.name}</h3>
           <form onSubmit={handleSubmit}>
             <div className='form-group'>
               <label for='message'>Message</label>
@@ -50,7 +50,7 @@ const ReviewPopup = (props) => {
                 }}
               />
             </div>
-            <button className='btn btn-primary' type="submit">Submit</button>
+            <button className='btn btn-primary' type="submit" onClick={props.onClick}>Submit</button>
 
           </form>
       </div>
