@@ -1,15 +1,45 @@
-@import "../../../styles/variables.scss";
+@import '../../../styles/variables.scss';
 
-
-.add-kid-container {
-    display: flex;
+.popup {
+  width: 110%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 2em;
+  padding-right: 0;
+  padding-left: 0;
+  // border-radius: 1em;
+  // margin-bottom: 1em;
 }
 
-h1.add-kid {
-  font-family: $font-h1;
+.add-kid-container {
+  width: 78%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: $olive-green-color;
+  padding: 2em;
+  border-radius: 1em;
+  margin-bottom: 1em;
+}
+
+h2.add-kid-card__title {
   color: $dark-green-color;
-  padding-top: 1em;
-  padding-bottom: .5em;
+  padding-left: 0.5em;
+}
+
+.add-kid-card {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 2em;
+  border-radius: 1em;
+  margin-bottom: 1em;
 }
 
 .add-kid-form {
@@ -18,13 +48,11 @@ h1.add-kid {
   justify-content: space-between;
   align-items: right;
   flex-direction: column;
-  background-color: #ffffff;
-  padding: 2em;
+  padding: 1em;
   border-radius: 1em;
   margin-bottom: 1em;
-  margin-top: 1em;
+  margin-top: 0;
 }
-
-.btn.add-kid {
-  width: 100%;
-}
+// .btn.add-kid {
+//   width: 100%;
+// }

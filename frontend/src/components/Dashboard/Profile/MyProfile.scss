@@ -31,6 +31,10 @@ h1.user-container__title {
   margin-bottom: 1em;
 }
 
+.card-title {
+  color: $dark-green-color;
+}
+
 .profile-card {
   width: 100%;
   display: flex;
@@ -46,4 +50,8 @@ h1.user-container__title {
 .button-container {
   display: flex;
   justify-content: space-between;
+}
+
+.btn.edit {
+  width: 100%;
 }
