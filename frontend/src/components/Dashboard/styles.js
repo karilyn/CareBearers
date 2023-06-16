@@ -21,7 +21,8 @@ export const navbarStyles = {
     "& span": {
       marginLeft: "-10px",
       fontWeight: "600",
-      fontSize: "16px,",
+      fontSize: "20px",
+      fontFamily: "Source Sans Pro",
     },
   },
 };
