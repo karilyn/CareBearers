@@ -7,7 +7,7 @@ const ReviewPopup = (props) => {
   const [message, setMessage] = useState('');
   const [rating, setRating] = useState(0);
 
-  const { state, dispatch } = useAppState();
+  const { state } = useAppState();
   const token = state.token;
 
   const handleSubmit = (event) => {
