@@ -32,9 +32,22 @@ const Navbar = () => {
       anchor="left"
       style={{ width: "20%" }}
     >
-      <Toolbar />
-      <Divider />
+    
       <List>
+        <ListItem 
+          button
+          key="logo"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <ListItemButton>
+            <ListItemText sx={{ fontFamily: "Lobster", fontSize: "40px", marginLeft: "20px" }} 
+              disableTypography
+            primary="Care Bearers" />
+          </ListItemButton>
+        </ListItem>
+      <Divider />
         {(isCaregiver ? caregiverNavBarItems : parentNavBarItems).map(
           (item, index) => (
             <ListItem
