@@ -22,7 +22,7 @@ const MyKids = (props) => {
     if (popup) {
       bottomEl.current?.scrollIntoView({ behavior: "smooth" });
     }
-  })
+  }, [popup])
 
   useEffect(() => {
     const instance = axios.create({
