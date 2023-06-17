@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./MyKids.scss";
-import { useAppState } from "../../../AppState.jsx";
+// import { useAppState } from "../../../AppState.jsx";
 import axios from "axios";
 import KidsPopup from "./KidsPopup";
 
@@ -15,8 +15,9 @@ const MyKids = (props) => {
 
   const [kids, setKids] = useState([]);
 
-  const { state } = useAppState();
-  const token = state.token;
+  // const { state } = useAppState();
+  // const token = state.token;
+  const token = JSON.parse(window.localStorage.getItem("auth")).token;
 
   useEffect(() => {
     if (popup) {
