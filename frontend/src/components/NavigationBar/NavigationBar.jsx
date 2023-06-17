@@ -16,7 +16,7 @@ const NavigationBar = (props) => {
           <li className="SignUp"><Link to='/auth/signup'>Sign Up</Link> </li>
           <li><Link to='/auth/login'>Login</Link> </li>
         </ul>
-        {state.token && <div onClick={() => {
+        {state.token && <div className='logout' onClick={() => {
           dispatch({type: 'logout'});
           navigate('/');
         }}>Logout</div>}
