@@ -74,9 +74,9 @@ const Requests = () => {
   };
   return (
     <>
-      <div className='requests-container'>
-        <h1 className='requests-container__title'>My Pending Requests</h1>
-        <div className='requests-container-mapped'>
+      <div className='request-container'>
+        <h1 className='request-container__title'>My Pending Requests</h1>
+        <div className='request-container-mapped'>
           {pendingRequests.length !== 0 &&
             pendingRequests.map((res) => {
               return (
@@ -96,7 +96,7 @@ const Requests = () => {
                     <button className='btn request decline' onClick={() => clickButton(2, res?.id)}>
                       Decline
                     </button>
-                    <button className='btn request details' text='Details' onClick={() => onClickDetails(res)}>
+                    <button className='btn request details' onClick={() => onClickDetails(res)}>
                       Details
                     </button>
                     </div>

@@ -1,3 +1,5 @@
+@import '../../../styles/variables.scss';
+
 .popup-request {
   position: fixed;
   top: 0;
@@ -9,6 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 1em;
 }
 
 .popup-request__inner {
@@ -22,11 +25,13 @@
     position: absolute;
     top: 16px;
     right: 16px;
-
   }
 
-  img {
-    border-radius: 50%;
-    max-width: 25%;
+  .p-popup {
+    margin-bottom: .5em;
+  }
+
+  .card-img-top__background.request {
+    margin-left: 0;
   }
 }
