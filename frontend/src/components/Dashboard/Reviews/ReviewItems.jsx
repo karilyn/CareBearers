@@ -83,7 +83,7 @@ function ReviewItems(props) {
             <>
               <div className='completed-care-container'>
                 <div className='completed-care-card' key={res?.id}>
-                  <h5 className='card-title'>
+                  <h5 className='card-title review'>
                     Date of care:{' '}
                     {moment(res?.start_time).format('MMM Do YYYY')}
                   </h5>
