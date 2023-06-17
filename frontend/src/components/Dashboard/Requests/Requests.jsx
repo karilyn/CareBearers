@@ -18,7 +18,10 @@ const Requests = () => {
   const [resData, setResData] = useState({});
 
   const { state } = useAppState();
-  const token = state.token;
+  // const token = state.token;
+
+  const token = JSON.parse(window.localStorage.getItem('auth')).token;
+  const userID = JSON.parse(window.localStorage.getItem('auth')).id;
 
   useEffect(() => {
     const instance = axios.create({
@@ -29,7 +32,7 @@ const Requests = () => {
     instance.get('/reservations').then((items) => {
       console.log('reservations: ', items.data);
       const myEvents = items.data.reservations.filter((item) => {
-        return item.caregiver_id === state.user.id;
+        return item.caregiver_id === userID;
       });
       setPendingRequests(getPendingReservations(myEvents));
     });
@@ -41,7 +44,7 @@ const Requests = () => {
 
       setParents(filteredParents);
     });
-  }, [token, state?.user?.id]);
+  }, [token, userID]);
 
   const clickButton = (status, id) => {
     fetch(`${state.url}/reservations/${id}`, {
