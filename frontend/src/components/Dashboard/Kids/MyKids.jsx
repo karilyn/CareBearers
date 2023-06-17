@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./MyKids.scss";
-import { useAppState } from "../../../AppState.jsx";
+// import { useAppState } from "../../../AppState.jsx";
 import axios from "axios";
 import KidsPopup from "./KidsPopup";
 
@@ -15,8 +15,9 @@ const MyKids = (props) => {
 
   const [kids, setKids] = useState([]);
 
-  const { state } = useAppState();
-  const token = state.token;
+  // const { state } = useAppState();
+  // const token = state.token;
+  const token = JSON.parse(window.localStorage.getItem("auth")).token;
 
   useEffect(() => {
     if (popup) {
@@ -52,7 +53,7 @@ const MyKids = (props) => {
           {kids.length !== 0
             ? kids.map((kid) => {
                 return (
-                  <div className="kid-card">
+                  <div className="kid-card" key={kid?.id}>
                     <div className="card-img-top__background">
                       <img
                         src={kid.photo_url}

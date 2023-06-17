@@ -15,11 +15,13 @@ const MyCalendar = (props) => {
   const [clickedEvent, setClickedEvent] = useState(null);
   const [events, setEvents] = useState([]);
 
-  const { state } = useAppState();
-  const isCaregiver = state.user.is_caregiver;
+  // const { state } = useAppState();
+  // const isCaregiver = state.user.is_caregiver;
+  // const token = state.token;
 
-  const token = state.token;
-
+  const token = JSON.parse(window.localStorage.getItem('auth')).token;
+  const isCaregiver = JSON.parse(window.localStorage.getItem('auth')).isCaregiver;
+  const userID = JSON.parse(window.localStorage.getItem('auth')).id;
 
   useEffect(() => {
     const instance = axios.create({
@@ -33,18 +35,18 @@ const MyCalendar = (props) => {
       let myEvents;
       if (isCaregiver) {
         myEvents = items.data.reservations.filter((item) => {
-          return item.caregiver_id === state.user.id;
+          return item.caregiver_id === userID;
         });
       } else {
         myEvents = items.data.reservations.filter((item) => {
-          return item.parent_id === state.user.id;
+          return item.parent_id === userID;
         });
       }
       setEvents(myEvents);
 
     })
 
-  },[token, state.user.id, isCaregiver])
+  },[token, userID, isCaregiver])
 
 
   const myEventsList = events.map((event) => {

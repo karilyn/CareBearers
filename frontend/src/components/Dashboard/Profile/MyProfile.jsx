@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../Navbar';
 import './MyProfile.scss';
 import axios from 'axios';
-import { useAppState } from '../../../AppState';
+// import { useAppState } from '../../../AppState';
 import Rating from '@mui/material/Rating';
 // import { useNavigate } from 'react-router';
 
@@ -10,15 +9,24 @@ const MyProfile = (props) => {
   // const navigate = useNavigate();
   const [reviews, setReviews] = useState([]);
   const [myReservations, setMyReservations] = useState([]);
+  const [user, setUser] = useState({});
 
-  const { state } = useAppState();
-  const token = state.token;
-  const isCaregiver = state.user.is_caregiver;
+  // const { state } = useAppState();
+  // const token = state.token;
+  // const isCaregiver = state.user.is_caregiver;
+
+  const token = JSON.parse(window.localStorage.getItem('auth')).token;
+  const isCaregiver = JSON.parse(window.localStorage.getItem('auth')).isCaregiver;
+  const userID = JSON.parse(window.localStorage.getItem('auth')).id;
 
   useEffect(() => {
     const instance = axios.create({
       baseURL: 'http://localhost:3000',
       headers: { Authorization: 'Bearer ' + token },
+    });
+
+    instance.get(`/users/${userID}`).then((items) => {
+      setUser(items.data);
     });
 
     instance.get('/reviews').then((items) => {
@@ -30,7 +38,7 @@ const MyProfile = (props) => {
         setMyReservations(
           items.data.reservations.filter((item) => {
             return (
-              item.caregiver_id === state.user.id && item.status === 'completed'
+              item.caregiver_id === userID && item.status === 'completed'
             );
           })
         );
@@ -38,13 +46,13 @@ const MyProfile = (props) => {
         setMyReservations(
           items.data.reservations.filter((item) => {
             return (
-              item.parent_id === state.user.id && item.status === 'completed'
+              item.parent_id === userID && item.status === 'completed'
             );
           })
         );
       }
     });
-  }, [token, isCaregiver]);
+  }, [token, isCaregiver, userID]);
 
   console.log('My reservations: ', myReservations);
 
@@ -52,7 +60,7 @@ const MyProfile = (props) => {
 
   for (const res of myReservations) {
     for (const rev of reviews) {
-      if (rev.reservation_id === res.id && rev.reviewer_id !== state.user.id) {
+      if (rev.reservation_id === res.id && rev.reviewer_id !== userID) {
         myReviews.push(rev.rating);
       }
     }
@@ -72,14 +80,14 @@ const MyProfile = (props) => {
           <div className='profile-card'>
             <div className='card-img-top__background'>
               <img
-                src={props.user.photo_url}
+                src={user?.photo_url}
                 className='card-img-top'
-                alt={props.first_name}
+                alt={user?.first_name}
               />
             </div>
             <div className='card-body'>
               <h2 className='card-title'>
-                {props.user.first_name} {props.user.last_name}
+                {user?.first_name} {user?.last_name}
               </h2>
               <div className='rating'>
                 <h5>Rated by {isCaregiver ? 'parents' : 'caregivers'}: </h5>
@@ -92,7 +100,7 @@ const MyProfile = (props) => {
                   precision={0.5}
                 />
               </div>
-              <p className='card-text'>{props.user.description}</p>
+              <p className='card-text'>{user?.description}</p>
               <div className='button-container'>
                 <button className='btn edit' onClick={handleClickEdit}>
                   Edit My Profile
