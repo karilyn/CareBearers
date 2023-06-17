@@ -78,7 +78,7 @@ function BookingContainer(props) {
   return (
     <>
 
-  
+
       <div className='booking-container'>
         <h1 className="booking-container__title">Book Childcare</h1>
           <img className="booking-container__img" src={cartoon_care} alt='children_playing' />
@@ -92,6 +92,7 @@ function BookingContainer(props) {
                   <h4>When do you need childcare?</h4>
                     <div className='datepicker-container__input'>
                       <DatePicker
+                        className='booking'
                         showIcon
                         selected={startTime}
                         onChange={(date) => setStartTime(date)}
