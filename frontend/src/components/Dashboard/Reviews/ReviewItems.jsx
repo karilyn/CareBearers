@@ -81,10 +81,10 @@ function ReviewItems(props) {
 
       <div className='reviews-container'>
         <h1 className='reviews-container__title'>Completed Care Events</h1>
+        <div className='completed-care-container'>
         {completedReservations.map((res, index) => {
           return (
             <>
-              <div className='completed-care-container'>
                 <div className='completed-care-card' key={res?.id}>
                   <h5 className='card-title'>
                     Date of care:{' '}
@@ -117,7 +117,7 @@ function ReviewItems(props) {
                     </button>
                   </div>
                 </div>
-              </div>
+              
 
               {popup === index ? (
                 <ReviewPopup
@@ -136,6 +136,7 @@ function ReviewItems(props) {
             </>
           );
         })}
+        </div>
       </div>
     </>
   );
