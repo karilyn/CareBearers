@@ -110,7 +110,7 @@ function BookingContainer(props) {
                       type='number'
                       min='1'
                       max='10'
-                      placeholder='One hour'
+                      placeholder='1'
                       value={duration}
                       onChange={(event) => {setDuration(event.target.value)}}
                     />
@@ -125,7 +125,7 @@ function BookingContainer(props) {
                           type='number'
                           min='1'
                           max='10'
-                          placeholder='One'
+                          placeholder='1'
                           onChange={(event) =>{setChildren(event.target.value)}} />
                       </div>
                   </div>
