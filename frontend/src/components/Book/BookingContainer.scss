@@ -44,10 +44,10 @@ h4 {
   border-radius: 1em;
 }
 
-// Make the form inputs 80% of the container
-.react-datepicker-wrapper,
-.react-datepicker__input-container {
-  display: block !important;
+
+
+.react-datepicker__view-calendar-icon input {
+  padding: 6px 150px 5px 10px;
 }
 
 input.select-hours {
