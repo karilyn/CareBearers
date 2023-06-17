@@ -24,8 +24,11 @@ function ReviewItems(props) {
   const [parents, setParents] = useState([]);
 
   const { state } = useAppState();
-  const token = state.token;
-  const isCaregiver = state.user?.is_caregiver;
+  // const token = state.token;
+  // const isCaregiver = state.user?.is_caregiver;
+  const token = JSON.parse(window.localStorage.getItem('auth')).token;
+  const isCaregiver = JSON.parse(window.localStorage.getItem('auth')).isCaregiver;
+  const userID = JSON.parse(window.localStorage.getItem('auth')).id;
 
   useEffect(() => {
     const instance = axios.create({
@@ -38,11 +41,11 @@ function ReviewItems(props) {
       let myEvents;
       if (isCaregiver) {
         myEvents = items.data.reservations.filter((item) => {
-          return item.caregiver_id === state.user?.id;
+          return item.caregiver_id === userID;
         });
       } else {
         myEvents = items.data.reservations.filter((item) => {
-          return item.parent_id === state.user?.id;
+          return item.parent_id === userID;
         });
       }
       items.data.reviews.forEach((review) => {
@@ -67,7 +70,7 @@ function ReviewItems(props) {
       setCaregivers(filteredCaregivers);
       setParents(filteredParents);
     });
-  }, [popup]);
+  }, [popup, isCaregiver, token, userID]);
 
   console.log("completedCare:", completedReservations);
   console.log("caregivers:", caregivers);
