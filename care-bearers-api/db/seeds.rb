@@ -42,7 +42,7 @@ michele = User.create!(
   description: "Working professional looking for regular evening childcare.",
   gender: "female",
   is_caregiver: false,
-  photo_url: "https://picsum.photos/100/100"
+  photo_url: "https://media.gettyimages.com/id/155437513/photo/candid-beauty-portrait-woman-peeking-out-behind-a-tree.webp?s=1024x1024&w=gi&k=20&c=oeyyEdLr-vzusX_bvw1URXA3m9zFd3ISQ9U_bVU4oBc="
 )
 
 john = User.create!(
