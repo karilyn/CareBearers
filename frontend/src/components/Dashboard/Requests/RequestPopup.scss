@@ -11,6 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 1em;
 }
 
 .popup-request__inner {
@@ -27,7 +28,7 @@
   }
 
   .p-popup {
-    margin: 0;
+    margin-bottom: .5em;
   }
 
   .card-img-top__background.request {

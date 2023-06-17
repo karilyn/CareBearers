@@ -20,10 +20,10 @@ const RequestPopup = (props) => {
             </div>
           </div>
           {/* <img src={props.popupData.photo_url} alt="profile" /> */}
-          <p>
+          <p className="p-popup">
             <strong>About {props.popupData.first_name}:</strong> {props.popupData.description}
           </p>
-          <p><strong>Contact: </strong>{props.popupData.email}</p>
+          <p className="p-popup"><strong>Contact: </strong>{props.popupData.email}</p>
         </div>
       </div>
     </div>
