@@ -53,7 +53,7 @@ const MyKids = (props) => {
           {kids.length !== 0
             ? kids.map((kid) => {
                 return (
-                  <div className="kid-card">
+                  <div className="kid-card" key={kid?.id}>
                     <div className="card-img-top__background">
                       <img
                         src={kid.photo_url}
