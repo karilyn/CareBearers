@@ -29,7 +29,7 @@ function BookingContainer(props) {
 
   const handleClose = () => {
     setOpen(false);
-    navigate("/calendar");
+    navigate("/dashboard/calendar");
   }
 
   const { state } = useAppState();
