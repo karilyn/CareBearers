@@ -1,6 +1,6 @@
 @import '../../../styles/variables.scss';
 
-.requests-container {
+.request-container {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -12,14 +12,14 @@
   z-index: 100;
 }
 
-.requests-container__title {
+.request-container__title {
   font-family: $font-h1;
   color: $dark-green-color;
-  padding-top: 1em;
+  padding-top: .5em;
   padding-bottom: 0.5em;
 }
 
-.requests-container-mapped {
+.request-container-mapped {
   width: 85%;
   display: flex;
   justify-content: center;
@@ -40,6 +40,7 @@
   background-color: #ffffff;
   padding: 2em;
   border-radius: 1em;
+  margin-bottom: 1em;
 }
 
 .request.card-title {
@@ -50,6 +51,12 @@
   display: flex;
   justify-content: space-between;
 }
+
+.btn.request {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
 .btn.request:hover {
   background-color: #F5F5DC;
   color: $dark-green-color;
