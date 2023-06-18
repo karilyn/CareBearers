@@ -17,6 +17,7 @@ const Requests = () => {
   const [parentData, setParentData] = useState({});
   const [resData, setResData] = useState({});
   const [reviews, setReviews] = useState([]);
+  const [kids, setKids] = useState([]);
 
   const { state } = useAppState();
   // const token = state.token;
@@ -50,6 +51,10 @@ const Requests = () => {
       setReviews(items.data);
     });
 
+    instance.get('/kids').then((items) => {
+      setKids(items.data.kids);
+    });
+
   }, [token, userID]);
 
   const parentReviews = [];
@@ -62,6 +67,7 @@ const Requests = () => {
     }
   }
 
+  
 
   const clickButton = (status, id) => {
     fetch(`${state.url}/reservations/${id}`, {
@@ -86,7 +92,7 @@ const Requests = () => {
 
   console.log('pendingRequests:', pendingRequests);
   console.log('parents:', parents);
-
+  console.log('kids:', kids);
   const onClickDetails = (id) => {
     setParentData(getParentDetails(parents, id.parent_id));
     setResData(id);
@@ -136,6 +142,7 @@ const Requests = () => {
                       popupData={parentData}
                       resData={resData}
                       parentRating={parentReviews.reduce((a, b) => a + b, 0) / parentReviews.length}
+                      kids={kids}
                     />
                   </div>
                 </div>
