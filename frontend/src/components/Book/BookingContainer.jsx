@@ -3,9 +3,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import CaregiverList from "../Book/CaregiverList";
 import cartoon_care from '../../assets/cartoon_care.jpeg'
-import Navbar from '../Dashboard/Navbar'
 import './BookingContainer.scss'
-import { useAppState } from "../../AppState";
+// import { useAppState } from "../../AppState";
 import { useNavigate } from "react-router-dom";
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -32,11 +31,12 @@ function BookingContainer(props) {
     navigate("/dashboard/calendar");
   }
 
-  const { state } = useAppState();
+  // const { state } = useAppState();
 
   const navigate = useNavigate();
 
-  const token = state.token;
+  // const token = state.token;
+  const token = JSON.parse(window.localStorage.getItem("auth")).token;
 
   // submit the form
   function handleSubmit(event) {

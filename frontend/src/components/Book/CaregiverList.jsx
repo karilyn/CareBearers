@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import CaregiverListItem from './CaregiverListItem'
 import './CaregiverList.scss'
 import axios from 'axios';
-import { useAppState } from '../../AppState';
+// import { useAppState } from '../../AppState';
 
 // holds all caregiverListItem components
 // three props: caregivers, setCaregiver, caregiverId
@@ -12,15 +12,16 @@ export default function CaregiverList(props) {
 
   const [caregivers, setCaregivers] = useState([]);
 
-  const { state, dispatch } = useAppState();
-  const token = state.token;
+  // const { state, dispatch } = useAppState();
+  // const token = state.token;
+  const token = JSON.parse(window.localStorage.getItem('auth')).token;
 
-  const instance = axios.create({
-    baseURL: 'http://localhost:3000',
-    headers: {'Authorization': 'Bearer '+ token}
-  });
-
+  
   useEffect(() => {
+    const instance = axios.create({
+      baseURL: 'http://localhost:3000',
+      headers: {'Authorization': 'Bearer '+ token}
+    });
 
     instance.get('/users')
     .then((items) => {
@@ -30,7 +31,7 @@ export default function CaregiverList(props) {
       setCaregivers(filteredCaregivers);
     })
   
-  },[])
+  },[token])
 
 
   // map the caregivers array to caregiverListItem components

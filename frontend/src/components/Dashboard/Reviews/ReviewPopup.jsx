@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import Rating from '@mui/material/Rating';
 import './ReviewPopup.scss';
-import { useAppState } from '../../../AppState';
+// import { useAppState } from '../../../AppState';
 
 const ReviewPopup = (props) => {
   const [message, setMessage] = useState('');
   const [rating, setRating] = useState(0);
 
-  const { state } = useAppState();
-  const token = state.token;
+  // const { state } = useAppState();
+  // const token = state.token;
+
+  const token = JSON.parse(window.localStorage.getItem('auth')).token;
 
   const handleSubmit = (event) => {
     event.preventDefault();

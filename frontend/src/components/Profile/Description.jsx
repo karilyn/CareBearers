@@ -6,6 +6,9 @@ import NavigationBar from '../NavigationBar/NavigationBar.jsx';
 
 const Description = (props) => {
   const { state } = useAppState();
+  const userID = JSON.parse(window.localStorage.getItem('auth')).id;
+  const isCaregiver = JSON.parse(window.localStorage.getItem('auth')).isCaregiver;
+
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -20,7 +23,7 @@ const Description = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(`${state.url}/users/${state.user.id}`, {
+    fetch(`${state.url}/users/${userID}`, {
       method: 'put',
       headers: {
         'Content-Type': 'application/json',
@@ -30,7 +33,7 @@ const Description = (props) => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        state.user.is_caregiver ? navigate('/dashboard/requests') : navigate('/dashboard/book');
+        isCaregiver ? navigate('/dashboard/requests') : navigate('/dashboard/book');
       });
   };
 

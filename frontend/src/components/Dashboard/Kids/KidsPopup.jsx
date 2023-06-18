@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import './KidsPopup.scss';
-import { useAppState } from '../../../AppState.jsx';
+// import { useAppState } from '../../../AppState.jsx';
 
 const KidsPopup = (props) => {
   const [value, setValue] = useState('years');
-  const { state } = useAppState();
+  // const { state } = useAppState();
+
+  const parentID = JSON.parse(window.localStorage.getItem('auth')).id;
+  const token = JSON.parse(window.localStorage.getItem('auth')).token;
 
   const [formData, setFormData] = useState({
     name: '',
     age: '',
     description: '',
-    parent_id: state.user_id,
+    parent_id: parentID,
   });
 
   const handleYearsMonths = (event) => {
@@ -27,7 +30,7 @@ const KidsPopup = (props) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + state.token,
+        Authorization: 'Bearer ' + token,
       },
       body: JSON.stringify({ kid: formData }),
     })

@@ -6,7 +6,9 @@ import { useNavigate } from 'react-router-dom';
 
 const NavigationBar = (props) => {
 
-  const { state, dispatch } = useAppState();
+  const { dispatch } = useAppState();
+  const isToken = JSON.parse(window.localStorage.getItem('auth')) !== null;
+
   const navigate = useNavigate();
 
   return (
@@ -16,10 +18,10 @@ const NavigationBar = (props) => {
           <li className="SignUp"><Link to='/auth/signup'>Sign Up</Link> </li>
           <li><Link to='/auth/login'>Login</Link> </li>
         </ul>
-        {state.token && <div className='logout' onClick={() => {
+        {isToken ? (<div className='logout' onClick={() => {
           dispatch({type: 'logout'});
           navigate('/');
-        }}>Logout</div>}
+        }}>Logout</div>) : ''}
     </nav>
   )
 }

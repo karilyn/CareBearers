@@ -20,9 +20,10 @@ const Navbar = () => {
     setSelectedIndex(index);
   };
 
-  const { state, dispatch } = useAppState();
+  const { dispatch } = useAppState();
 
-  const isCaregiver = state?.user?.is_caregiver;
+  // const isCaregiver = state?.user?.is_caregiver;
+  const isCaregiver = JSON.parse(window.localStorage.getItem('auth')).isCaregiver;
 
   return (
     <Drawer
