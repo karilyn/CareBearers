@@ -7,7 +7,7 @@ const RequestPopup = (props) => {
       <div className="popup-request__inner">
         <button className='close-btn' onClick={() => props.setTrigger(false)}>close</button>
         <h5>Reservation for: {props.popupData.first_name} {props.popupData.last_name}</h5>
-        <p className="p-popup"><strong>Number of children:</strong> {props.numOfKids}</p>
+        <p className="p-popup"><strong>Number of children:</strong> {props.resData.num_of_children}</p>
         <p><strong>Address:</strong> {props.resData.street}, {props.resData.city}, {props.resData.province}, {props.resData.post_code}</p>
         <div className="popup-request__inner__parent">
           <div className='popup-request-card__img'>

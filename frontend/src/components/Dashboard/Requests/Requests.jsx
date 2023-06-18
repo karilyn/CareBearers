@@ -108,7 +108,6 @@ const Requests = () => {
                       trigger={buttonPopup}
                       setTrigger={setButtonPopup}
                       popupData={parentData}
-                      numOfKids={res?.num_of_children}
                       resData={resData}
                     />
                   </div>
