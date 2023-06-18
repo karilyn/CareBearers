@@ -16,7 +16,7 @@ import MyProfile from './components/Dashboard/Profile/MyProfile';
 
 function App(props) {
 
-  const { state, dispatch } = useAppState();
+  const { dispatch } = useAppState();
   const navigate = useNavigate();
 
   React.useState(() => {
@@ -46,7 +46,7 @@ function App(props) {
               <Route path='/dashboard/calendar' element={<MyCalendar />} />
               <Route path='/dashboard/review' element={<ReviewItems />} />
               <Route path='/dashboard/requests' element={<Requests />} />
-              <Route path='/dashboard/myprofile' element={<MyProfile user={state.user}/>} />
+              <Route path='/dashboard/myprofile' element={<MyProfile />} />
             </Route>
           </Routes>
         </div>
