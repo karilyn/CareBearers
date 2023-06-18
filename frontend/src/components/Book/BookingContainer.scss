@@ -73,7 +73,7 @@ input.address-input__input {
 .caregivers {
   margin-top: 1em;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
   width: 100%;
   margin-left: auto;
@@ -86,6 +86,7 @@ input.address-input__input {
 
 h4.caregivers__header {
   margin-left: 1em;
+  padding-left: 1em;
 }
 
 .caregivers__list {
