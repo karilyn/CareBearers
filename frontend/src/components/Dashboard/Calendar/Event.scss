@@ -1,0 +1,44 @@
+@import '../../../styles/variables.scss';
+
+.event-container {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: $olive-green-color;
+  padding: 1em;
+  border-radius: 1em;
+}
+
+h3.event-card__title {
+  color: $dark-green-color;
+  margin: 0px;
+}
+
+.event-card {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 0.5em;
+  border-radius: 1em;
+
+  .icons {
+    padding: 0px;
+  }
+}
+
+p.event-card__description {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: right;
+  flex-direction: column;
+
+  border-radius: 1em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
