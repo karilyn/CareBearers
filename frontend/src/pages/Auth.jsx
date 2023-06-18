@@ -30,7 +30,6 @@ const Auth = (props) => {
       else{
         console.log(userData);
         const { token, user } = userData;
-        console.log(user);
         dispatch({ type: 'auth', payload: { token, email: user.email, user_id: user.id, user: user } });
         window.localStorage.setItem(
           "auth",
@@ -68,7 +67,6 @@ const Auth = (props) => {
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
-    console.log('Form data:', formData);
   };
 
   const handleSubmit = (event) => {
