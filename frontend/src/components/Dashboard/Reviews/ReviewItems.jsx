@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useAppState } from '../../../AppState.jsx';
+// import { useAppState } from '../../../AppState.jsx';
 import axios from 'axios';
-import Navbar from '../Navbar.jsx';
 import {
   getCompletedReservations,
   getCaregiverDetails,
@@ -23,7 +22,7 @@ function ReviewItems(props) {
   const [caregivers, setCaregivers] = useState([]);
   const [parents, setParents] = useState([]);
 
-  const { state } = useAppState();
+  // const { state } = useAppState();
   // const token = state.token;
   // const isCaregiver = state.user?.is_caregiver;
   const token = JSON.parse(window.localStorage.getItem('auth')).token;
