@@ -105,7 +105,7 @@ function BookingContainer(props) {
                         placeholderText="Click to pick a date"
                       />
                     </div>
-                    <div class="mb-3">
+                    <div className="mb-3">
                       <label for="select-hours" className="form-label book">For how many hours do you need childcare?</label>
                       <input
                         id="select-hours"
