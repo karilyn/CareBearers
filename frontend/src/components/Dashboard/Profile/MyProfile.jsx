@@ -54,8 +54,6 @@ const MyProfile = (props) => {
     });
   }, [token, isCaregiver, userID]);
 
-  console.log('My reservations: ', myReservations);
-
   const myReviews = [];
 
   for (const res of myReservations) {
@@ -65,7 +63,6 @@ const MyProfile = (props) => {
       }
     }
   }
-  console.log('My Reviews: ', myReviews);
 
   const handleClickEdit = () => {
     //does nothing for now
