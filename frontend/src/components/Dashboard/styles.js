@@ -22,7 +22,7 @@ export const navbarStyles = {
       marginLeft: "-10px",
       fontWeight: "600",
       fontSize: "20px",
-      fontFamily: "Source Sans Pro",
+      fontFamily: "Source Sans Pro, sans-serif",
     },
   },
 };
