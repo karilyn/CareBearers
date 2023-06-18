@@ -16,6 +16,7 @@ const Requests = () => {
   const [buttonPopup, setButtonPopup] = useState(false);
   const [parentData, setParentData] = useState({});
   const [resData, setResData] = useState({});
+  const [reviews, setReviews] = useState([]);
 
   const { state } = useAppState();
   // const token = state.token;
@@ -44,7 +45,23 @@ const Requests = () => {
 
       setParents(filteredParents);
     });
+
+    instance.get('/reviews').then((items) => {
+      setReviews(items.data);
+    });
+
   }, [token, userID]);
+
+  const parentReviews = [];
+
+  for (const res of pendingRequests) {
+    for (const rev of reviews) {
+      if (rev.reservation_id === res.id && rev.reviewer_id !== userID) {
+        parentReviews.push(rev.rating);
+      }
+    }
+  }
+
 
   const clickButton = (status, id) => {
     fetch(`${state.url}/reservations/${id}`, {
@@ -89,8 +106,17 @@ const Requests = () => {
                       Date: {moment(res?.start_time).format('MMM Do YYYY')}
                     </h5>
                     <p className='card-text'>
-                      Time: {moment(res?.start_time).format('h:mm a')} for{' '}
+                      <strong>Time:</strong> {moment(res?.start_time).format('h:mm a')} for{' '}
                       {res.duration_in_minutes} minutes
+                    </p>
+                    <p className='card-text'>
+                      <strong>Address:</strong> {res?.street} {res?.city}, {res?.province}
+                    </p>
+                    <p className='card-text'>
+                      <strong>Reservation for:</strong> {getParentDetails(parents, res?.parent_id)?.first_name} {getParentDetails(parents, res?.parent_id)?.last_name}
+                    </p>
+                    <p className='card-text'>
+                      <strong>Children:</strong> {res?.num_of_children}
                     </p>
                     <div className='button-container'>
                     <button className='btn request accept' onClick={() => clickButton(1, res?.id)}>
@@ -109,6 +135,7 @@ const Requests = () => {
                       setTrigger={setButtonPopup}
                       popupData={parentData}
                       resData={resData}
+                      parentRating={parentReviews.reduce((a, b) => a + b, 0) / parentReviews.length}
                     />
                   </div>
                 </div>
