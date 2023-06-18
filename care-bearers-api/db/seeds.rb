@@ -215,6 +215,21 @@ reservation5 = Reservation.create!(
   parent_id: michele.id
 )
 
+reservation6 = Reservation.create!(
+  start_time: "2023-06-05 17:00:00",
+  duration_in_minutes: 120,
+  num_of_children: 2,
+  city: "Vancouver",
+  street: "321 Main Street",
+  post_code: "S0E2S0",
+  province: "BC",
+  status: 4,
+  cost: 80.00,
+  stripe_charge_id: "ch_1J5JZn2eZvKYlo2C0WNQ0Q0Q",
+  caregiver_id: amy.id,
+  parent_id: karilyn.id
+)
+
 puts "Created #{Reservation.count} reservations."
 
 # Create reviews
@@ -223,14 +238,14 @@ review1 = Review.create!(
   message: "Amy was great with our kids! She was on time and very friendly. We will definitely be booking her again.",
   rating: 5.0,
   reviewer_id: karilyn.id,
-  reservation_id: reservation1.id
+  reservation_id: reservation6.id
 )
 
 review2 = Review.create!(
   message: "Karilyn was cool as a cucumber and her kids were lots of fun to watch.",
-  rating: 5.0,
+  rating: 4.5,
   reviewer_id: amy.id,
-  reservation_id: reservation1.id
+  reservation_id: reservation6.id
 )
 
 
