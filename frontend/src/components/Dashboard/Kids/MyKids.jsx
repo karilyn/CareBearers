@@ -32,8 +32,9 @@ const MyKids = (props) => {
     });
 
     instance.get("/kids").then((items) => {
-      setKids(items.data);
-      // console.log("kids length: ", items.data.length);
+    
+      setKids(items.data.myKids);
+    
     });
   }, [token]);
 
