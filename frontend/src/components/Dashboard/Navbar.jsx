@@ -32,9 +32,9 @@ const Navbar = () => {
       anchor="left"
       style={{ width: "20%" }}
     >
-    
+
       <List>
-        <ListItem 
+        <ListItem
           button
           key="logo"
           onClick={() => {
@@ -42,7 +42,7 @@ const Navbar = () => {
           }}
         >
           <ListItemButton>
-            <ListItemText sx={{ fontFamily: "Lobster", fontSize: "40px", marginLeft: "20px" }} 
+            <ListItemText sx={{ fontFamily: "Lobster", fontSize: "40px", marginLeft: "20px" }}
               disableTypography
             primary="Care Bearers" />
           </ListItemButton>
