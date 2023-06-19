@@ -20,7 +20,7 @@ export const navbarStyles = {
   text: {
     "& span": {
       marginLeft: "-10px",
-      fontWeight: "600",
+      fontWeight: "400",
       fontSize: "20px",
       fontFamily: "Source Sans Pro, sans-serif",
     },
