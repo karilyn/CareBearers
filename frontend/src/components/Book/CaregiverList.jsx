@@ -11,6 +11,8 @@ import axios from 'axios';
 export default function CaregiverList(props) {
 
   const [caregivers, setCaregivers] = useState([]);
+  const [reservations, setReservations] = useState([]);
+  const [reviews, setReviews] = useState([]);
 
   // const { state, dispatch } = useAppState();
   // const token = state.token;
@@ -30,10 +32,20 @@ export default function CaregiverList(props) {
       })
       setCaregivers(filteredCaregivers);
     })
-  
+
+    instance.get('/reservations')
+    .then((items) => {
+      setReservations(items.data.reservations);
+    });
+
+    instance.get('/reviews')
+    .then((items) => {  
+      setReviews(items.data);
+    });
+
   },[token])
 
-
+  
   // map the caregivers array to caregiverListItem components
   const mappedCaregivers = caregivers.map((caregiver) => {
     return (
@@ -46,6 +58,12 @@ export default function CaregiverList(props) {
         gender={caregiver.gender}
         setCaregiver={() => props.onChange(caregiver.id)}
         selected={props.value === caregiver.id}
+        myReservations={reservations.filter((reservation) => {
+          return reservation.caregiver_id === caregiver.id && reservation.status === 'completed';
+        })}
+        reviews={reviews.filter((review) => {
+          return review.reviewer_id !== caregiver.id;
+        })}
       />
     )
   })

@@ -230,6 +230,21 @@ reservation6 = Reservation.create!(
   parent_id: karilyn.id
 )
 
+reservation7 = Reservation.create!(
+  start_time: "2023-06-03 12:00:00",
+  duration_in_minutes: 180,
+  num_of_children: 2,
+  city: "Vancouver",
+  street: "321 Main Street",
+  post_code: "S0E2S0",
+  province: "BC",
+  status: 4,
+  cost: 80.00,
+  stripe_charge_id: "ch_1J5JZn2eZvKYlo2C0WNQ0Q0Q",
+  caregiver_id: sally.id,
+  parent_id: john.id
+)
+
 puts "Created #{Reservation.count} reservations."
 
 # Create reviews
@@ -250,33 +265,33 @@ review2 = Review.create!(
 
 
 review3 = Review.create!(
-  message: "Karilyn paid promptly and was very appreciative of my help.",
+  message: "John paid promptly and was very appreciative of my help.",
   rating: 4.0,
-  reviewer_id: amy.id,
-  reservation_id: reservation2.id
+  reviewer_id: sally.id,
+  reservation_id: reservation7.id
 )
 
 review4 = Review.create!(
-  message: "Amy was great with our kids. She ran a bit late though.",
+  message: "Sally was great with our kids. She ran a bit late though.",
   rating: 4.0,
-  reviewer_id: karilyn.id,
-  reservation_id: reservation2.id
+  reviewer_id: john.id,
+  reservation_id: reservation7.id
 )
 
 
-review5 = Review.create!(
-  message: "Amy was wonderful with Miles.  Will work with her in the future for sure!",
-  rating: 4.5,
-  reviewer_id: michele.id,
-  reservation_id: reservation3.id
-)
+# review5 = Review.create!(
+#   message: "Amy was wonderful with Miles.  Will work with her in the future for sure!",
+#   rating: 4.5,
+#   reviewer_id: michele.id,
+#   reservation_id: reservation3.id
+# )
 
-review6 = Review.create!(
-  message: "Michele and her kids were a pleasure to work with.  Will work with them in the future for sure!",
-  rating: 4.5,
-  reviewer_id: amy.id,
-  reservation_id: reservation3.id
-)
+# review6 = Review.create!(
+#   message: "Michele and her kids were a pleasure to work with.  Will work with them in the future for sure!",
+#   rating: 4.5,
+#   reviewer_id: amy.id,
+#   reservation_id: reservation3.id
+# )
 
 
 # review7 = Review.create!(
