@@ -3,10 +3,10 @@ class KidsController < ApplicationController
   before_action :authorized
   # GET /kids or /kids.json
   def index
-    # @kids = Kid.all
+    @kids = Kid.all
     # get only kids associated with user logged in
-    @kids = Kid.where(parent_id: @user.id)
-    render json: @kids
+    @myKids = Kid.where(parent_id: @user.id)
+    render json: { myKids: @myKids, kids: @kids }
   end
 
   # GET /kids/1 or /kids/1.json
