@@ -88,11 +88,12 @@ function BookingContainer(props) {
                 // onSubmit={handleSubmit}
               >
 
-                <div className='datepicker-container'>
-                  <h4>When do you need childcare?</h4>
+                <div className='datepicker-container  mb-3'>
+                  <label for="datepicker-input" className="form-label book">When do you need childcare?</label>
                     <div className='datepicker-container__input'>
                       <DatePicker
-                        className='booking'
+                        id="datepicker-input"
+                        className='form-control'
                         showIcon
                         selected={startTime}
                         onChange={(date) => setStartTime(date)}
@@ -104,35 +105,37 @@ function BookingContainer(props) {
                         placeholderText="Click to pick a date"
                       />
                     </div>
-                    <h4>For how many hours do you need childcare?</h4>
-                    <input
-                      className="select-hours"
-                      name='duration'
-                      type='number'
-                      min='1'
-                      max='10'
-                      placeholder='1'
-                      value={duration}
-                      onChange={(event) => {setDuration(event.target.value)}}
-                    />
-                  </div>
-
-                  <div className='children-container'>
-                    <h4>How many children need care?</h4>
-                      <div className='children-container__item'>
+                    <div class="mb-3">
+                      <label for="select-hours" className="form-label book">For how many hours do you need childcare?</label>
+                      <input
+                        id="select-hours"
+                        className="form-control"
+                        name='duration'
+                        type='number'
+                        min='1'
+                        max='10'
+                        placeholder='1'
+                        value={duration}
+                        onChange={(event) => {setDuration(event.target.value)}}
+                      />
+                    </div>
+                </div>
+                  <div className='mb-3'>
+                    <label for="select-children" className="form-label book">How many children need care?</label>
                         <input
-                          className="select-children"
+                          id="select-children"
+                          className="form-control"
                           name="num_of_children"
                           type='number'
                           min='1'
                           max='10'
                           placeholder='1'
                           onChange={(event) =>{setChildren(event.target.value)}} />
-                      </div>
+
                   </div>
 
                   <div className="caregiver-container">
-                    <button className='btn booking' onClick={handleBabysitterClick}>Find a babysitter</button>
+                    <button className='btn booking' onClick={handleBabysitterClick}>Choose a babysitter</button>
 
                     <div className='available-caregivers'>
                     {/* render CaregiverList when Button is clicked */}
@@ -146,10 +149,11 @@ function BookingContainer(props) {
                     </div>
                   </div>
 
-                  <div className='address-input'>
-                    <h4>Where do you need childcare?</h4>
+                  <div className='address-input mb-3'>
+                    <label for="address-input__input" className="form-label book">Where do you need childcare?</label>
                       <input
-                        className="address-input__input"
+                        id="address-input"
+                        className="form-control"
                         name="street"
                         type='text'
                         placeholder='Street address'
@@ -157,7 +161,9 @@ function BookingContainer(props) {
                         onChange={(event) => {setStreet(event.target.value)}}
                       />
                       <input
-                        className="address-input__input"
+                        id="address-input"
+                        className="form-control"
+
                         name="city"
                         type='text'
                         placeholder='City'
@@ -165,7 +171,9 @@ function BookingContainer(props) {
                         onChange={(event) => {setCity(event.target.value)}}
                       />
                       <input
-                        className="address-input__input"
+                        id="address-input"
+                        className="form-control"
+
                         name="province"
                         type='text'
                         placeholder='Province'
@@ -173,7 +181,8 @@ function BookingContainer(props) {
                         onChange={(event) => {setProvince(event.target.value)}}
                       />
                       <input
-                        className="address-input__input"
+                        id="address-input"
+                        className="form-control"
                         name="postal_code"
                         type='text'
                         placeholder='Postal code'
