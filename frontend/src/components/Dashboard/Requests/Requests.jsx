@@ -12,6 +12,7 @@ import RequestPopup from './RequestPopup';
 
 const Requests = () => {
   const [pendingRequests, setPendingRequests] = useState([]);
+  const [completedReservations, setCompletedReservations] = useState([]);
   const [parents, setParents] = useState([]);
   const [buttonPopup, setButtonPopup] = useState(false);
   const [parentData, setParentData] = useState({});
@@ -32,7 +33,10 @@ const Requests = () => {
     });
 
     instance.get('/reservations').then((items) => {
-      console.log('reservations: ', items.data);
+
+      setCompletedReservations(items.data.reservations.filter((item) => {
+        return item.status === 'completed';
+      }));
       const myEvents = items.data.reservations.filter((item) => {
         return item.caregiver_id === userID;
       });
@@ -57,18 +61,6 @@ const Requests = () => {
 
   }, [token, userID]);
 
-  const parentReviews = [];
-
-  for (const res of pendingRequests) {
-    for (const rev of reviews) {
-      if (rev.reservation_id === res.id && rev.reviewer_id !== userID) {
-        parentReviews.push(rev.rating);
-      }
-    }
-  }
-
-  
-
   const clickButton = (status, id) => {
     fetch(`${state.url}/reservations/${id}`, {
       method: 'put',
@@ -90,14 +82,12 @@ const Requests = () => {
       });
   };
 
-  console.log('pendingRequests:', pendingRequests);
-  console.log('parents:', parents);
-  console.log('kids:', kids);
   const onClickDetails = (id) => {
     setParentData(getParentDetails(parents, id.parent_id));
     setResData(id);
     setButtonPopup(true);
   };
+
   return (
     <>
       <div className='request-container'>
@@ -141,8 +131,9 @@ const Requests = () => {
                       setTrigger={setButtonPopup}
                       popupData={parentData}
                       resData={resData}
-                      parentRating={parentReviews.reduce((a, b) => a + b, 0) / parentReviews.length}
+                      completedReservations={completedReservations}
                       kids={kids}
+                      reviews={reviews}
                     />
                   </div>
                 </div>

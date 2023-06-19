@@ -309,18 +309,18 @@ review4 = Review.create!(
 # )
 
 
-# review9 = Review.create!(
-#   message: "Michele was delightful and her kids were a blast.",
-#   rating: 4.5,
-#   reviewer_id: amy.id,
-#   reservation_id: reservation5.id
-# )
+review9 = Review.create!(
+  message: "Michele was delightful and her kids were a blast.",
+  rating: 5.0,
+  reviewer_id: amy.id,
+  reservation_id: reservation5.id
+)
 
-# review10 = Review.create!(
-#   message: "Amy has a real talent, got my kid to nap!",
-#   rating: 4.5,
-#   reviewer_id: michele.id,
-#   reservation_id: reservation5.id
-# )
+review10 = Review.create!(
+  message: "Amy has a real talent, got my kid to nap!",
+  rating: 4.5,
+  reviewer_id: michele.id,
+  reservation_id: reservation5.id
+)
 
 puts "Created #{Review.count} reviews."

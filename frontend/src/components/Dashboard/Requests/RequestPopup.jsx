@@ -8,6 +8,18 @@ const RequestPopup = (props) => {
     return kid.parent_id === props.resData.parent_id;
   });
 
+  const parentRatings = [];
+
+  for (const item of props.completedReservations) {
+    if (item.parent_id === props.popupData.id) {
+      for (const review of props.reviews) {
+        if (review.reservation_id === item.id && review.reviewer_id !== props.popupData.id) {
+          parentRatings.push(review.rating);
+        }
+      }
+    }
+  }
+
   return props.trigger ? (
     <div className="popup-request">
       <div className="popup-request__inner">
@@ -28,7 +40,7 @@ const RequestPopup = (props) => {
             </div>
             <Rating
               name="read-only"
-              value={props.parentRating}
+              value={parentRatings.reduce((a, b) => a + b, 0) / parentRatings.length}
               readOnly
               precision={0.5}
             />
