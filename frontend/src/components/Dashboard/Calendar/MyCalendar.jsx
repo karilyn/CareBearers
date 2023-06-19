@@ -9,6 +9,7 @@ import './MyCalendar.scss';
 
 
 
+
 const MyCalendar = (props) => {
   const localizer = momentLocalizer(moment);
   const [clicked, setClicked] = useState(false);
@@ -77,6 +78,10 @@ const MyCalendar = (props) => {
         min={new Date(0, 0, 0, 7, 0, 0)}
         max={new Date(0, 0, 0, 23, 0, 0)}
         onSelectEvent={handleEventClick}
+        eventPropGetter={(event) => {
+          const eventColor = '#437A7A';
+          return { style: { backgroundColor: eventColor, color: 'white' }}
+          }}
         />
       </div>
       <div className="event">
