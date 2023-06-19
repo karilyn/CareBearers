@@ -39,7 +39,7 @@ const RequestPopup = (props) => {
             {props.popupData.email}
           </p>
           <div className="popup-kids">
-            <h5 className="request-popup"><strong>My Kids: </strong></h5>
+            <h5 className="request-popup"><strong>{props.popupData.first_name}'s Kids: </strong></h5>
             {myKids.map((kid) => {
               return (
             <div className="popup-request-card__img">
