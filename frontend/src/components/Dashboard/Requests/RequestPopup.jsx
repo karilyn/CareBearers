@@ -26,7 +26,7 @@ const RequestPopup = (props) => {
         <button className="close-btn" onClick={() => props.setTrigger(false)}>
           close
         </button>
-        <h5>
+        <h5 className="request-popup">
           <strong>{props.popupData.first_name} {props.popupData.last_name}</strong>
         </h5>
         <div className="popup-request__inner__parent">
@@ -51,22 +51,24 @@ const RequestPopup = (props) => {
             {props.popupData.email}
           </p>
           <div className="popup-kids">
-            <h5><strong>My Kids: </strong></h5>
+            <h5 className="request-popup"><strong>{props.popupData.first_name}'s Kids: </strong></h5>
             {myKids.map((kid) => {
               return (
-                <div className="kid-card" key={kid?.id}>
+            <div className="popup-request-card__img">
+            <div className="card-img-top__background request" key={kid?.id}>
                   <img
                     src={kid.photo_url}
-                    className="card-img-top"
+                    className="card-img-top request"
                     alt={kid.name}
                   />
-                
-                    <h5 className="card-title">
+                </div>
+
+                    <h5 className="card-title request kids">
                       {kid.name}, {kid.age}
                     </h5>
-                    <p className="card-text">{kid.description}</p>
-                
+                    <p className="p-popup request kids">{kid.description}</p>
                 </div>
+
               );
             })}
           </div>

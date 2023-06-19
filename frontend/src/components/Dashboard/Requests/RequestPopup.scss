@@ -30,10 +30,28 @@
   }
 
   .p-popup {
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
   }
 
   .card-img-top__background.request {
     margin-left: 0;
   }
+
+  .card-img-top.request {
+    margin: 15px;
+  }
+}
+
+h5.request-popup {
+  color: $font-color-dark;
+  margin-top: 1em;
+}
+
+.card-title.request.kids {
+  margin-bottom: 0.25em;
+  margin-top: 0.5em;
+}
+
+.p-popup.request.kids {
+  margin-bottom: 1.5em;
 }
