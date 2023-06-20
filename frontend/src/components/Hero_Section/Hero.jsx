@@ -12,7 +12,7 @@ export default function Hero() {
     <>
      <NavigationBar />
     <div className="px-4 py-5 my-5 text-center bg-image"
-      style={{ backgroundImage: `url(${hero})` }}>
+      style={{ backgroundImage: `url(${hero})`, height: '800px' }}>
       <h1 className="display-5 fw-bold">Reliable childcare <br/>on demand</h1>
       <div className="col-lg-6 mx-auto">
         <p className="lead mb-4">Find a trusted caregiver for your child<br/> in minutes</p>
