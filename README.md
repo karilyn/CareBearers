@@ -12,7 +12,7 @@ In one terminal:
 4. Run `bin/rails s` to run the server
 
 In second terminal:
-1. `cd` into `front-end`
+1. `cd` into `frontend`
 2. Run `npm install` to install dependencies
 3. Run `npm start` to open up the site in your browser
 
