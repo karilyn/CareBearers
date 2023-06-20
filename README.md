@@ -24,3 +24,8 @@ In second terminal:
 - react-big-calendar
 - Material-UI
 - Bootstrap5
+
+## Screenshots 
+!["booking form"](https://github.com/karilyn/CareBearers/blob/main/frontend/docs/carebearers_booking.jpg?raw=true)
+!["pending requests"](https://github.com/karilyn/CareBearers/blob/main/frontend/docs/carebearers_requests.jpg?raw=true)
+!["review popup"](https://github.com/karilyn/CareBearers/blob/main/frontend/docs/carebearers_review_popup.jpg?raw=true)
