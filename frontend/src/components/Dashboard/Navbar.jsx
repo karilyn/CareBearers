@@ -11,6 +11,7 @@ import { navbarStyles } from "./styles";
 import { useNavigate } from "react-router-dom";
 import { useAppState } from "../../AppState.jsx";
 
+//Side navbar in dashboard for logged in users
 const Navbar = () => {
   const navigate = useNavigate();
 
@@ -22,8 +23,10 @@ const Navbar = () => {
 
   const { dispatch } = useAppState();
 
-  // const isCaregiver = state?.user?.is_caregiver;
-  const isCaregiver = JSON.parse(window.localStorage.getItem('auth')).isCaregiver;
+  //Get logged in user details - workaround until useAppState is fixed
+  const isCaregiver = JSON.parse(
+    window.localStorage.getItem("auth")
+  ).isCaregiver;
 
   return (
     <Drawer
@@ -32,9 +35,8 @@ const Navbar = () => {
       anchor="left"
       style={{ width: "20%" }}
     >
-    
       <List>
-        <ListItem 
+        <ListItem
           button
           key="logo"
           onClick={() => {
@@ -42,12 +44,18 @@ const Navbar = () => {
           }}
         >
           <ListItemButton>
-            <ListItemText sx={{ fontFamily: "Lobster", fontSize: "40px", marginLeft: "20px" }} 
+            <ListItemText
+              sx={{
+                fontFamily: "Lobster",
+                fontSize: "40px",
+                marginLeft: "20px",
+              }}
               disableTypography
-            primary="Care Bearers" />
+              primary="Care Bearers"
+            />
           </ListItemButton>
         </ListItem>
-      <Divider />
+        <Divider />
         {(isCaregiver ? caregiverNavBarItems : parentNavBarItems).map(
           (item, index) => (
             <ListItem
@@ -63,7 +71,12 @@ const Navbar = () => {
               }}
             >
               <ListItemButton
-                sx={{"&.Mui-selected": { color: "#ffff", backgroundColor: "#22585c" }}}
+                sx={{
+                  "&.Mui-selected": {
+                    color: "#ffff",
+                    backgroundColor: "#22585c",
+                  },
+                }}
                 selected={selectedIndex === item.id}
                 onClick={(event) => handleListItemClick(event, item.id)}
               >

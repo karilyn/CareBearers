@@ -13,6 +13,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 
+//Form to book a reservation
 function BookingContainer(props) {
   const [startTime, setStartTime] = useState(null);
   const [duration, setDuration] = useState("");
@@ -31,16 +32,16 @@ function BookingContainer(props) {
     navigate("/dashboard/calendar");
   }
 
+   //To revisit when useAppState is fixed
   // const { state } = useAppState();
+  // const token = state.token;
 
   const navigate = useNavigate();
 
-  // const token = state.token;
+  //get logged in user details workaround until useAppState is fixed
   const token = JSON.parse(window.localStorage.getItem("auth")).token;
 
-  // submit the form
   function handleSubmit(event) {
-    // Prevent the browser from reloading the page
     event.preventDefault();
     fetch("http://localhost:3000/reservations/", {
       method: "POST",
@@ -62,11 +63,8 @@ function BookingContainer(props) {
     })
     .then((response) => response.json())
     .then((data) => {
-      console.log("logging data: ", data);
-      // alert("Your booking has been submitted!");
+      //set submission alert popup to show
       setOpen(true);
-      // navigate("/calendar");
-
     })
   }
 
@@ -77,8 +75,6 @@ function BookingContainer(props) {
 
   return (
     <>
-
-
       <div className='booking-container'>
         <h1 className="booking-container__title">Book Childcare</h1>
           <img className="booking-container__img" src={cartoon_care} alt='children_playing' />

@@ -14,11 +14,13 @@ export default function CaregiverList(props) {
   const [reservations, setReservations] = useState([]);
   const [reviews, setReviews] = useState([]);
 
+  //To revisit when useAppState is fixed
   // const { state, dispatch } = useAppState();
   // const token = state.token;
+
+  //Get logged in user details - workaround until useAppState is fixed
   const token = JSON.parse(window.localStorage.getItem('auth')).token;
 
-  
   useEffect(() => {
     const instance = axios.create({
       baseURL: 'http://localhost:3000',

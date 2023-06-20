@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 // import { useAppState } from '../../../AppState.jsx';
-import axios from 'axios';
+import axios from "axios";
 import {
   getCompletedReservations,
   getCaregiverDetails,
   getParentDetails,
-} from '../../../helpers/selectors';
-import moment from 'moment';
-import ReviewPopup from './ReviewPopup.jsx';
-import './ReviewItems.scss';
+} from "../../../helpers/selectors";
+import moment from "moment";
+import ReviewPopup from "./ReviewPopup.jsx";
+import "./ReviewItems.scss";
 
-
+//Renders completed care events (reservations) available to review
 function ReviewItems(props) {
   const [popup, setPopup] = useState(-1);
 
@@ -22,12 +22,17 @@ function ReviewItems(props) {
   const [caregivers, setCaregivers] = useState([]);
   const [parents, setParents] = useState([]);
 
+   //To revisit when useAppState is fixed
   // const { state } = useAppState();
   // const token = state.token;
   // const isCaregiver = state.user?.is_caregiver;
-  const token = JSON.parse(window.localStorage.getItem('auth')).token;
-  const isCaregiver = JSON.parse(window.localStorage.getItem('auth')).isCaregiver;
-  const userID = JSON.parse(window.localStorage.getItem('auth')).id;
+
+  //Get logged in user details - workaround until useAppState is fixed
+  const token = JSON.parse(window.localStorage.getItem("auth")).token;
+  const isCaregiver = JSON.parse(
+    window.localStorage.getItem("auth")
+  ).isCaregiver;
+  const userID = JSON.parse(window.localStorage.getItem("auth")).id;
 
   useEffect(() => {
     const instance = axios.create({
@@ -36,7 +41,6 @@ function ReviewItems(props) {
     });
 
     instance.get("/reservations").then((items) => {
-      console.log("from /reservations axios call:", items.data.reservations);
       let myEvents;
       if (isCaregiver) {
         myEvents = items.data.reservations.filter((item) => {
@@ -47,6 +51,7 @@ function ReviewItems(props) {
           return item.parent_id === userID;
         });
       }
+      //Add review to each event to determine if review has been submitted
       items.data.reviews.forEach((review) => {
         myEvents.forEach((event) => {
           if (review.reservation_id === event.id) {
@@ -59,7 +64,6 @@ function ReviewItems(props) {
     });
 
     instance.get("/users").then((items) => {
-      console.log("caregivers:", items.data);
       const filteredCaregivers = items.data.filter((item) => {
         return item?.is_caregiver === true;
       });
@@ -71,32 +75,27 @@ function ReviewItems(props) {
     });
   }, [popup, isCaregiver, token, userID]);
 
-  console.log("completedCare:", completedReservations);
-  console.log("caregivers:", caregivers);
-  console.log("parents:", parents);
-
   return (
     <>
-
-      <div className='reviews-container'>
-        <h1 className='reviews-container__title'>Completed Care Events</h1>
-        <div className='completed-care-container'>
-        {completedReservations.map((res, index) => {
-          return (
-            <>
-                <div className='completed-care-card' key={res?.id}>
-                  <h5 className='card-title review'>
-                    Date of care:{' '}
-                    {moment(res?.start_time).format('MMM Do YYYY')}
+      <div className="reviews-container">
+        <h1 className="reviews-container__title">Completed Care Events</h1>
+        <div className="completed-care-container">
+          {completedReservations.map((res, index) => {
+            return (
+              <>
+                <div className="completed-care-card" key={res?.id}>
+                  <h5 className="card-title review">
+                    Date of care:{" "}
+                    {moment(res?.start_time).format("MMM Do YYYY")}
                   </h5>
 
-                  <div className='card-body'>
-                    <p className='card-text'>
+                  <div className="card-body">
+                    <p className="card-text">
                       {isCaregiver &&
                         `You watched ${
                           getParentDetails(parents, res?.parent_id)?.first_name
                         }'s kids at ${moment(res?.start_time).format(
-                          'h:mm a'
+                          "h:mm a"
                         )} for ${res?.duration_in_minutes} minutes`}
 
                       {!isCaregiver &&
@@ -104,11 +103,11 @@ function ReviewItems(props) {
                           getCaregiverDetails(caregivers, res?.caregiver_id)
                             ?.first_name
                         } watched your kids at ${moment(res?.start_time).format(
-                          'h:mm a'
+                          "h:mm a"
                         )} for ${res?.duration_in_minutes} minutes`}
                     </p>
                     <button
-                      className='btn review'
+                      className="btn review"
                       onClick={() => handleClickReview(index)}
                       disabled={res?.review ? true : false}
                     >
@@ -116,25 +115,25 @@ function ReviewItems(props) {
                     </button>
                   </div>
                 </div>
-              
 
-              {popup === index ? (
-                <ReviewPopup
-                className='popup review'
-                  name={ isCaregiver ?
-                    getParentDetails(parents, res?.parent_id).first_name : getCaregiverDetails(caregivers, res?.caregiver_id).first_name
-                  }
-                  reservation={res?.id}
-                  handlePopup={() => setPopup(-1)}
-
-                />
-              ) : (
-                ""
-              )}
-
-            </>
-          );
-        })}
+                {popup === index ? (
+                  <ReviewPopup
+                    className="popup review"
+                    name={
+                      isCaregiver
+                        ? getParentDetails(parents, res?.parent_id).first_name
+                        : getCaregiverDetails(caregivers, res?.caregiver_id)
+                            .first_name
+                    }
+                    reservation={res?.id}
+                    handlePopup={() => setPopup(-1)}
+                  />
+                ) : (
+                  ""
+                )}
+              </>
+            );
+          })}
         </div>
       </div>
     </>

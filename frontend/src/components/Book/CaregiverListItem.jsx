@@ -49,17 +49,6 @@ export default function CaregiverListItem(props) {
                 <p className="card-text">{props.description}</p>
               </div>
               <hr/>
-
-
-        {/* <img
-          className='caregivers__item-image'
-          src={props.photoUrl}
-          alt={props.firstName}
-        />
-        <br/>
-        <strong>{props.firstName} {props.lastName}</strong>
-        <br/>{props.description}
-        <hr/> */}
       </li>
 
   )

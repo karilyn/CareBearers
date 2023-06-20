@@ -4,6 +4,7 @@ import "./MyKids.scss";
 import axios from "axios";
 import KidsPopup from "./KidsPopup";
 
+//Page for logged in user to see their kids
 const MyKids = (props) => {
   const bottomEl = useRef(null);
 
@@ -15,15 +16,19 @@ const MyKids = (props) => {
 
   const [kids, setKids] = useState([]);
 
+  //To revisit when useAppState is fixed
   // const { state } = useAppState();
   // const token = state.token;
+
+  //Get logged in user details
   const token = JSON.parse(window.localStorage.getItem("auth")).token;
 
+  //Scroll to bottom of page when popup is open
   useEffect(() => {
     if (popup) {
       bottomEl.current?.scrollIntoView({ behavior: "smooth" });
     }
-  }, [popup])
+  }, [popup]);
 
   useEffect(() => {
     const instance = axios.create({
@@ -32,16 +37,16 @@ const MyKids = (props) => {
     });
 
     instance.get("/kids").then((items) => {
-    
       setKids(items.data.myKids);
-    
     });
+
   }, [token]);
 
   const handleClickEdit = () => {
-    //does nothing for now
+    //Will make a put request to edit kid's details, does nothing for now
   };
 
+  //Update state with new kid
   const handleSetKids = (newKid) => {
     setKids((prev) => [...prev, newKid]);
   };

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Hero from './components/Hero_Section/Hero';
 import { Route, Routes, useNavigate } from 'react-router-dom';

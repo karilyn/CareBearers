@@ -4,6 +4,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import './Event.scss';
 
+//Event details popup for calendar
 const Event = (props) => {
   return (
     <div className='event-container'>

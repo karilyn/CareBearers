@@ -1,3 +1,4 @@
+//Styles for MUI drawer component with ListItems
 export const navbarStyles = {
   drawer: {
     width: 320,

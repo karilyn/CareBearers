@@ -1,53 +1,52 @@
-import React, { useState, useEffect } from 'react';
-import './MyProfile.scss';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import "./MyProfile.scss";
+import axios from "axios";
 // import { useAppState } from '../../../AppState';
-import Rating from '@mui/material/Rating';
-// import { useNavigate } from 'react-router';
+import Rating from "@mui/material/Rating";
 
+//Profile page for logged in user
 const MyProfile = (props) => {
-  // const navigate = useNavigate();
   const [reviews, setReviews] = useState([]);
   const [myReservations, setMyReservations] = useState([]);
   const [user, setUser] = useState({});
 
+  //To revisit when useAppState is fixed
   // const { state } = useAppState();
   // const token = state.token;
   // const isCaregiver = state.user.is_caregiver;
 
-  const token = JSON.parse(window.localStorage.getItem('auth')).token;
-  const isCaregiver = JSON.parse(window.localStorage.getItem('auth')).isCaregiver;
-  const userID = JSON.parse(window.localStorage.getItem('auth')).id;
+  //get logged in user details - workaround until useAppState is fixed
+  const token = JSON.parse(window.localStorage.getItem("auth")).token;
+  const isCaregiver = JSON.parse(
+    window.localStorage.getItem("auth")
+  ).isCaregiver;
+  const userID = JSON.parse(window.localStorage.getItem("auth")).id;
 
   useEffect(() => {
     const instance = axios.create({
-      baseURL: 'http://localhost:3000',
-      headers: { Authorization: 'Bearer ' + token },
+      baseURL: "http://localhost:3000",
+      headers: { Authorization: "Bearer " + token },
     });
 
     instance.get(`/users/${userID}`).then((items) => {
       setUser(items.data);
     });
 
-    instance.get('/reviews').then((items) => {
+    instance.get("/reviews").then((items) => {
       setReviews(items.data);
     });
 
-    instance.get('/reservations').then((items) => {
+    instance.get("/reservations").then((items) => {
       if (isCaregiver) {
         setMyReservations(
           items.data.reservations.filter((item) => {
-            return (
-              item.caregiver_id === userID && item.status === 'completed'
-            );
+            return item.caregiver_id === userID && item.status === "completed";
           })
         );
       } else {
         setMyReservations(
           items.data.reservations.filter((item) => {
-            return (
-              item.parent_id === userID && item.status === 'completed'
-            );
+            return item.parent_id === userID && item.status === "completed";
           })
         );
       }
@@ -65,31 +64,30 @@ const MyProfile = (props) => {
   }
 
   const handleClickEdit = () => {
-    //does nothing for now
+    //Will make a put request to edit user's profile, does nothing for now
   };
 
   return (
     <>
-
-      <div className='user-container'>
-        <h1 className='user-container__title'>My Profile</h1>
-        <div className='profile-container'>
-          <div className='profile-card'>
-            <div className='card-img-top__background'>
+      <div className="user-container">
+        <h1 className="user-container__title">My Profile</h1>
+        <div className="profile-container">
+          <div className="profile-card">
+            <div className="card-img-top__background">
               <img
                 src={user?.photo_url}
-                className='card-img-top'
+                className="card-img-top"
                 alt={user?.first_name}
               />
             </div>
-            <div className='card-body'>
-              <h2 className='card-title'>
+            <div className="card-body">
+              <h2 className="card-title">
                 {user?.first_name} {user?.last_name}
               </h2>
-              <div className='rating'>
-                <h5>Rated by {isCaregiver ? 'parents' : 'caregivers'}: </h5>
+              <div className="rating">
+                <h5>Rated by {isCaregiver ? "parents" : "caregivers"}: </h5>
                 <Rating
-                  name='read-only'
+                  name="read-only"
                   value={
                     myReviews.reduce((a, b) => a + b, 0) / myReviews.length
                   }
@@ -97,16 +95,14 @@ const MyProfile = (props) => {
                   precision={0.5}
                 />
               </div>
-              <p className='card-text'>{user?.description}</p>
-              <div className='button-container'>
-                <button className='btn edit' onClick={handleClickEdit}>
+              <p className="card-text">{user?.description}</p>
+              <div className="button-container">
+                <button className="btn edit" onClick={handleClickEdit}>
                   Edit My Profile
                 </button>
-
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </>

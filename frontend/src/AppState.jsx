@@ -1,5 +1,8 @@
 import React, { useReducer } from 'react';
 
+//State is not persisted on refresh - see GitHub repository issues for more info
+//To be revisited after demo day
+
 // INITIAL STATE
 const initialState = {
   url: 'http://localhost:3000',
