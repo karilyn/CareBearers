@@ -12,7 +12,7 @@ In one terminal:
 4. Run `bin/rails s` to run the server
 
 In second terminal:
-1. `cd` into `front-end`
+1. `cd` into `frontend`
 2. Run `npm install` to install dependencies
 3. Run `npm start` to open up the site in your browser
 
@@ -24,3 +24,8 @@ In second terminal:
 - react-big-calendar
 - Material-UI
 - Bootstrap5
+
+## Screenshots 
+!["booking form"](https://github.com/karilyn/CareBearers/blob/main/frontend/docs/carebearers_booking.jpg?raw=true)
+!["pending requests"](https://github.com/karilyn/CareBearers/blob/main/frontend/docs/carebearers_requests.jpg?raw=true)
+!["review popup"](https://github.com/karilyn/CareBearers/blob/main/frontend/docs/carebearers_review_popup.jpg?raw=true)
